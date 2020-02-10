@@ -1,5 +1,7 @@
 package app.engine;
 
+import app.board.Board;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -15,6 +17,10 @@ public class Game extends KeyAdapter {
         switch(ch) {
             case 'w':
                 System.out.println(ch);
+                Board board = new Board("Level 1", 21, 21);
+                board.fillBoard();
+                board.growGrass();
+                board.printBoard();
                 // code block
                 // Hero.moveUp()
                 break;
