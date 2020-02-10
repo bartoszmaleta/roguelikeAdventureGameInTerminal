@@ -1,4 +1,4 @@
-package app;
+package app.engine;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

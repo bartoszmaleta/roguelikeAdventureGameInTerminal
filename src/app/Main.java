@@ -1,5 +1,7 @@
 package app;
 
+import app.engine.Game;
+
 import javax.swing.*;
 
 public class Main {
