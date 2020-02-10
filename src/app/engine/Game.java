@@ -17,9 +17,10 @@ public class Game extends KeyAdapter {
         switch(ch) {
             case 'w':
                 System.out.println(ch);
-                Board board = new Board("Level 1", 21, 21);
+                Board board = new Board("Level 1", 11, 11);
                 board.fillBoard();
-                board.growGrass();
+                board.makePrintableBoard();
+//                board.growGrass();
                 board.printBoard();
                 // code block
                 // Hero.moveUp()

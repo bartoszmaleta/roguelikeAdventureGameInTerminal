@@ -1,18 +1,12 @@
 package app.structures;
 
-public abstract class Structure {
+import app.Formation;
 
-    private String apparel;
-    private int x;
-    private int y;
+public abstract class Structure extends Formation {
 
     public Structure(String apparel, int x, int y) {
-        this.x = x;
-        this.y = y;
+        super(apparel,x , y);
     }
 
-    public String getApparel() {
-        return apparel;
-    }
 
 }
