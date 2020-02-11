@@ -2,10 +2,11 @@ package app.creatures;
 
 import app.Coordinates;
 import app.Inventory;
+import app.engine.Move;
 
 import java.util.List;
 
-public class Player extends Creature {
+public class Player extends Creature implements Move {
 
     private int level;
     private int experience;

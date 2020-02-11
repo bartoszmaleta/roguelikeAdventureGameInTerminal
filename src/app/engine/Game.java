@@ -1,9 +1,11 @@
 package app.engine;
 
 import app.board.Board;
+import app.structures.Sprite;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class Game extends KeyAdapter {
     
@@ -17,11 +19,13 @@ public class Game extends KeyAdapter {
         switch(ch) {
             case 'w':
                 System.out.println(ch);
-                Board board = new Board("Level 1", 11, 11);
-                board.fillBoard();
-                board.makePrintableBoard();
-//                board.growGrass();
-                board.printBoard();
+                Board board = new Board("Level 1", 31, 115);
+                board.growGrass();
+                Sprite[][] as = board.getArrayTypeBoard();
+                System.out.println(as[1][1].getApparel());
+
+//                System.out.println(as[0][0].getApparel());
+
                 // code block
                 // Hero.moveUp()
                 break;

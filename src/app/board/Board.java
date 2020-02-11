@@ -1,46 +1,62 @@
 package app.board;
 
-import app.structures.Sprite;
+import app.Coordinates;
+import app.structures.Bridge;
 import app.structures.Grass;
+import app.structures.Sprite;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
 
-    private List<Sprite> board;
+    private List<Sprite> boardList;
     private String level;
     private int height;
     private int width;
+    private Sprite[][] arrayTypeBoard;
 
     public Board(String level, int height, int width) {
-        board = new ArrayList<>();
+        boardList = new ArrayList<>();
         this.level = level;
         this.height = height;
         this.width = width;
-        fillBoard();
+        arrayTypeBoard = makePrintableBoard();
     }
 
-    public void fillBoard() {
-        for (int i = 0; i < width * height; i++) {
-            board.add(new Grass (1, 1));
+    public void growGrass() {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                List<Coordinates> coords = new ArrayList<>();
+                Grass grass = new Grass(coords);
+                addElementToBoard(grass);
+            }
         }
     }
 
+    public void addElementToBoard(Sprite sprite) {
+        boardList.add(sprite);
+    }
 
-//    public void growGrass() {
-//        for (int i = 0; i < width * height; i++) {
-//        }
-//    }
+    public Bridge createBigBridge() {
+        List<Coordinates> bigBridgeCoordinates = new ArrayList<>();
+        for (int y = 12; y <= 14; y++) {
+            for (int x = 67; x <= 76; x++) {
+                bigBridgeCoordinates.add(new Coordinates(x, y));
+            }
+        }
+        Bridge bigBridge = new Bridge(bigBridgeCoordinates);
+        return bigBridge;
+    }
 
     public Sprite[][] makePrintableBoard() {
-        Sprite[][] arrayTypeBoard = new Sprite[height][width];
-        int line = 1;
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                arrayTypeBoard[y][x] = board.get(x * line);
+        for (Sprite sprite : boardList) {
+            List<Coordinates> spriteCoordinatesList = sprite.getCoordinatesList();
+            for (Coordinates spriteCoordinates : spriteCoordinatesList) {
+                int x = spriteCoordinates.getX();
+                int y = spriteCoordinates.getY();
+                arrayTypeBoard[y][x] = sprite;
             }
-            line++;
         }
         return arrayTypeBoard;
     }
@@ -53,12 +69,23 @@ public class Board {
             }
             System.out.println();
         }
-
-//        for (int line = 1; line < height; line++) {
-//            for (int i = 0; i < width; i++) {
-//                System.out.print(board.get(i).getApparel());
-//            }
-//            System.out.println();
-//        }
     }
+
+    public Sprite[][] getArrayTypeBoard() {
+        return arrayTypeBoard;
+    }
+
+//    public Sprite[][] makePrintableBoard() {
+//        Sprite[][] arrayTypeBoard = new Sprite[height][width];
+//        int line = 1;
+//        for (int y = 0; y < height; y++) {
+//            for (int x = 0; x < width; x++) {
+//                arrayTypeBoard[y][x] = board.get(x * line);
+//            }
+//            line++;
+//        }
+//        return arrayTypeBoard;
+
+//    }
+
 }

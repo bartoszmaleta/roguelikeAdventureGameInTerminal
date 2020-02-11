@@ -19,4 +19,8 @@ public class Sprite {
         return apparel;
     }
 
+    public List<Coordinates> getCoordinatesList() {
+        return coordinatesList;
+    }
+
 }
