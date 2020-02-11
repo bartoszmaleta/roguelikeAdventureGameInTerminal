@@ -1,4 +1,6 @@
-package app;
+package app.structures;
+
+import app.Coordinates;
 
 import java.util.List;
 

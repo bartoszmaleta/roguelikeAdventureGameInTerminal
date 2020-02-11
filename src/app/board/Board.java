@@ -1,6 +1,6 @@
 package app.board;
 
-import app.Sprite;
+import app.structures.Sprite;
 import app.structures.Grass;
 
 import java.util.ArrayList;
