@@ -17,4 +17,30 @@ public class Coordinates {
     public int getY() {
         return y;
     }
+
+    // to change
+    public void goDown() {
+        this.y += 1;
+    }
+
+    public void goUp() {
+        this.y += -1;
+    }
+
+    public void goRight() {
+        this.x += 1;
+    }
+
+    public void goLeft() {
+        this.x += -1;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
 }

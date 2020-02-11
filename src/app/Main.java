@@ -12,8 +12,10 @@ public class Main {
 
     public static void runGame() {
         JTextField textField = new JTextField();
+        Game game = new Game();
+        game.init();
 
-        textField.addKeyListener(new Game());
+        textField.addKeyListener(game);
         JFrame jframe = new JFrame();
 
         jframe.add(textField);
