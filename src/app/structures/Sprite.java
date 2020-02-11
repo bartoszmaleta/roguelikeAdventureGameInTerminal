@@ -3,6 +3,7 @@ package app.structures;
 import app.Coordinates;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Sprite {
 
@@ -17,9 +18,5 @@ public class Sprite {
     public String getApparel() {
         return apparel;
     }
-
-
-
-
 
 }

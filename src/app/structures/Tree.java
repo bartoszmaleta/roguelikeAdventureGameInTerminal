@@ -1,4 +1,14 @@
 package app.structures;
 
-public class Tree {
+import java.util.List;
+
+import app.Coordinates;
+
+public class Tree extends Sprite {
+
+    public Tree(String apparel, List<Coordinates> coordinatesList) {
+        super("^", coordinatesList);
+    }
+
+    
 }
