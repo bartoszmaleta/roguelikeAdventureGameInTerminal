@@ -6,7 +6,7 @@ import app.Coordinates;
 
 public class Chest extends Sprite {
 
-    public Chest(String apparel, List<Coordinates> coordinatesList) {
+    public Chest(List<Coordinates> coordinatesList) {
         super("+", coordinatesList);
     }
 

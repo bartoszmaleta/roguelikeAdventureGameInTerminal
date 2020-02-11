@@ -6,7 +6,7 @@ import app.Coordinates;
 
 public class Tree extends Sprite {
 
-    public Tree(String apparel, List<Coordinates> coordinatesList) {
+    public Tree(List<Coordinates> coordinatesList) {
         super("^", coordinatesList);
     }
 

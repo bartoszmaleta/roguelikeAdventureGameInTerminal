@@ -6,7 +6,7 @@ import app.Coordinates;
 
 public class Water extends Sprite {
 
-    public Water(String apparel, List<Coordinates> coordinatesList) {
+    public Water(List<Coordinates> coordinatesList) {
         super("~", coordinatesList);
     }
     

@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Grass extends Sprite {
 
-    public Grass() {
-        super(".", new ArrayList<>());
+    public Grass(List<Coordinates> coordinatesList) {
+        super(".", coordinatesList);
     }
 
 }
