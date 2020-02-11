@@ -1,9 +1,14 @@
 package app.structures;
 
-public class Grass extends Structure {
+import app.Coordinates;
+import app.Sprite;
 
-    public Grass(int x, int y) {
-        super(".", x, y);
+import java.util.List;
+
+public class Grass extends Sprite {
+
+    public Grass(String apparel, List<Coordinates> coordinatesList) {
+        super(".");
     }
 
 }

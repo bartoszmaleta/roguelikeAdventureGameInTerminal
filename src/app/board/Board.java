@@ -1,6 +1,6 @@
 package app.board;
 
-import app.Formation;
+import app.Sprite;
 import app.structures.Grass;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Board {
 
-    private List<Formation> board;
+    private List<Sprite> board;
     private String level;
     private int height;
     private int width;
@@ -33,8 +33,8 @@ public class Board {
 //        }
 //    }
 
-    public Formation[][] makePrintableBoard() {
-        Formation[][] arrayTypeBoard = new Formation[height][width];
+    public Sprite[][] makePrintableBoard() {
+        Sprite[][] arrayTypeBoard = new Sprite[height][width];
         int line = 1;
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -46,7 +46,7 @@ public class Board {
     }
 
     public void printBoard() {
-        Formation[][] arrayTypeBoard = makePrintableBoard();
+        Sprite[][] arrayTypeBoard = makePrintableBoard();
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 System.out.print(arrayTypeBoard[y][x].getApparel());
