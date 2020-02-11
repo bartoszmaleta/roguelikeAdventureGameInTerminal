@@ -18,14 +18,14 @@ public class Game extends KeyAdapter {
     private Inventory inv;
     private Board board;
     private List<Coordinates> playerCoordinates;
-    Helpers helpers = new Helpers(); // where to clearScreen();
+    Helpers helpers = new Helpers(); // where to clearScreen(); ????
     
     @Override
     public void keyPressed(KeyEvent event) {
 
         char ch = event.getKeyChar();
         System.out.println((int)ch);
-        helpers.clearScreen();
+        // helpers.clearScreen();
         board.printBoard();
 
         switch(ch) {
@@ -57,6 +57,14 @@ public class Game extends KeyAdapter {
                     .goRight();
 
                 break;   
+
+                case 'e':
+                System.out.println(ch);
+                player.getCoordinatesList()
+                    .get(0)
+                    .goRight();
+
+                break;   
         }
     }
 
@@ -76,10 +84,9 @@ public class Game extends KeyAdapter {
         inv = new Inventory();
         
         playerCoordinates = new ArrayList<>();
-        playerCoordinates.add(new Coordinates(3, 4));
+        playerCoordinates.add(new Coordinates(1, 1));
 
         player = new Player(playerCoordinates, "Stefan", 10, inv, 1, 0);
         board.putPlayerOnBoard(player);
-
     }
 }

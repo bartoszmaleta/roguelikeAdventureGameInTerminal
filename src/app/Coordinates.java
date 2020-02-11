@@ -20,19 +20,37 @@ public class Coordinates {
 
     // to change
     public void goDown() {
-        this.y += 1;
+        if (this.y + 1 > 30) {
+            this. y = y;
+        } else {
+            this.y += 1;
+        }
     }
 
     public void goUp() {
-        this.y += -1;
+        if (this.y - 1 < 0) {
+            this.y = y;
+        } else {
+            this.y += -1;
+
+        }
     }
 
     public void goRight() {
-        this.x += 1;
+        if (this.x + 1 > 114) {
+            this.x = x;
+        } else {
+            this.x += 1;
+        }
     }
 
     public void goLeft() {
-        this.x += -1;
+        if (this.x - 1 < 0) {
+            this.x = x;
+        } else {
+            this.x += -1;
+
+        }
     }
 
     public void setX(int x) {

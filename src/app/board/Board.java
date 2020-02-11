@@ -84,8 +84,7 @@ public class Board {
     }
 
     public void printBoard() {
-        // String boarder = "X" * 12;
-        makePrintableBoard();
+        makePrintableBoard(); // update board
 
         System.out.println(helpers.repeatString('X', width));
 
