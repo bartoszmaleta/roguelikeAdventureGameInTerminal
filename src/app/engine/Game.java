@@ -49,6 +49,7 @@ public class Game extends KeyAdapter {
                     player.getCoordinatesList()
                             .get(0)
                             .goDown();
+
                 }
             break;
 
@@ -91,8 +92,13 @@ public class Game extends KeyAdapter {
             System.out.println("Wrong input");
             return;
         }
-        
         TerminalManager.clearScreen();
+
+        if (checkIfChest()) {
+            System.out.println("jestem w chest");
+            TerminalManager.pressAnyKeyToContinue();
+        }
+
         board.printBoard();
       
     }
@@ -167,5 +173,16 @@ public class Game extends KeyAdapter {
         }
         return false;
     }
+
+    public boolean checkIfChest() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y][x] instanceof Chest) {
+            return true;
+        }
+        return false;
+    }
+
 
 }

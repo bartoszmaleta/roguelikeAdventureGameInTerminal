@@ -12,7 +12,7 @@ public class Chest extends Sprite {
     private Inventory chestInventory;
 
     public Chest(List<Coordinates> coordinatesList) {
-        super("+", coordinatesList);
+        super("\uD83C\uDF81", coordinatesList);
         chestInventory = new Inventory();
         fillChest();
     }
