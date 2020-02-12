@@ -84,7 +84,7 @@ public class Game extends KeyAdapter {
         inv = new Inventory();
 
         playerCoordinates = new ArrayList<>();
-        playerCoordinates.add(new Coordinates(1, 1));
+        playerCoordinates.add(new Coordinates(31, 20));
 
         player = new Player(playerCoordinates, "Stefan", 10, inv, 1, 0);
         board.putPlayerOnBoard(player);
@@ -94,7 +94,7 @@ public class Game extends KeyAdapter {
         Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
         int x = player.getCoordinatesList().get(0).getX();
         int y = player.getCoordinatesList().get(0).getY();
-        if (arrayTypeBoard[y + 1][x] instanceof Collision) {
+        if (arrayTypeBoard[y - 1][x] instanceof Collision) {
             return true;
         }
         return false;
@@ -104,7 +104,7 @@ public class Game extends KeyAdapter {
         Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
         int x = player.getCoordinatesList().get(0).getX();
         int y = player.getCoordinatesList().get(0).getY();
-        if (arrayTypeBoard[y - 1][x] instanceof Collision) {
+        if (arrayTypeBoard[y + 1][x] instanceof Collision) {
             return true;
         }
         return false;

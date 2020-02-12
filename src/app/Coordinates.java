@@ -20,11 +20,11 @@ public class Coordinates {
 
     // to change
     public void goDown() {
-        this.y -= 1;
+        this.y += 1;
     }
 
     public void goUp() {
-        this.y += 1;
+        this.y -= 1;
     }
 
     public void goRight() {
