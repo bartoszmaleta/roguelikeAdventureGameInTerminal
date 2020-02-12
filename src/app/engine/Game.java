@@ -8,6 +8,7 @@ import app.items.Item;
 import app.items.Sword;
 import app.services.TerminalManager;
 import app.menu.Menu;
+import app.structures.Chest;
 import app.structures.Sprite;
 
 import java.awt.event.KeyAdapter;
@@ -19,7 +20,7 @@ import java.util.List;
 public class Game extends KeyAdapter {
 
     private Sprite player;
-    private Inventory inv;
+    private Inventory playerInv;
     private Board board;
     private List<Coordinates> playerCoordinates;
 
@@ -105,17 +106,19 @@ public class Game extends KeyAdapter {
         playerCoordinates.add(new Coordinates(31, 20));
 
         // CREATE INV FOR PLAYER:
-        inv = new Inventory();
+        playerInv = new Inventory();
 
         // FILL INV WITH ITEMS
-        Item sword = new Sword("sword one-handed", 15);
-        inv.addToInventory(sword);
+        Item sword = new Sword("sword one-handed", 15, 50);
+        playerInv.addToInventory(sword);
 
         // CREATE PLAYER
-        player = new Player(playerCoordinates, "Stefan", 10, inv);
+        player = new Player(playerCoordinates, "Stefan", 10, playerInv);
 
         // PUT PLAYER ON BOARD
         board.putPlayerOnBoard(player);
+
+
 
          
     }

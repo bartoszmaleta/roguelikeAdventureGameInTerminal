@@ -5,9 +5,6 @@ import app.Coordinates;
 import app.Inventory;
 import app.creatures.Player;
 import app.services.TerminalManager;
-import app.structures.Bridge;
-import app.structures.Grass;
-import app.structures.Sprite;
 import app.structures.*;
 
 import java.util.ArrayList;
@@ -33,6 +30,15 @@ public class Board {
         putGrassOnBoard();
         putBigBridgeOnBoard();
         putLakeOnBoard();
+        putChestOnBoard();
+    }
+
+    private void putChestOnBoard() {
+        List<Coordinates> chestCoords = new ArrayList<>();
+        chestCoords.add(new Coordinates(20, 10));
+        Sprite chest = new Chest(chestCoords);
+        boardList.add(chest);
+        putPlayerOnBoard(chest);
     }
 
     public void addElementToBoard(Sprite sprite) {
