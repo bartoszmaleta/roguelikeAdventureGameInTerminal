@@ -54,8 +54,10 @@ public class Game extends KeyAdapter {
                 e.printStackTrace();
             }
                 return;   
-        
-        case 'p':
+        case 'i':
+            // TODO: inventory display
+            break;
+        case 'p': // back to the game
             break;
         case 'x':
             System.exit(0);
