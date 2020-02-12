@@ -27,4 +27,8 @@ public class Chest extends Sprite {
         chestInventory.addToInventory(sword3);
     }
 
+    public Inventory getChestInventory() {
+        return chestInventory;
+    }
+
 }

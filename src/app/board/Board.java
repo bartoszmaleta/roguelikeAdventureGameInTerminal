@@ -18,6 +18,8 @@ public class Board {
     private int height;
     private int width;
     private Sprite[][] arrayTypeBoard;
+    private Sprite chest1;
+
 
     public Board(String level, int height, int width) {
         boardList = new ArrayList<>();
@@ -36,9 +38,13 @@ public class Board {
     private void putChestOnBoard() {
         List<Coordinates> chestCoords = new ArrayList<>();
         chestCoords.add(new Coordinates(20, 10));
-        Sprite chest = new Chest(chestCoords);
-        boardList.add(chest);
-        putPlayerOnBoard(chest);
+        chest1 = new Chest(chestCoords);
+        boardList.add(chest1);
+        // putPlayerOnBoard(chest1);
+    }
+
+    public List<Sprite> getBoardList() {
+        return boardList;
     }
 
     public void addElementToBoard(Sprite sprite) {
@@ -124,5 +130,10 @@ public class Board {
 //        return arrayTypeBoard;
 
 //    }
+
+    public Chest getChest() {
+        Chest chest = (Chest) chest1;
+        return chest;
+    }
 
 }

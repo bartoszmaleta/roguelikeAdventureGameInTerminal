@@ -96,6 +96,15 @@ public class Game extends KeyAdapter {
 
         if (checkIfChest()) {
             System.out.println("jestem w chest");
+            board.getChest().getChestInventory().getInventoryList().get(0);
+            System.out.println(board.getChest().getChestInventory().getInventoryList().get(0).getName());
+
+            ArrayList<Item> chestInv = board.getChest().getChestInventory().getInventoryList();
+            for (Item item : chestInv) {
+                System.out.println(item.getName());
+            }
+            
+            
             TerminalManager.pressAnyKeyToContinue();
         }
 
@@ -125,7 +134,10 @@ public class Game extends KeyAdapter {
         board.putPlayerOnBoard(player);
 
 
-
+        // List<Coordinates> chestCoords = new ArrayList<>();
+        // chestCoords.add(new Coordinates(20, 10));
+        // Sprite chest1 = new Chest(chestCoords);
+        // board.getBoardList().add(chest1);
          
     }
 
