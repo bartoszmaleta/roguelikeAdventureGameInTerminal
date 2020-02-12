@@ -25,28 +25,32 @@ public class Game extends KeyAdapter {
     public void keyPressed(KeyEvent event) {
 
         char ch = event.getKeyChar();
-        System.out.println((int) ch);
+        String charString = String.valueOf(ch).toLowerCase();
 
-        switch (ch) {
-        case 'w':
+        // Character charObj = new Character(ch);
+        // System.out.println((int) ch);
+        // Character ch = ch.toLowerCase(ch);
+
+        switch (charString) {
+        case "w":
             player.getCoordinatesList().get(0).goUp();
 
             break;
 
-        case 's':
+        case "s":
             player.getCoordinatesList().get(0).goDown();
             break;
 
-        case 'a':
+        case "a":
             player.getCoordinatesList().get(0).goLeft();
             break;
 
-        case 'd':
+        case "d":
             player.getCoordinatesList().get(0).goRight();
             break;
         
         // case 'b': work as second option to insert
-        case 'm':
+        case "m":
             try {
                 Menu.displayMenu();
                 // Menu.menuInGameAsk();
@@ -54,12 +58,13 @@ public class Game extends KeyAdapter {
                 e.printStackTrace();
             }
                 return;   
-        case 'i':
+        case "i":
             // TODO: inventory display
+            System.out.println("I am in inventory");
             break;
-        case 'p': // back to the game
+        case "p": // back to the game
             break;
-        case 'x':
+        case "x":
             System.exit(0);
             break;
 
