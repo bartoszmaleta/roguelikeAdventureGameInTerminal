@@ -19,52 +19,52 @@ public class Game extends KeyAdapter {
     private Board board;
     private List<Coordinates> playerCoordinates;
     Helpers helpers = new Helpers(); // where to clearScreen(); ????
-    
+
     @Override
     public void keyPressed(KeyEvent event) {
 
         char ch = event.getKeyChar();
-        System.out.println((int)ch);
+        System.out.println((int) ch);
         // helpers.clearScreen();
         board.printBoard();
 
-        switch(ch) {
+        switch (ch) {
             case 'w':
-                System.out.println(ch);
-                player.getCoordinatesList()
-                    .get(0)
-                    .goUp();
-                
+                if (!checkUpperCollision()) {
+                    player.getCoordinatesList()
+                            .get(0)
+                            .goUp();
+                }
                 break;
             case 's':
-                System.out.println(ch);
-                player.getCoordinatesList()
-                    .get(0)
-                    .goDown();
-                    
+                if (!checkLowerCollision()) {
+                    player.getCoordinatesList()
+                            .get(0)
+                            .goDown();
+                }
                 break;
             case 'a':
-                System.out.println(ch);
-                player.getCoordinatesList()
-                    .get(0)
-                    .goLeft();
-
+                if (!checkLeftCollision()) {
+                    player.getCoordinatesList()
+                            .get(0)
+                            .goLeft();
+                }
                 break;
             case 'd':
-                System.out.println(ch);
-                player.getCoordinatesList()
-                    .get(0)
-                    .goRight();
+                if (!checkRightCollision()) {
+                    player.getCoordinatesList()
+                            .get(0)
+                            .goRight();
+                }
+                break;
 
-                break;   
-
-                case 'e':
-                System.out.println(ch);
-                player.getCoordinatesList()
-                    .get(0)
-                    .goRight();
-
-                break;   
+//                case 'e':
+//                System.out.println(ch);
+//                player.getCoordinatesList()
+//                    .get(0)
+//                    .goRight();
+//
+//                break;
         }
     }
 
@@ -77,16 +77,57 @@ public class Game extends KeyAdapter {
         // Board board = new Board("Level 1", 31, 115);
 
         // board.putPlayerOnBoard(player);
-        
+
 
         // SECOND VERSION:
-        board = new Board("Level 1", 31, 115);
+        board = new Board("Level 1", 33, 117);
         inv = new Inventory();
-        
+
         playerCoordinates = new ArrayList<>();
         playerCoordinates.add(new Coordinates(1, 1));
 
         player = new Player(playerCoordinates, "Stefan", 10, inv, 1, 0);
         board.putPlayerOnBoard(player);
     }
+
+    public boolean checkUpperCollision() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y + 1][x] instanceof Collision) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkLowerCollision() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y - 1][x] instanceof Collision) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkRightCollision() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y][x + 1] instanceof Collision) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkLeftCollision() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y][x - 1] instanceof Collision) {
+            return true;
+        }
+        return false;
+    }
+
 }
