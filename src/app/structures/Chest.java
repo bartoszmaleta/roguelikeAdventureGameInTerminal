@@ -5,6 +5,7 @@ import java.util.List;
 
 import app.Coordinates;
 import app.Inventory;
+import app.items.Helmet;
 import app.items.Item;
 import app.items.Sword;
 
@@ -19,12 +20,12 @@ public class Chest extends Sprite {
 
     private void fillChest() {
         Item sword = new Sword("Two-handed sword", 10, 5);
-        Item sword2 = new Sword("Two-handed sword2", 11, 6);
-        Item sword3 = new Sword("Two-handed sword3", 12, 7);
+        Item sword2 = new Sword("Two-handed sword3", 12, 7);
+        Item helmet = new Helmet("Hat", 50, 70);
 
         chestInventory.addToInventory(sword);
         chestInventory.addToInventory(sword2);
-        chestInventory.addToInventory(sword3);
+        chestInventory.addToInventory(helmet);
     }
 
     public Inventory getChestInventory() {

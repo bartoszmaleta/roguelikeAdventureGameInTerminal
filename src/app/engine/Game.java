@@ -104,8 +104,13 @@ public class Game extends KeyAdapter {
                 System.out.println(item.getName() + " = " + item.getAppearance());
             }
             
-            
+            // Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+            // int x = player.getCoordinatesList().get(0).getX();
+            // int y = player.getCoordinatesList().get(0).getY();
+            // arrayTypeBoard[y][x].
             TerminalManager.pressAnyKeyToContinue();
+
+
         }
 
         board.printBoard();
