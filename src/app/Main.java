@@ -4,6 +4,9 @@ import app.engine.Game;
 
 import javax.swing.*;
 
+// TODO:
+//      - check if board (level 2) will work
+
 public class Main {
 
     public static void main(String[] args) {
