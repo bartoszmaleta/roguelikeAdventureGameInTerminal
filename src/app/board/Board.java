@@ -117,19 +117,6 @@ public class Board {
         return arrayTypeBoard;
     }
 
-//    public Sprite[][] makePrintableBoard() {
-//        Sprite[][] arrayTypeBoard = new Sprite[height][width];
-//        int line = 1;
-//        for (int y = 0; y < height; y++) {
-//            for (int x = 0; x < width; x++) {
-//                arrayTypeBoard[y][x] = board.get(x * line);
-//            }
-//            line++;
-//        }
-//        return arrayTypeBoard;
-
-//    }
-
     public Chest getChest() {
         Chest chest = (Chest) chest1;
         return chest;
