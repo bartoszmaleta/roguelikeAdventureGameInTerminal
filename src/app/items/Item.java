@@ -3,10 +3,12 @@ package app.items;
 public abstract class Item {
     private String name;
     private int value;
+    private String appearance;
 
-    public Item(String name, int value) {
+    public Item(String name, int value, String appearence) {
         this.name = name;
         this.value = value;
+        this.appearance = appearence;
     }
 
     public String getName() {
@@ -23,6 +25,14 @@ public abstract class Item {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    public String getAppearance() {
+        return appearance;
+    }
+
+    public void setAppearance(String appearance) {
+        this.appearance = appearance;
     }
     
     

@@ -101,7 +101,7 @@ public class Game extends KeyAdapter {
 
             ArrayList<Item> chestInv = board.getChest().getChestInventory().getInventoryList();
             for (Item item : chestInv) {
-                System.out.println(item.getName());
+                System.out.println(item.getName() + " = " + item.getAppearance());
             }
             
             
