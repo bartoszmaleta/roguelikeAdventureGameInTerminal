@@ -86,6 +86,7 @@ public class Game extends KeyAdapter {
 
         default:
             System.out.println("Wrong input");
+            return;
         }
         
         TerminalManager.clearScreen();
