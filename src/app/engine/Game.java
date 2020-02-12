@@ -52,10 +52,8 @@ public class Game extends KeyAdapter {
                     .goRight();
                 break;   
 
-            case 'e':
-                player.getCoordinatesList()
-                    .get(0)
-                    .goRight();
+            case 'm':
+                displayMenu();
                 break;   
                 
         }
@@ -84,5 +82,9 @@ public class Game extends KeyAdapter {
 
         player = new Player(playerCoordinates, "Stefan", 10, inv, 1, 0);
         board.putPlayerOnBoard(player);
+    }
+
+    public void displayMenu() {
+        
     }
 }
