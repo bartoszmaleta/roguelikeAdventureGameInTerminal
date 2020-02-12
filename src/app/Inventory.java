@@ -77,7 +77,6 @@ public class Inventory {
             } else {
                 System.out.println(" Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
                         + "Value = " + item.getValue() + "\n");
-                // System.out.println(item.getName() + " = " + item.getAppearance());
             }
             System.out.println("-------------");
 

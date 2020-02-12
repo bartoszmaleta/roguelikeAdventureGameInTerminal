@@ -10,8 +10,14 @@ import app.structures.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board {
+// TODO: 
+//      - id for all sprites
+//      - adding chest inv to playerINV
+//      - displayInv for player "i"
+//      - removeSprite()
+//      - prettyTable for Inv
 
+public class Board {
 
     private List<Sprite> boardList;
     private String level;
