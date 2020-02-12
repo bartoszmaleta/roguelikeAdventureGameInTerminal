@@ -25,47 +25,43 @@ public class Game extends KeyAdapter {
 
         char ch = event.getKeyChar();
         System.out.println((int)ch);
-        // helpers.clearScreen();
-        board.printBoard();
 
         switch(ch) {
             case 'w':
-                System.out.println(ch);
                 player.getCoordinatesList()
                     .get(0)
                     .goUp();
                 
                 break;
+
             case 's':
-                System.out.println(ch);
                 player.getCoordinatesList()
                     .get(0)
                     .goDown();
-                    
                 break;
+
             case 'a':
-                System.out.println(ch);
                 player.getCoordinatesList()
                     .get(0)
                     .goLeft();
-
                 break;
+
             case 'd':
-                System.out.println(ch);
                 player.getCoordinatesList()
                     .get(0)
                     .goRight();
-
                 break;   
 
-                case 'e':
-                System.out.println(ch);
+            case 'e':
                 player.getCoordinatesList()
                     .get(0)
                     .goRight();
-
                 break;   
+                
         }
+        
+        helpers.clearScreen();
+        board.printBoard();
     }
 
     public void init() {

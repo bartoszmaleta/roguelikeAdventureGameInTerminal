@@ -17,7 +17,7 @@ public class Player extends Creature implements Move {
     private Inventory inv = createInventory();    
 
     public Player(List<Coordinates> coordinatesPlayer, String name, int health, Inventory inventory, int level, int experience) {
-        super("@", coordinatesPlayer, name, health, inventory);
+        super("\uD83D\uDC7D", coordinatesPlayer, name, health, inventory);
         this.level = level;
         this.experience = experience; 
     }
