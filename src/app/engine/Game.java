@@ -33,20 +33,36 @@ public class Game extends KeyAdapter {
 
         switch (charString) {
         case "w":
-            player.getCoordinatesList().get(0).goUp();
+                if (!checkUpperCollision()) {
+                    player.getCoordinatesList()
+                            .get(0)
+                            .goUp();
+                }
 
             break;
 
         case "s":
-            player.getCoordinatesList().get(0).goDown();
+                if (!checkLowerCollision()) {
+                    player.getCoordinatesList()
+                            .get(0)
+                            .goDown();
+                }
             break;
 
         case "a":
-            player.getCoordinatesList().get(0).goLeft();
+                if (!checkLeftCollision()) {
+                    player.getCoordinatesList()
+                            .get(0)
+                            .goLeft();
+                }
             break;
 
         case "d":
-            player.getCoordinatesList().get(0).goRight();
+                if (!checkRightCollision()) {
+                    player.getCoordinatesList()
+                            .get(0)
+                            .goRight();
+                }
             break;
         
         // case 'b': work as second option to insert
@@ -74,6 +90,7 @@ public class Game extends KeyAdapter {
         
         TerminalManager.clearScreen();
         board.printBoard();
+      
     }
 
     public void init() {
@@ -85,24 +102,62 @@ public class Game extends KeyAdapter {
         // Board board = new Board("Level 1", 31, 115);
 
         // board.putPlayerOnBoard(player);
-        
+
 
         // SECOND VERSION:
-        board = new Board("Level 1", 31, 115);
+        board = new Board("Level 1", 33, 117);
         inv = new Inventory();
-        
+
         playerCoordinates = new ArrayList<>();
-        playerCoordinates.add(new Coordinates(1, 1));
+        playerCoordinates.add(new Coordinates(31, 20));
 
         player = new Player(playerCoordinates, "Stefan", 10, inv, 1, 0);
         board.putPlayerOnBoard(player);
     }
 
-    public void displayMenu() {
-        
-    }
 
     public void firstTimeBoard() {
         board.printBoard();
     }
+
+    public boolean checkUpperCollision() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y - 1][x] instanceof Collision) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkLowerCollision() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y + 1][x] instanceof Collision) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkRightCollision() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y][x + 1] instanceof Collision) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkLeftCollision() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y][x - 1] instanceof Collision) {
+            return true;
+        }
+        return false;
+    }
+
 }

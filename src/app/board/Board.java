@@ -1,12 +1,14 @@
 package app.board;
 
 import app.Coordinates;
+
 import app.Inventory;
 import app.creatures.Player;
 import app.services.TerminalManager;
 import app.structures.Bridge;
 import app.structures.Grass;
 import app.structures.Sprite;
+import app.structures.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +28,11 @@ public class Board {
         this.height = height;
         this.width = width;
         arrayTypeBoard = new Sprite[height][width];
+        Border border = new Border(new ArrayList<>());
+        addElementToBoard(border);
         putGrassOnBoard();
         putBigBridgeOnBoard();
+        putLakeOnBoard();
     }
 
     public void addElementToBoard(Sprite sprite) {
@@ -35,8 +40,8 @@ public class Board {
     }
 
     public void putGrassOnBoard() {
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
+        for (int y = 1; y < height - 1; y++) {
+            for (int x = 1; x < width - 1; x++) {
                 List<Coordinates> coords = new ArrayList<>();
                 coords.add(new Coordinates(x, y));
                 Grass grass = new Grass(coords);
@@ -60,15 +65,15 @@ public class Board {
         addElementToBoard(bigBridge);
     }
 
-    public Bridge createBigBridge() {
-        List<Coordinates> bigBridgeCoordinates = new ArrayList<>();
-        for (int y = 12; y <= 14; y++) {
-            for (int x = 67; x <= 76; x++) {
-                bigBridgeCoordinates.add(new Coordinates(x, y));
+    public void putLakeOnBoard() {
+        List<Coordinates> lakeCoordinates = new ArrayList<>();
+        for (int y = 5; y <= 7; y++) {
+            for (int x = 5; x <= 10; x++) {
+                lakeCoordinates.add(new Coordinates(x, y));
             }
         }
-        Bridge bigBridge = new Bridge(bigBridgeCoordinates);
-        return bigBridge;
+        Water lake = new Water(lakeCoordinates);
+        addElementToBoard(lake);
     }
 
     public void makePrintableBoard() {
@@ -85,19 +90,16 @@ public class Board {
     public void printBoard() {
         makePrintableBoard(); // update board
 
-        System.out.println(TerminalManager.repeatString('X', width));
+        // System.out.println(TerminalManager.repeatString('X', width));
 
         for (int y = 0; y < height; y++) {
-            System.out.print("X");
             for (int x = 0; x < width; x++) {
                 System.out.print(arrayTypeBoard[y][x].getApparel());
             }
-            System.out.print("X");
             System.out.println();
         }
 
-        System.out.println(TerminalManager.repeatString('X', width));
-
+        // System.out.println(TerminalManager.repeatString('X', width));
     }
 
     public Sprite[][] getArrayTypeBoard() {

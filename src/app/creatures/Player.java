@@ -2,31 +2,33 @@ package app.creatures;
 
 import app.Coordinates;
 import app.Inventory;
-import app.engine.Move;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Player extends Creature implements Move {
+public class Player extends Creature {
 
     private int level;
     private int experience;
-    private int x = 5;      // HARD CODED BEGINING POSITION
-    private int y = 5;      // HARD CODED BEGINING POSITION
-    List<Coordinates> coordinatesPlayer = setPlayeCoordinates(x, y);
     private Inventory inv = createInventory();    
 
     public Player(List<Coordinates> coordinatesPlayer, String name, int health, Inventory inventory, int level, int experience) {
         super("\uD83D\uDC7D", coordinatesPlayer, name, health, inventory);
         this.level = level;
-        this.experience = experience; 
+        this.experience = experience;
     }
 
-    public List<Coordinates> setPlayeCoordinates(int x, int y) {
-        coordinatesPlayer = new ArrayList<>();
-        coordinatesPlayer.add(new Coordinates(x, y));
-        return coordinatesPlayer;
+    public void setPlayerCoordinates(int x, int y) {
+        List<Coordinates> coordinates = getCoordinatesList();
+        coordinates.get(0).setX(x);
+        coordinates.get(0).setY(y);
     }
+
+
+//    public List<Coordinates> setPlayeCoordinates(int x, int y) {
+//        coordinatesPlayer = new ArrayList<>();
+//        coordinatesPlayer.add(new Coordinates(x, y));
+//        return coordinatesPlayer;
+//    }
 
     public Inventory createInventory() {
         Inventory inv = new Inventory();
