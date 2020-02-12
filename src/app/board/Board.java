@@ -80,6 +80,7 @@ public class Board {
                 arrayTypeBoard[y][x] = sprite;
             }
         }
+        
     }
 
     public void printBoard() {

@@ -24,18 +24,17 @@ public class Game extends KeyAdapter {
     public void keyPressed(KeyEvent event) {
 
         char ch = event.getKeyChar();
-        System.out.println((int) ch);
-        // helpers.clearScreen();
-        board.printBoard();
 
         switch (ch) {
             case 'w':
+
                 if (!checkUpperCollision()) {
                     player.getCoordinatesList()
                             .get(0)
                             .goUp();
                 }
                 break;
+
             case 's':
                 if (!checkLowerCollision()) {
                     player.getCoordinatesList()
@@ -43,6 +42,7 @@ public class Game extends KeyAdapter {
                             .goDown();
                 }
                 break;
+
             case 'a':
                 if (!checkLeftCollision()) {
                     player.getCoordinatesList()
@@ -50,7 +50,9 @@ public class Game extends KeyAdapter {
                             .goLeft();
                 }
                 break;
+
             case 'd':
+
                 if (!checkRightCollision()) {
                     player.getCoordinatesList()
                             .get(0)
@@ -66,6 +68,10 @@ public class Game extends KeyAdapter {
 //
 //                break;
         }
+      
+        helpers.clearScreen();
+        board.printBoard();
+      
     }
 
     public void init() {
