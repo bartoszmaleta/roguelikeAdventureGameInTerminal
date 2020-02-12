@@ -1,6 +1,7 @@
 package app;
 
 import app.engine.Game;
+import app.services.TerminalManager;
 
 import javax.swing.*;
 
@@ -14,10 +15,13 @@ public class Main {
     }
 
     public static void runGame() {
+        TerminalManager.displayWelcomeScreen();
+
         JTextField textField = new JTextField();
         Game game = new Game();
         game.init();
-
+        game.firstTimeBoard();
+        
         textField.addKeyListener(game);
         JFrame jframe = new JFrame();
 

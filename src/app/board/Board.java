@@ -1,7 +1,13 @@
 package app.board;
 
 import app.Coordinates;
-import app.helpers.Helpers;
+
+import app.Inventory;
+import app.creatures.Player;
+import app.services.TerminalManager;
+import app.structures.Bridge;
+import app.structures.Grass;
+import app.structures.Sprite;
 import app.structures.*;
 
 import java.util.ArrayList;
@@ -9,7 +15,6 @@ import java.util.List;
 
 public class Board {
 
-    Helpers helpers = new Helpers();
 
     private List<Sprite> boardList;
     private String level;
@@ -80,11 +85,12 @@ public class Board {
                 arrayTypeBoard[y][x] = sprite;
             }
         }
-        
     }
 
     public void printBoard() {
         makePrintableBoard(); // update board
+
+        // System.out.println(TerminalManager.repeatString('X', width));
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -92,6 +98,8 @@ public class Board {
             }
             System.out.println();
         }
+
+        // System.out.println(TerminalManager.repeatString('X', width));
     }
 
     public Sprite[][] getArrayTypeBoard() {

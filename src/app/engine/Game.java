@@ -4,11 +4,13 @@ import app.Coordinates;
 import app.Inventory;
 import app.board.Board;
 import app.creatures.Player;
-import app.helpers.Helpers;
+import app.services.TerminalManager;
+import app.menu.Menu;
 import app.structures.Sprite;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,58 +20,75 @@ public class Game extends KeyAdapter {
     private Inventory inv;
     private Board board;
     private List<Coordinates> playerCoordinates;
-    Helpers helpers = new Helpers(); // where to clearScreen(); ????
 
     @Override
     public void keyPressed(KeyEvent event) {
 
         char ch = event.getKeyChar();
+        String charString = String.valueOf(ch).toLowerCase();
 
-        switch (ch) {
-            case 'w':
+        // Character charObj = new Character(ch);
+        // System.out.println((int) ch);
+        // Character ch = ch.toLowerCase(ch);
 
+        switch (charString) {
+        case "w":
                 if (!checkUpperCollision()) {
                     player.getCoordinatesList()
                             .get(0)
                             .goUp();
                 }
-                break;
 
-            case 's':
+            break;
+
+        case "s":
                 if (!checkLowerCollision()) {
                     player.getCoordinatesList()
                             .get(0)
                             .goDown();
                 }
-                break;
+            break;
 
-            case 'a':
+        case "a":
                 if (!checkLeftCollision()) {
                     player.getCoordinatesList()
                             .get(0)
                             .goLeft();
                 }
-                break;
+            break;
 
-            case 'd':
-
+        case "d":
                 if (!checkRightCollision()) {
                     player.getCoordinatesList()
                             .get(0)
                             .goRight();
                 }
-                break;
+            break;
+        
+        // case 'b': work as second option to insert
+        case "m":
+            try {
+                Menu.displayMenu();
+                // Menu.menuInGameAsk();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+                return;   
+        case "i":
+            // TODO: inventory display
+            System.out.println("I am in inventory");
+            break;
+        case "p": // back to the game
+            break;
+        case "x":
+            System.exit(0);
+            break;
 
-//                case 'e':
-//                System.out.println(ch);
-//                player.getCoordinatesList()
-//                    .get(0)
-//                    .goRight();
-//
-//                break;
+        default:
+            System.out.println("Wrong input");
         }
-      
-        helpers.clearScreen();
+        
+        TerminalManager.clearScreen();
         board.printBoard();
       
     }
@@ -94,6 +113,11 @@ public class Game extends KeyAdapter {
 
         player = new Player(playerCoordinates, "Stefan", 10, inv, 1, 0);
         board.putPlayerOnBoard(player);
+    }
+
+
+    public void firstTimeBoard() {
+        board.printBoard();
     }
 
     public boolean checkUpperCollision() {
