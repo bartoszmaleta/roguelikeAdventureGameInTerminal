@@ -207,8 +207,6 @@ public class Game extends KeyAdapter {
 
 
 
-
-
         // TODO:
         // REMOVING CHEST FROM BOARD
         int x = player.getCoordinatesList().get(0).getX();
@@ -242,6 +240,8 @@ public class Game extends KeyAdapter {
         // }
 
         TerminalManager.clearScreen();
+        board.removeChestFromBoardList();
+
 
     }
 

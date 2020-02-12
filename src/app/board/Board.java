@@ -135,6 +135,13 @@ public class Board {
         return chest;
     }
 
-    
+    public void removeChestFromBoardList() {
+        // TODO:
+        for (Sprite sprite: boardList) {
+            if (sprite instanceof Chest) {
+                boardList.remove(sprite);  // should be sprite.getID
+            }
+        }
+    }
 
 }
