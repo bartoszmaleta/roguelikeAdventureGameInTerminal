@@ -10,32 +10,54 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
+    static Scanner inputScanner = new Scanner(System.in);
+
     public static void main(String[] args) throws IOException {
 
-        File txt = new File("src/app/menu/menu_logo.txt");
-        // Scanner scan = new Scanner(txt);
-        // ArrayList<String> data = new ArrayList<String>();
-        // while (scan.hasNextLine()) {
-        // data.add(scan.nextLine());
-        // }
-        // System.out.println(data);
-        // String[] simpleArray = data.toArray(new String[] {});
+        String FILE_PATH = "src/app/menu/menu_logo.txt";
 
-        BufferedReader abc = new BufferedReader(new FileReader(txt));
-        List<String> lines = new ArrayList<String>();
-        for (String line : lines) {
-            while ((line = abc.readLine()) != null) {
-                lines.add(line);
-                System.out.println(line);
+        Scanner input = new Scanner(new File(FILE_PATH));
+
+        while (input.hasNextLine()) {
+            System.out.print(Color.BLUE + input.nextLine());
+            System.out.println(input.nextLine());
+        }
+        System.out.println(Color.RESET);
+    }
+
+    public static void displayMenu() throws FileNotFoundException {
+        String FILE_PATH = "src/app/menu/menu_logo.txt";
+
+        Scanner input = new Scanner(new File(FILE_PATH));
+
+        while (input.hasNextLine()) {
+            System.out.print(Color.BLUE);
+            System.out.println(input.nextLine());
+        }
+        System.out.println(Color.RESET);
+
+        System.out.println("\n\n\nGAME IS PAUSED\n\n\n(1) - Back to the game\n(0) - Exit the program\n\n\n");
+    }
+
+    public static void menuInGameAsk() {
+        boolean isMenuRunning = true;
+        while (isMenuRunning) {
+            switch (inputScanner.nextLine()) {
+            case "1":
+                isMenuRunning = false;
+                break;
+            case "0":
+                System.exit(0);
+                break;
+
+            default:
+                System.out.println("Wrong input");
             }
         }
-        abc.close();
+    }
 
-        // If you want to convert to a String[]
-        String[] data = lines.toArray(new String[] {});
-        System.out.println(data);
-        for (String line : data) {
-            System.out.println(line);   
-        }
+    public void pressAnyKeyToContinue() {
+        System.out.println("Press any key to continue");
+        inputScanner.nextLine();
     }
 }

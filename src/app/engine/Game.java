@@ -4,11 +4,13 @@ import app.Coordinates;
 import app.Inventory;
 import app.board.Board;
 import app.creatures.Player;
-import app.helpers.Helpers;
+import app.services.TerminalManager;
+import app.menu.Menu;
 import app.structures.Sprite;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,47 +20,43 @@ public class Game extends KeyAdapter {
     private Inventory inv;
     private Board board;
     private List<Coordinates> playerCoordinates;
-    Helpers helpers = new Helpers(); // where to clearScreen(); ????
-    
+
     @Override
     public void keyPressed(KeyEvent event) {
 
         char ch = event.getKeyChar();
-        System.out.println((int)ch);
+        System.out.println((int) ch);
 
-        switch(ch) {
-            case 'w':
-                player.getCoordinatesList()
-                    .get(0)
-                    .goUp();
-                
-                break;
+        switch (ch) {
+        case 'w':
+            player.getCoordinatesList().get(0).goUp();
 
-            case 's':
-                player.getCoordinatesList()
-                    .get(0)
-                    .goDown();
-                break;
+            break;
 
-            case 'a':
-                player.getCoordinatesList()
-                    .get(0)
-                    .goLeft();
-                break;
+        case 's':
+            player.getCoordinatesList().get(0).goDown();
+            break;
 
-            case 'd':
-                player.getCoordinatesList()
-                    .get(0)
-                    .goRight();
-                break;   
+        case 'a':
+            player.getCoordinatesList().get(0).goLeft();
+            break;
 
-            case 'm':
-                displayMenu();
+        case 'd':
+            player.getCoordinatesList().get(0).goRight();
+            break;
+
+        case 'm':
+            try {
+                Menu.displayMenu();
+                Menu.menuInGameAsk();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
                 break;   
                 
         }
         
-        helpers.clearScreen();
+        TerminalManager.clearScreen();
         board.printBoard();
     }
 
@@ -86,5 +84,9 @@ public class Game extends KeyAdapter {
 
     public void displayMenu() {
         
+    }
+
+    public void firstTimeBoard() {
+        board.printBoard();
     }
 }

@@ -3,7 +3,7 @@ package app.board;
 import app.Coordinates;
 import app.Inventory;
 import app.creatures.Player;
-import app.helpers.Helpers;
+import app.services.TerminalManager;
 import app.structures.Bridge;
 import app.structures.Grass;
 import app.structures.Sprite;
@@ -13,7 +13,6 @@ import java.util.List;
 
 public class Board {
 
-    Helpers helpers = new Helpers();
 
     private List<Sprite> boardList;
     private String level;
@@ -81,13 +80,12 @@ public class Board {
                 arrayTypeBoard[y][x] = sprite;
             }
         }
-        
     }
 
     public void printBoard() {
         makePrintableBoard(); // update board
 
-        System.out.println(helpers.repeatString('X', width));
+        System.out.println(TerminalManager.repeatString('X', width));
 
         for (int y = 0; y < height; y++) {
             System.out.print("X");
@@ -98,7 +96,7 @@ public class Board {
             System.out.println();
         }
 
-        System.out.println(helpers.repeatString('X', width));
+        System.out.println(TerminalManager.repeatString('X', width));
 
     }
 
