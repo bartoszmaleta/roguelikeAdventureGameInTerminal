@@ -9,12 +9,13 @@ public class Player extends Creature {
 
     private int level;
     private int experience;
-    private Inventory inv = createInventory();    
+    private Inventory inv;
 
     public Player(List<Coordinates> coordinatesPlayer, String name, int health, Inventory inventory, int level, int experience) {
         super("\uD83D\uDC7D", coordinatesPlayer, name, health, inventory);
         this.level = level;
         this.experience = experience;
+        this.inv = new Inventory();
     }
 
     public void setPlayerCoordinates(int x, int y) {
@@ -30,9 +31,6 @@ public class Player extends Creature {
 //        return coordinatesPlayer;
 //    }
 
-    public Inventory createInventory() {
-        Inventory inv = new Inventory();
-        return inv;
-    }
+    
 
 }
