@@ -4,6 +4,8 @@ import app.Coordinates;
 import app.Inventory;
 import app.board.Board;
 import app.creatures.Player;
+import app.items.Item;
+import app.items.Sword;
 import app.services.TerminalManager;
 import app.menu.Menu;
 import app.structures.Sprite;
@@ -95,25 +97,27 @@ public class Game extends KeyAdapter {
     }
 
     public void init() {
-        // List<Coordinates> playerCoordinates = new ArrayList<>();
-        // playerCoordinates.add(new Coordinates(3, 4));
-        // Inventory inv = new Inventory();
-
-        // Sprite player = new Player(playerCoordinates, "Stefan", 10, inv, 1, 0);
-        // Board board = new Board("Level 1", 31, 115);
-
-        // board.putPlayerOnBoard(player);
-
-
-        // SECOND VERSION:
+        // CREATE BOARD:
         board = new Board("Level 1", 33, 117);
-        inv = new Inventory();
 
+        // CREATE PLAYER COORDINATES
         playerCoordinates = new ArrayList<>();
         playerCoordinates.add(new Coordinates(31, 20));
 
-        player = new Player(playerCoordinates, "Stefan", 10, inv, 1, 0);
+        // CREATE INV FOR PLAYER:
+        inv = new Inventory();
+
+        // FILL INV WITH ITEMS
+        Item sword = new Sword("sword one-handed", 15);
+        inv.addToInventory(sword);
+
+        // CREATE PLAYER
+        player = new Player(playerCoordinates, "Stefan", 10, inv);
+
+        // PUT PLAYER ON BOARD
         board.putPlayerOnBoard(player);
+
+         
     }
 
 

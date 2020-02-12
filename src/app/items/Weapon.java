@@ -1,30 +1,12 @@
 package app.items;
 
-public class Weapon {
-    private String name;
+public class Weapon extends Item {
     private int damage;
 
-    public Weapon(String name, int damage) {
-        this.name = name;
+    public Weapon(String name, int damage, int value) {
+        super(name, value);
         this.damage = damage;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
     
     
 }
