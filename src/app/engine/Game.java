@@ -44,16 +44,25 @@ public class Game extends KeyAdapter {
         case 'd':
             player.getCoordinatesList().get(0).goRight();
             break;
-
+        
+        // case 'b': work as second option to insert
         case 'm':
             try {
                 Menu.displayMenu();
-                Menu.menuInGameAsk();
+                // Menu.menuInGameAsk();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-                break;   
-                
+                return;   
+        
+        case 'p':
+            break;
+        case 'x':
+            System.exit(0);
+            break;
+
+        default:
+            System.out.println("Wrong input");
         }
         
         TerminalManager.clearScreen();

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import app.services.TerminalManager;
+
 public class Menu {
     static Scanner inputScanner = new Scanner(System.in);
 
@@ -26,6 +28,7 @@ public class Menu {
     }
 
     public static void displayMenu() throws FileNotFoundException {
+        TerminalManager.clearScreen();
         String FILE_PATH = "src/app/menu/menu_logo.txt";
 
         Scanner input = new Scanner(new File(FILE_PATH));
@@ -36,7 +39,7 @@ public class Menu {
         }
         System.out.println(Color.RESET);
 
-        System.out.println("\n\n\nGAME IS PAUSED\n\n\n(1) - Back to the game\n(0) - Exit the program\n\n\n");
+        System.out.println("\n\n\nGAME IS PAUSED\n\n\n(p) - Back to the game\n\n(x) - Exit the program\n\n\n");
     }
 
     public static void menuInGameAsk() {
