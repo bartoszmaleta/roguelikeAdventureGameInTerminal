@@ -40,7 +40,6 @@ public class Board {
         chestCoords.add(new Coordinates(20, 10));
         chest1 = new Chest(chestCoords);
         boardList.add(chest1);
-        // putPlayerOnBoard(chest1);
     }
 
     public List<Sprite> getBoardList() {
