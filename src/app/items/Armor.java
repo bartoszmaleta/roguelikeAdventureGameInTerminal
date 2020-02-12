@@ -7,5 +7,13 @@ public class Armor extends Item {
         super(name, value, appearence);
         this.defense = defense;
     }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
     
 }

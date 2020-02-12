@@ -16,15 +16,16 @@ public class Menu {
 
     public static void main(String[] args) throws IOException {
 
-        String FILE_PATH = "src/app/menu/menu_logo.txt";
+        // // TESTING COLOURS
+        // String FILE_PATH = "src/app/menu/menu_logo.txt";
 
-        Scanner input = new Scanner(new File(FILE_PATH));
+        // Scanner input = new Scanner(new File(FILE_PATH));
 
-        while (input.hasNextLine()) {
-            System.out.print(Color.BLUE + input.nextLine());
-            System.out.println(input.nextLine());
-        }
-        System.out.println(Color.RESET);
+        // while (input.hasNextLine()) {
+        //     System.out.print(Color.BLUE + input.nextLine());
+        //     System.out.println(input.nextLine());
+        // }
+        // System.out.println(Color.RESET);
     }
 
     public static void displayMenu() throws FileNotFoundException {

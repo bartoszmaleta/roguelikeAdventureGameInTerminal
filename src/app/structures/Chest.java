@@ -1,5 +1,6 @@
 package app.structures;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import app.Inventory;
 import app.items.Helmet;
 import app.items.Item;
 import app.items.Sword;
+import app.services.DataHandler;
 
 public class Chest extends Sprite {
     private Inventory chestInventory;
@@ -30,6 +32,10 @@ public class Chest extends Sprite {
 
     public Inventory getChestInventory() {
         return chestInventory;
+    }
+
+    public void printChest() {
+
     }
 
 }

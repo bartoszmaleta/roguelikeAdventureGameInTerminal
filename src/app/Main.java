@@ -18,11 +18,8 @@ public class Main {
     public static void runGame() {
         MenuStart.startGame();
 
-        // TerminalManager.displayWelcomeScreen();
-
         JTextField textField = new JTextField();
 
-        
         Game game = new Game();
         game.init();
         game.firstTimeBoard();

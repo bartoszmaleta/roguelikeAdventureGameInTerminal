@@ -4,8 +4,11 @@ import app.Coordinates;
 import app.Inventory;
 import app.board.Board;
 import app.creatures.Player;
+import app.items.Armor;
 import app.items.Item;
 import app.items.Sword;
+import app.items.Weapon;
+import app.services.DataHandler;
 import app.services.TerminalManager;
 import app.menu.Menu;
 import app.structures.Chest;
@@ -38,39 +41,31 @@ public class Game extends KeyAdapter {
 
         switch (charString) {
         case "w":
-                if (!checkUpperCollision()) {
-                    player.getCoordinatesList()
-                            .get(0)
-                            .goUp();
-                }
+            if (!checkUpperCollision()) {
+                player.getCoordinatesList().get(0).goUp();
+            }
 
             break;
 
         case "s":
-                if (!checkLowerCollision()) {
-                    player.getCoordinatesList()
-                            .get(0)
-                            .goDown();
+            if (!checkLowerCollision()) {
+                player.getCoordinatesList().get(0).goDown();
 
-                }
+            }
             break;
 
         case "a":
-                if (!checkLeftCollision()) {
-                    player.getCoordinatesList()
-                            .get(0)
-                            .goLeft();
-                }
+            if (!checkLeftCollision()) {
+                player.getCoordinatesList().get(0).goLeft();
+            }
             break;
 
         case "d":
-                if (!checkRightCollision()) {
-                    player.getCoordinatesList()
-                            .get(0)
-                            .goRight();
-                }
+            if (!checkRightCollision()) {
+                player.getCoordinatesList().get(0).goRight();
+            }
             break;
-        
+
         // case 'b': work as second option to insert
         case "m":
             try {
@@ -79,7 +74,7 @@ public class Game extends KeyAdapter {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-                return;   
+            return;
         case "i":
             // TODO: inventory display
             System.out.println("I am in inventory");
@@ -97,49 +92,11 @@ public class Game extends KeyAdapter {
         TerminalManager.clearScreen();
 
         if (checkIfChest()) {
-            // DISPLAY INVENTORY OF CHEST
-            System.out.println("jestem w chest");
-            board.getChest().getChestInventory().getInventoryList().get(0);
-            System.out.println(board.getChest().getChestInventory().getInventoryList().get(0).getName());
-
-            ArrayList<Item> chestInv = board.getChest().getChestInventory().getInventoryList();
-            for (Item item : chestInv) {
-                System.out.println(item.getName() + " = " + item.getAppearance());
-            }
-            
-
-            // REMOVING CHEST FROM BOARD
-            int x = player.getCoordinatesList().get(0).getX();
-            int y = player.getCoordinatesList().get(0).getY();
-
-            TerminalManager.pressAnyKeyToContinue();
-
-            List<Coordinates> tempChestCoords = new ArrayList<>();
-            tempChestCoords.add(new Coordinates(x, y));
-            Sprite tempChest = new Chest(tempChestCoords);
-
-            List<Sprite> boardSpriteList = board.getBoardList();
-            
-            // for (Sprite sprite : boardSpriteList) {
-                // if (sprite.getCoordinatesList().get(0).getX() == tempChest.getCoordinatesList().get(0).getX()) {
-                    // boardSpriteList.remove(sprite);
-               //     // TerminalManager.pressAnyKeyToContinue();
-                // }
-            // }
-
-            // player.getCoordinatesList().get(0).setX(x + 1);
-            // player.getCoordinatesList().get(0).setY(y + 1);
-
-            // for (Iterator<Sprite> it = boardSpriteList.iterator(); it.hasNext();) {
-            //     Sprite next = it.next();
-            //     if (next.getCoordinatesList().get(0).getX() == tempChest.getCoordinatesList().get(0).getX()) {
-            //         it.remove();
-            //     }
-            // }
+            chestAction();
         }
 
         board.printBoard();
-      
+
     }
 
     public void init() {
@@ -163,14 +120,12 @@ public class Game extends KeyAdapter {
         // PUT PLAYER ON BOARD
         board.addElementToBoard(player);
 
-
         // List<Coordinates> chestCoords = new ArrayList<>();
         // chestCoords.add(new Coordinates(20, 10));
         // Sprite chest1 = new Chest(chestCoords);
         // board.getBoardList().add(chest1);
-         
-    }
 
+    }
 
     public void firstTimeBoard() {
         board.printBoard();
@@ -226,5 +181,68 @@ public class Game extends KeyAdapter {
         return false;
     }
 
+    public void chestAction() {
+
+        // DISPLAY IMAGE OF CHEST CLOSED
+        try {
+            DataHandler.printChestClosed();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
+
+        // DISPLAY IMAGE OF CHEST OPENED
+        try {
+            DataHandler.printChestOpened();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // PRINTS CONTENT OF THE CHEST
+        Inventory inventoryOfChest = board.getChest().getChestInventory();
+        inventoryOfChest.printContent();
+
+
+
+
+
+
+        // TODO:
+        // REMOVING CHEST FROM BOARD
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+
+        TerminalManager.pressAnyKeyToContinue();
+
+        List<Coordinates> tempChestCoords = new ArrayList<>();
+        tempChestCoords.add(new Coordinates(x, y));
+        Sprite tempChest = new Chest(tempChestCoords);
+
+        List<Sprite> boardSpriteList = board.getBoardList();
+
+        // for (Sprite sprite : boardSpriteList) {
+        // if (sprite.getCoordinatesList().get(0).getX() ==
+        // tempChest.getCoordinatesList().get(0).getX()) {
+        // boardSpriteList.remove(sprite);
+        // // TerminalManager.pressAnyKeyToContinue();
+        // }
+        // }
+
+        // player.getCoordinatesList().get(0).setX(x + 1);
+        // player.getCoordinatesList().get(0).setY(y + 1);
+
+        // for (Iterator<Sprite> it = boardSpriteList.iterator(); it.hasNext();) {
+        // Sprite next = it.next();
+        // if (next.getCoordinatesList().get(0).getX() ==
+        // tempChest.getCoordinatesList().get(0).getX()) {
+        // it.remove();
+        // }
+        // }
+
+        TerminalManager.clearScreen();
+
+    }
 
 }

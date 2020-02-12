@@ -7,6 +7,16 @@ public class Weapon extends Item {
         super(name, value, appearance);
         this.damage = damage;
     }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    
     
     
 }
