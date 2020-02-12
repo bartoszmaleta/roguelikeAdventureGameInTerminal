@@ -23,55 +23,32 @@ public class Board {
         this.height = height;
         this.width = width;
         arrayTypeBoard = new Sprite[height][width];
-        Border border = new Border(new ArrayList<>());
-        addElementToBoard(border);
-        putGrassOnBoard();
-        putBigBridgeOnBoard();
-        putLakeOnBoard();
+        addElementToBoard(new Water(createCoordList(1, width - 1, 1, height - 1)));
+        addElementToBoard(new Grass(createShape(10, 8, 15)));
+        addElementToBoard(new Grass(createShape(3, 18, 5)));
+        addElementToBoard(new Grass(createShape(80, 13, 8)));
+        addElementToBoard(new Grass(createShape(61, 13, 5)));
+        addElementToBoard(new Grass(createShape(50, 13, 5)));
+        addElementToBoard(new Grass(createShape(40, 13, 5)));
+        addElementToBoard(new Grass(createShape(30, 13, 5)));
+        addElementToBoard(new Grass(createShape(20, 13, 5)));
+        addElementToBoard(new Bridge(createCoordList(18, 19, 24, 24)));
+        addElementToBoard(new Bridge(createCoordList(16, 17, 8, 8)));
+        addElementToBoard(new Bridge(createCoordList(103, 107, 13, 13)));
+        addElementToBoard(new Bridge(createCoordList(66, 75, 12, 14)));
+        addElementToBoard(new Border(new ArrayList<>(), height, width));
     }
 
     public void addElementToBoard(Sprite sprite) {
         boardList.add(sprite);
     }
 
-    public void putGrassOnBoard() {
-        for (int y = 1; y < height - 1; y++) {
-            for (int x = 1; x < width - 1; x++) {
-                List<Coordinates> coords = new ArrayList<>();
-                coords.add(new Coordinates(x, y));
-                Grass grass = new Grass(coords);
-                addElementToBoard(grass);
-            }
-        }
-    }
 
     public void putPlayerOnBoard(Sprite player) {
         addElementToBoard(player);
     }
 
-    public void putBigBridgeOnBoard() {
-        List<Coordinates> bigBridgeCoordinates = new ArrayList<>();
-        for (int y = 12; y <= 14; y++) {
-            for (int x = 67; x <= 76; x++) {
-                bigBridgeCoordinates.add(new Coordinates(x, y));
-            }
-        }
-        Bridge bigBridge = new Bridge(bigBridgeCoordinates);
-        addElementToBoard(bigBridge);
-    }
-
-    public void putLakeOnBoard() {
-        List<Coordinates> lakeCoordinates = new ArrayList<>();
-        for (int y = 5; y <= 7; y++) {
-            for (int x = 5; x <= 10; x++) {
-                lakeCoordinates.add(new Coordinates(x, y));
-            }
-        }
-        Water lake = new Water(lakeCoordinates);
-        addElementToBoard(lake);
-    }
-
-    public void makePrintableBoard() {
+    public void updateBoard() {
         for (Sprite sprite : boardList) {
             List<Coordinates> spriteCoordinatesList = sprite.getCoordinatesList();
             for (Coordinates spriteCoordinates : spriteCoordinatesList) {
@@ -80,11 +57,10 @@ public class Board {
                 arrayTypeBoard[y][x] = sprite;
             }
         }
-        
     }
 
     public void printBoard() {
-        makePrintableBoard(); // update board
+        updateBoard();
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -98,17 +74,45 @@ public class Board {
         return arrayTypeBoard;
     }
 
-//    public Sprite[][] makePrintableBoard() {
-//        Sprite[][] arrayTypeBoard = new Sprite[height][width];
-//        int line = 1;
-//        for (int y = 0; y < height; y++) {
-//            for (int x = 0; x < width; x++) {
-//                arrayTypeBoard[y][x] = board.get(x * line);
-//            }
-//            line++;
-//        }
-//        return arrayTypeBoard;
+    private List<Coordinates> createCoordList(int xFrom, int xTo, int yFrom, int yTo) {
+        List<Coordinates> list = new ArrayList<>();
 
-//    }
+        for (int i = xFrom; i <= xTo; i++) {
+            for (int j = yFrom; j <= yTo; j++) {
 
+                list.add(new Coordinates(i, j));
+            }
+        }
+
+        return list;
+    }
+
+    private List<Coordinates> createShape(int xCenter, int yCenter, int r) {
+        List<Coordinates> list = new ArrayList<>();
+
+        int adder = 0;
+
+        for (int y = yCenter - r; y <= yCenter; y++) {
+            for (int x = xCenter - adder; x <= xCenter + adder; x++) {
+                if (x >= 1 && y >= 1 && x < width && y < height) {
+                    list.add(new Coordinates(x, y));
+                }
+            }
+            adder++;
+        }
+
+        adder = 0;
+
+        for (int y = yCenter + r; y > yCenter; y--) {
+            for (int x = xCenter - adder; x <= xCenter + adder; x++) {
+                if (x >= 1 && y >= 1 && x < width && y < height) {
+                    list.add(new Coordinates(x, y));
+                }
+            }
+            adder++;
+        }
+
+        return list;
+    }
 }
+
