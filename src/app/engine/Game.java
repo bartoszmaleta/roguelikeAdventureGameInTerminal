@@ -27,7 +27,7 @@ import java.util.List;
 
 public class Game extends KeyAdapter {
 
-    private Player player;
+    private Creature player;
     private Inventory playerInv;
     private Board board;
     private List<Coordinates> playerCoordinates;
@@ -134,7 +134,7 @@ public class Game extends KeyAdapter {
         // ---------------------------------------------------
 
         } else if (checkIfMonster()) {
-            
+            fightMonster(player);
         
         } else if (checkIfDoor()) {
             System.out.println("I am in door!");
@@ -145,6 +145,7 @@ public class Game extends KeyAdapter {
         board.printBoard2(player);
 
     }
+
 
     public void init() {
         // CREATE BOARD:
@@ -280,6 +281,24 @@ public class Game extends KeyAdapter {
         TerminalManager.clearScreen();
 
     }
+
+    private void fightMonster(Creature playerFighter) {
+        int x = playerFighter.getCoordinatesList().get(0).getX();
+        int y = playerFighter.getCoordinatesList().get(0).getY();
+
+        Creature monsterFound = board.findMonster(x, y);
+        System.out.println(monsterFound.getDamage());
+        playerFighter.setDamage(15);        // dont know where set!!
+
+        while ((playerFighter.getHealth() > 0) && (monsterFound.getHealth() > 0)) {
+            playerFighter.attack(monsterFound);
+            monsterFound.attack(playerFighter);
+            break;
+        }
+        
+
+    }
+
 
     public void chestAction() {
 

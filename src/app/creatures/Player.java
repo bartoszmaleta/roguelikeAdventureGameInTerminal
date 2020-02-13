@@ -26,6 +26,8 @@ public class Player extends Creature {
         coordinates.get(0).setY(y);
     }
 
+    
+
     public void setLevel() {
         int exp = getExperience();
         if (exp < 100) {

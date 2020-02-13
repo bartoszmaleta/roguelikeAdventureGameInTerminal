@@ -32,6 +32,14 @@ public class Creature extends Sprite {
         this.health = health;
     }
 
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void addDamage(int damageToAdd) {
+        this.damage += damageToAdd;
+    }
+
     public int getDamage() {
         return damage;
     }
@@ -73,7 +81,11 @@ public class Creature extends Sprite {
         }
         return false;
 
-	}
+    }
+    
+    public void attack(Creature opponent) {
+
+    }
 
 //    public boolean fight(Creature attacker, Creature opponent) {
 //        if (turn(opponent) <= 0) {

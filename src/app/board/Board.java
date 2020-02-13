@@ -119,7 +119,7 @@ public class Board {
     }
 
     public Chest findChest(int x, int y) {
-        Chest chestTemp = new Chest(null);
+        // Chest chestTemp = new Chest(null);
         for (Sprite sprite: boardList) {
             if (sprite instanceof Chest) {
                 int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
@@ -130,8 +130,26 @@ public class Board {
                 }
             } 
         }
-        return chestTemp;
+        // return chestTemp;
+        return null;
     }
+
+
+	public Creature findMonster(int x, int y) {
+        // Creature creatureTemp = new Creature("%", null, "name", 40, new Inventory(), 10, 10);
+        for (Sprite sprite : boardList) {
+            if (sprite instanceof Monster) {
+                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
+                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
+                if (spriteFromCordsX == x && spriteFromCordsY == y) {
+                    Creature creature = (Creature) sprite;
+                    return creature;
+                }
+            }
+        }
+        
+		return null;
+	}
 
     // private void putChestOnBoard() {
         // List<Coordinates> chestCoords = new ArrayList<>();
@@ -363,9 +381,10 @@ public class Board {
         }
     }
 
-    public void displayLegend(Player player) {
+    public void displayLegend(Creature player) {
         // TODO: 
-        String infoAboutPlayer = player.infoToString();
+        Player player2 = (Player) player;
+        String infoAboutPlayer = player2.infoToString();
 
         StringBuilder legend = new StringBuilder();
 
@@ -382,7 +401,7 @@ public class Board {
         System.out.println(legend);
     }
 
-    public void printBoard2(Player player) {
+    public void printBoard2(Creature player) {
         updateBoard(); // update board
 
         for (int y = 0; y < height; y++) {
@@ -394,6 +413,7 @@ public class Board {
 
         displayLegend(player);
     }
+
 
 
 }
