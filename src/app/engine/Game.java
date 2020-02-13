@@ -4,6 +4,9 @@ import app.Coordinates;
 import app.inventory.Inventory;
 import app.board.Board;
 import app.creatures.Creature;
+import app.creatures.Player;
+import app.inventory.MenuInventory;
+import app.items.Armor;
 import app.creatures.Monster;
 import app.creatures.Player;
 import app.items.Item;
@@ -74,9 +77,13 @@ public class Game extends KeyAdapter {
             }
             return;
         case "i":
-            // TODO: inventory display
             System.out.println("I am in inventory");
-            break;
+            try {
+                displayCreatureInv(player);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            return;
         case "p": // back to the game
             break;
         case "x":
@@ -121,7 +128,8 @@ public class Game extends KeyAdapter {
             }
         }
 
-        board.printBoard();
+        // board.printBoard();
+        board.printBoard2(player);
 
     }
 
@@ -138,7 +146,7 @@ public class Game extends KeyAdapter {
         playerInv = new Inventory();
 
         // FILL INV WITH ITEMS
-        Item sword = new Sword("sword one-handed", 15, 50);
+        Item sword = new Sword("Sword one-handed", 15, 50);
         playerInv.addToInventory(sword);
 
         // CREATE PLAYER
@@ -155,7 +163,9 @@ public class Game extends KeyAdapter {
     }
 
     public void firstTimeBoard() {
-        board.printBoard();
+        // TODO: !!!!!!! OLD
+        // board.printBoard();
+        board.printBoard2(player);
     }
 
     public boolean checkUpperCollision() {
@@ -240,45 +250,46 @@ public class Game extends KeyAdapter {
         // PRINTS CONTENT OF THE CHEST
         Inventory inventoryOfChest = board.getChest().getChestInventory();
         inventoryOfChest.printContent();
+        // inventoryOfChest.printTable();       // TODO: prettyTable print!!!
 
-
-
-
-        // TODO:
         // REMOVING CHEST FROM BOARD
         int x = player.getCoordinatesList().get(0).getX();
         int y = player.getCoordinatesList().get(0).getY();
 
+        System.out.println("------------");
+        System.out.println("player inv");
+        addChestInvToPlayerInv(x, y);       // add and print
+
+        
+        // board.removeChestFromBoardList();
+        board.removeChestFromBoardListByCoords(x, y);
+
         TerminalManager.pressAnyKeyToContinue();
-
-        List<Coordinates> tempChestCoords = new ArrayList<>();
-        tempChestCoords.add(new Coordinates(x, y));
-        Sprite tempChest = new Chest(tempChestCoords);
-
-        List<Sprite> boardSpriteList = board.getBoardList();
-
-        // for (Sprite sprite : boardSpriteList) {
-        // if (sprite.getCoordinatesList().get(0).getX() ==
-        // tempChest.getCoordinatesList().get(0).getX()) {
-        // boardSpriteList.remove(sprite);
-        // // TerminalManager.pressAnyKeyToContinue();
-        // }
-        // }
-
-        // player.getCoordinatesList().get(0).setX(x + 1);
-        // player.getCoordinatesList().get(0).setY(y + 1);
-
-        // for (Iterator<Sprite> it = boardSpriteList.iterator(); it.hasNext();) {
-        // Sprite next = it.next();
-        // if (next.getCoordinatesList().get(0).getX() ==
-        // tempChest.getCoordinatesList().get(0).getX()) {
-        // it.remove();
-        // }
-        // }
-
         TerminalManager.clearScreen();
 
-
     }
+
+    public void addChestInvToPlayerInv(int x, int y) {
+        List<Item> inventoryOfChest = board.getChest().getChestInventory().getInventoryList();
+        Inventory inv = player.getInventory();
+        for (Item item : inventoryOfChest) {
+            inv.addToInventory(item);
+        }
+
+        // inv.printContent();
+        
+    }
+
+    public void displayCreatureInv(Creature creature) throws FileNotFoundException {
+        // Inventory playerInventory = ((Creature) player).getInventory();
+        MenuInventory.displayInventoryMenuLogo();
+        Inventory creatureInventory = creature.getInventory();
+        creatureInventory.printTable();
+
+        // playerInventory.printContent();      // Old print without table
+        // creatureInventory.printTableOld();        // Old print witht table 2
+    }
+
+
 
 }

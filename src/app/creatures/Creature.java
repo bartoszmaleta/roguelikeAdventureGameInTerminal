@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Creature extends Sprite {
 
+
     private String name;
     private int health;
     private Inventory inventory;

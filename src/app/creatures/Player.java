@@ -40,6 +40,32 @@ public class Player extends Creature {
     }
 
 
+    public Inventory getInv() {
+        return inv;
+    }
+
+    public String infoToString() {
+        String tableInfo = "";
+        int tableLen = 49;
+
+        tableInfo += "\n\nPress i to show inventory";
+        tableInfo += "\n" ;
+        
+        tableInfo += "\nHEALTH = " + this.level;
+        tableInfo += "\nEXPERIENCE = " + this.experience;
+        tableInfo += "\nLEVEL = " + this.level;
+        
+        return tableInfo;
+    }
+
+
+//    public List<Coordinates> setPlayeCoordinates(int x, int y) {
+//        coordinatesPlayer = new ArrayList<>();
+//        coordinatesPlayer.add(new Coordinates(x, y));
+//        return coordinatesPlayer;
+//    }
+
+
 
   
 }

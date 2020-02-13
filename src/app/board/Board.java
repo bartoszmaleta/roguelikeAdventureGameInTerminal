@@ -2,6 +2,11 @@ package app.board;
 
 import app.Coordinates;
 
+import app.inventory.*;
+import app.creatures.Creature;
+import app.creatures.Monster;
+import app.creatures.Player;
+import app.services.TerminalManager;
 import app.inventory.Inventory;
 import app.creatures.Creature;
 import app.creatures.Monster;
@@ -16,6 +21,7 @@ import java.util.List;
 //      - displayInv for player "i"
 //      - removeSprite()
 //      - prettyTable for Inv
+//      - legenda
 
 public class Board {
 
@@ -110,6 +116,28 @@ public class Board {
         addElementToBoard(player);
     }
 
+    // public void putBigBridgeOnBoard() {
+    //     List<Coordinates> bigBridgeCoordinates = new ArrayList<>();
+    //     for (int y = 12; y <= 14; y++) {
+    //         for (int x = 67; x <= 76; x++) {
+    //             bigBridgeCoordinates.add(new Coordinates(x, y));
+    //         }
+    //     }
+    //     Bridge bigBridge = new Bridge(bigBridgeCoordinates);
+    //     addElementToBoard(bigBridge);
+    // }
+
+    // public void putLakeOnBoard() {
+    //     List<Coordinates> lakeCoordinates = new ArrayList<>();
+    //     for (int y = 5; y <= 7; y++) {
+    //         for (int x = 5; x <= 10; x++) {
+    //             lakeCoordinates.add(new Coordinates(x, y));
+    //         }
+    //     }
+    //     Water lake = new Water(lakeCoordinates);
+    //     addElementToBoard(lake);
+    // }
+
     public void updateBoard() {
         for (Sprite sprite : boardList) {
             List<Coordinates> spriteCoordinatesList = sprite.getCoordinatesList();
@@ -132,6 +160,8 @@ public class Board {
             }
             System.out.println();
         }
+        
+        
 
         // System.out.println(TerminalManager.repeatString('X', width));
     }
@@ -139,7 +169,6 @@ public class Board {
     public Sprite[][] getArrayTypeBoard() {
         return arrayTypeBoard;
     }
-
 
     private List<Coordinates> createCoordList(int xFrom, int xTo, int yFrom, int yTo) {
         List<Coordinates> list = new ArrayList<>();
@@ -153,7 +182,6 @@ public class Board {
 
         return list;
     }
-
 
     private List<Coordinates> createShape(int xCenter, int yCenter, int r) {
         List<Coordinates> list = new ArrayList<>();
@@ -249,6 +277,44 @@ public class Board {
             }
         }
     }
+
+    public void removeChestFromBoardListByCoords(int x, int y) {
+        for (Sprite sprite: boardList) {
+            if (sprite instanceof Chest) {
+                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
+                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
+                if (spriteFromCordsX == x && spriteFromCordsY == y) {
+                    boardList.remove(sprite);  // should be sprite.getID
+                }
+            } else if (sprite instanceof Monster) {
+                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
+                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
+                if (spriteFromCordsX == x && spriteFromCordsY == y) {
+                    boardList.remove(sprite);  // should be sprite.getID
+                }
+            }
+        }
+    }
+
+    public void displayLegend(Player player) {
+        // TODO: 
+    }
+
+    public void printBoard2(Player player) {
+        updateBoard(); // update board
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                System.out.print(arrayTypeBoard[y][x].getApparel());
+            }
+            System.out.println();
+        }
+
+        // LEGENDS
+        String infoAboutPlayer = player.infoToString();
+        System.out.println(infoAboutPlayer);
+    }
+
 
 }
 

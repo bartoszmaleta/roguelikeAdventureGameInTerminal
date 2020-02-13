@@ -29,8 +29,26 @@ public class Inventory {
 
     public String printTable() {
         String tableInfo = "";
-        int tableLen = 140;
+        int tableLen = 71;
         tableInfo += "\n";
+
+        for (int j = 0; j < tableLen; j++) {
+            tableInfo += "-";
+        }
+
+        tableInfo += "\n";
+
+        String index = "Index";
+        String title = "Title";
+        String appeal = "Icon";
+        String value = "Value";
+        String damage = "Damage";
+        String defense = "Defense";
+        // tableInfo += headline;
+
+        Formatter formatterHeadline = new Formatter();
+        tableInfo += formatterHeadline.format("| %5s | %20s | %6s | %5s | %8s | %8s |\n", index, title, appeal, value,
+                damage, defense);
 
         for (int i = 0; i < inventoryList.size(); i++) {
             Item item = this.getItemAt(i);
@@ -39,13 +57,34 @@ public class Inventory {
             String itemaAppearance = item.getAppearance();
             int itemValue = item.getValue();
 
-            for (int j = 0; j < tableInfo.length(); j++) {
+            for (int j = 0; j < tableLen; j++) {
                 tableInfo += "-";
             }
             tableInfo += "\n";
 
-            Formatter formatter = new Formatter();
-            tableInfo += formatter.format("| %2d | %20s | %20s | %5d |\n", i, itemName, itemaAppearance, itemValue);
+            Formatter formatterItems = new Formatter();
+
+            if (item instanceof Weapon) {
+                Weapon weapon = (Weapon) item;
+                int itemDamage = weapon.getDamage();
+                String itemDefense = "";
+
+                tableInfo += formatterItems.format("| %5d | %20s | %7s | %5d | %8s | %8s |\n", i + 1, itemName,
+                        itemaAppearance, itemValue, itemDamage, itemDefense);
+            } else if (item instanceof Armor) {
+                Armor armor = (Armor) item;
+                String itemDamage = "";
+                int itemDefense = armor.getDefense();
+
+                tableInfo += formatterItems.format("| %5d | %20s | %7s | %5d | %8s | %8s |\n", i + 1, itemName,
+                        itemaAppearance, itemValue, itemDamage, itemDefense);
+
+            } else {
+                String itemDamage = "";
+                String itemDefense = "";
+                tableInfo += formatterItems.format("| %5d | %20s | %7s | %5d | %8s | %8s |\n", i + 1, itemName,
+                        itemaAppearance, itemValue, itemDamage, itemDefense);
+            }
         }
 
         for (int j = 0; j < tableLen; j++) {
@@ -62,20 +101,68 @@ public class Inventory {
         return this.inventoryList.get(index);
     }
 
+    // NOT USED
+    public String printTableOld() {
+        String tableInfo = "";
+        int tableLen = 49;
+        tableInfo += "\n";
+
+        for (int j = 0; j < tableLen; j++) {
+            tableInfo += "-";
+        }
+
+        tableInfo += "\n";
+
+        String index = "Index";
+        String title = "Title";
+        String appeal = "Icon";
+        String value = "Value";
+        // tableInfo += headline;
+
+        Formatter formatterHeadline = new Formatter();
+        tableInfo += formatterHeadline.format("| %5s | %20s | %6s | %5s |\n", index, title, appeal, value);
+
+        for (int i = 0; i < inventoryList.size(); i++) {
+            Item item = this.getItemAt(i);
+
+            String itemName = item.getName();
+            String itemaAppearance = item.getAppearance();
+            int itemValue = item.getValue();
+
+            for (int j = 0; j < tableLen; j++) {
+                tableInfo += "-";
+            }
+            tableInfo += "\n";
+
+            Formatter formatter = new Formatter();
+            tableInfo += formatter.format("| %5d | %20s | %7s | %5d |\n", i + 1, itemName, itemaAppearance, itemValue);
+        }
+
+        for (int j = 0; j < tableLen; j++) {
+            tableInfo += "-";
+        }
+
+        tableInfo += "\n";
+        System.out.println(tableInfo);
+        return tableInfo;
+
+    }
+
+    // NOT USED
     public void printContent() {
         for (Item item : inventoryList) {
             if (item instanceof Weapon) {
                 Weapon weapon = (Weapon) item;
                 int itemDamage = weapon.getDamage();
-                System.out.println(" Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
+                System.out.println("Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
                         + "Value = " + item.getValue() + "\n" + "Damage = " + itemDamage);
             } else if (item instanceof Armor) {
                 Armor armor = (Armor) item;
                 int itemDefense = armor.getDefense();
-                System.out.println(" Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
+                System.out.println("Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
                         + "Value = " + item.getValue() + "\n" + "Defense = " + itemDefense);
             } else {
-                System.out.println(" Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
+                System.out.println("Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
                         + "Value = " + item.getValue() + "\n");
             }
             System.out.println("-------------");

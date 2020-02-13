@@ -15,7 +15,7 @@ public class Main {
         runGame();
     }
 
-    public static void runGame() {
+    public static void runGame() {  
         MenuStart.startGame();
 
         JTextField textField = new JTextField();
