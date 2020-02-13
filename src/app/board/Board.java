@@ -36,17 +36,32 @@ public class Board {
 
         addElementToBoard(new Water(createCoordList(1, width - 1, 1, height - 1)));
       
-        addElementToBoard(new Grass(createShape(10, 8, 15)));
-        addElementToBoard(new Grass(createShape(3, 18, 5)));
-        addElementToBoard(new Grass(createShape(80, 13, 8)));
+
+        addElementToBoard(new Grass(createShape(3, 10, 5)));
+        addElementToBoard(new Grass(createShape(1, 1, 5)));
+        addElementToBoard(new Grass(createShape(3, 20, 5)));
+        addElementToBoard(new Grass(createShape(3, 40, 10)));
+        addElementToBoard(new Grass(createShape(5, 25, 8))); 
+        addElementToBoard(new Grass(createShape(3, 17, 5)));
+        addElementToBoard(new Grass(createShape(24, 26, 5)));
+        addElementToBoard(new Grass(createShape(30, 24, 8)));
+        addElementToBoard(new Grass(createShape(82, 13, 8)));
         addElementToBoard(new Grass(createShape(61, 13, 5)));
         addElementToBoard(new Grass(createShape(50, 13, 5)));
-        addElementToBoard(new Grass(createShape(40, 13, 5)));
+        addElementToBoard(new Grass(createShape(40, 8, 8))); // 
         addElementToBoard(new Grass(createShape(30, 13, 5)));
-        addElementToBoard(new Grass(createShape(20, 13, 5)));
+        addElementToBoard(new Grass(createShape(16, 5, 10)));
+        addElementToBoard(new Grass(createShape(87, 7, 8)));
+        addElementToBoard(new Grass(createShape(90, 19, 8)));
+        addElementToBoard(new Grass(createShape(90, 13, 5)));
+        addElementToBoard(new Grass(createShape(82, 20, 10)));
+        addElementToBoard(new Grass(createShape(94, 19, 8)));
+        addElementToBoard(new Grass(createShape(96, 19, 12)));
+
       
-        addElementToBoard(new Bridge(createCoordList(18, 19, 24, 24)));
-        addElementToBoard(new Bridge(createCoordList(16, 17, 8, 8)));
+        addElementToBoard(new Bridge(createCoordList(13, 20, 24, 24)));
+        addElementToBoard(new Bridge(createCoordList(7, 8, 8, 8)));
+        addElementToBoard(new Bridge(createCoordList(33, 34, 10, 10)));
         addElementToBoard(new Bridge(createCoordList(103, 107, 13, 13)));
         addElementToBoard(new Bridge(createCoordList(66, 75, 12, 14)));
       
