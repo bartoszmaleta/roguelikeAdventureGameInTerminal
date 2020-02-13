@@ -122,7 +122,7 @@ public class Game extends KeyAdapter {
         playerInv.addToInventory(sword);
 
         // CREATE PLAYER
-        player = new Player(playerCoordinates, "Stefan", 10, playerInv);
+        player = new Player(playerCoordinates, "Bartosz", playerInv);
 
         // PUT PLAYER ON BOARD
         board.addElementToBoard(player);

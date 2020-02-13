@@ -28,6 +28,7 @@ public class Board {
     private int width;
     private Sprite[][] arrayTypeBoard;
     private Sprite chest1;
+    private Monster goblin;
 
 
     public Board(String level, int height, int width) {
@@ -41,6 +42,9 @@ public class Board {
         putGrassOnBoard();
         putBigBridgeOnBoard();
         putLakeOnBoard();
+
+        addElementToBoard(new Monster("G", createCoordList(1, 1, 1, 1), "Goblin", 30, new Inventory(), 5, 15));
+
         putChestOnBoard();
     }
 
@@ -96,7 +100,7 @@ public class Board {
         addElementToBoard(lake);
     }
 
-    public void makePrintableBoard() {
+    public void updateBoard() {
         for (Sprite sprite : boardList) {
             List<Coordinates> spriteCoordinatesList = sprite.getCoordinatesList();
             for (Coordinates spriteCoordinates : spriteCoordinatesList) {
@@ -108,7 +112,7 @@ public class Board {
     }
 
     public void printBoard() {
-        makePrintableBoard(); // update board
+        updateBoard(); // update board
 
         // System.out.println(TerminalManager.repeatString('X', width));
 
@@ -126,6 +130,47 @@ public class Board {
 
     public Sprite[][] getArrayTypeBoard() {
         return arrayTypeBoard;
+    }
+
+    private List<Coordinates> createCoordList(int xFrom, int xTo, int yFrom, int yTo) {
+        List<Coordinates> list = new ArrayList<>();
+
+        for (int i = xFrom; i <= xTo; i++) {
+            for (int j = yFrom; j <= yTo; j++) {
+
+                list.add(new Coordinates(i, j));
+            }
+        }
+
+        return list;
+    }
+
+    private List<Coordinates> createShape(int xCenter, int yCenter, int r) {
+        List<Coordinates> list = new ArrayList<>();
+
+        int adder = 0;
+
+        for (int y = yCenter - r; y <= yCenter; y++) {
+            for (int x = xCenter - adder; x <= xCenter + adder; x++) {
+                if (x >= 1 && y >= 1 && x < width && y < height) {
+                    list.add(new Coordinates(x, y));
+                }
+            }
+            adder++;
+        }
+
+        adder = 0;
+
+        for (int y = yCenter + r; y > yCenter; y--) {
+            for (int x = xCenter - adder; x <= xCenter + adder; x++) {
+                if (x >= 1 && y >= 1 && x < width && y < height) {
+                    list.add(new Coordinates(x, y));
+                }
+            }
+            adder++;
+        }
+
+        return list;
     }
 
     public Chest getChest() {
@@ -165,7 +210,7 @@ public class Board {
     }
 
     public void printBoard2(Player player) {
-        makePrintableBoard(); // update board
+        updateBoard(); // update board
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -177,6 +222,29 @@ public class Board {
         // LEGENDS
         String infoAboutPlayer = player.infoToString();
         System.out.println(infoAboutPlayer);
+    }
+
+    public Creature getGoblin() {
+        return goblin;
+    }
+
+    public void removeSprite(int x, int y) {
+        // TODO:
+        for (Sprite sprite: boardList) {
+            if (sprite instanceof Chest) {
+                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
+                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
+                if (spriteFromCordsX == x && spriteFromCordsY == y) {
+                    boardList.remove(sprite);  // should be sprite.getID
+                }
+            } else if (sprite instanceof Monster) {
+                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
+                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
+                if (spriteFromCordsX == x && spriteFromCordsY == y) {
+                    boardList.remove(sprite);  // should be sprite.getID
+                }
+            }
+        }
     }
 
 }
