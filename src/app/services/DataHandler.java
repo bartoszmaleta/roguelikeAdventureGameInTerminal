@@ -30,4 +30,14 @@ public class DataHandler {
         String filepath = "src/app/chestClosed.txt";
         DataHandler.printFromFile(filepath);
     }
+
+	public static void printDoorClosed() throws FileNotFoundException {
+        String filepath = "src/app/services/graphics/doorClosed.txt";
+        DataHandler.printFromFile(filepath);
+    }
+    
+    public static void printDoorOpened() throws FileNotFoundException {
+        String filepath = "src/app/services/graphics/doorOpened.txt";
+        DataHandler.printFromFile(filepath);
+	}
 }

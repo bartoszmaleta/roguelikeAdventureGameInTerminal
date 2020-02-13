@@ -128,16 +128,13 @@ public class Game extends KeyAdapter {
                 }
             }
         } else if (checkIfDoor()) {
-
+            doorAction();
         }
 
         // board.printBoard();
         board.printBoard2(player);
 
     }
-
-
-
 
     public void init() {
         // CREATE BOARD:
@@ -243,6 +240,37 @@ public class Game extends KeyAdapter {
         return false;
     }
 
+    private void doorAction() {
+        // DISPLAY IMAGE OF DOOR CLOSED
+        try {
+            DataHandler.printDoorClosed();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
+
+        if (player.hasKeyToDoor()) {
+            player.addExperience(5000);
+
+
+
+
+            // DISPLAY IMAGE OF DOOR OPENED
+            try {
+                DataHandler.printDoorOpened();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
+
+
+    }
+
     public void chestAction() {
 
         // DISPLAY IMAGE OF CHEST CLOSED
@@ -265,7 +293,7 @@ public class Game extends KeyAdapter {
         // PRINTS CONTENT OF THE CHEST
         Inventory inventoryOfChest = board.getChest().getChestInventory();
         inventoryOfChest.printContent();
-        // inventoryOfChest.printTable();       // TODO: prettyTable print!!!
+        // inventoryOfChest.printTable(); // TODO: prettyTable print!!!
 
         // REMOVING CHEST FROM BOARD
         int x = player.getCoordinatesList().get(0).getX();
@@ -273,9 +301,8 @@ public class Game extends KeyAdapter {
 
         System.out.println("------------");
         System.out.println("player inv");
-        addChestInvToPlayerInv(x, y);       // add and print
+        addChestInvToPlayerInv(x, y); // add and print
 
-        
         // board.removeChestFromBoardList();
         board.removeChestFromBoardListByCoords(x, y);
 
@@ -292,7 +319,7 @@ public class Game extends KeyAdapter {
         }
 
         // inv.printContent();
-        
+
     }
 
     public void displayCreatureInv(Creature creature) throws FileNotFoundException {
@@ -301,10 +328,8 @@ public class Game extends KeyAdapter {
         Inventory creatureInventory = creature.getInventory();
         creatureInventory.printTable();
 
-        // playerInventory.printContent();      // Old print without table
-        // creatureInventory.printTableOld();        // Old print witht table 2
+        // playerInventory.printContent(); // Old print without table
+        // creatureInventory.printTableOld(); // Old print witht table 2
     }
-
-
 
 }

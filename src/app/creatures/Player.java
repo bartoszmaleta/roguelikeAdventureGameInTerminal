@@ -113,4 +113,14 @@ public class Player extends Creature {
         return tableInfo;
     }
 
+	public boolean hasKeyToDoor() {
+        Inventory playerInventory = this.player.getInv();
+        
+        for (Item item : inv) {
+            
+        }
+        
+		return false;
+	}
+
 }
