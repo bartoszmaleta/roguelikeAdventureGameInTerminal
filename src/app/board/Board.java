@@ -1,21 +1,31 @@
 package app.board;
 
 import app.Coordinates;
-import app.helpers.Helpers;
+
+import app.Inventory;
+import app.creatures.Player;
+import app.services.TerminalManager;
 import app.structures.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board {
+// TODO: 
+//      - id for all sprites
+//      - adding chest inv to playerINV
+//      - displayInv for player "i"
+//      - removeSprite()
+//      - prettyTable for Inv
 
-    Helpers helpers = new Helpers();
+public class Board {
 
     private List<Sprite> boardList;
     private String level;
     private int height;
     private int width;
     private Sprite[][] arrayTypeBoard;
+    private Sprite chest1;
+
 
     public Board(String level, int height, int width) {
         boardList = new ArrayList<>();
@@ -23,7 +33,9 @@ public class Board {
         this.height = height;
         this.width = width;
         arrayTypeBoard = new Sprite[height][width];
+
         addElementToBoard(new Water(createCoordList(1, width - 1, 1, height - 1)));
+      
         addElementToBoard(new Grass(createShape(10, 8, 15)));
         addElementToBoard(new Grass(createShape(3, 18, 5)));
         addElementToBoard(new Grass(createShape(80, 13, 8)));
@@ -32,11 +44,26 @@ public class Board {
         addElementToBoard(new Grass(createShape(40, 13, 5)));
         addElementToBoard(new Grass(createShape(30, 13, 5)));
         addElementToBoard(new Grass(createShape(20, 13, 5)));
+      
         addElementToBoard(new Bridge(createCoordList(18, 19, 24, 24)));
         addElementToBoard(new Bridge(createCoordList(16, 17, 8, 8)));
         addElementToBoard(new Bridge(createCoordList(103, 107, 13, 13)));
         addElementToBoard(new Bridge(createCoordList(66, 75, 12, 14)));
+      
         addElementToBoard(new Border(new ArrayList<>(), height, width));
+      
+        putChestOnBoard();
+    }
+
+    private void putChestOnBoard() {
+        List<Coordinates> chestCoords = new ArrayList<>();
+        chestCoords.add(new Coordinates(20, 10));
+        chest1 = new Chest(chestCoords);
+        boardList.add(chest1);
+    }
+
+    public List<Sprite> getBoardList() {
+        return boardList;
     }
 
     public void addElementToBoard(Sprite sprite) {
@@ -62,17 +89,22 @@ public class Board {
     public void printBoard() {
         updateBoard();
 
+        // System.out.println(TerminalManager.repeatString('X', width));
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 System.out.print(arrayTypeBoard[y][x].getApparel());
             }
             System.out.println();
         }
+
+        // System.out.println(TerminalManager.repeatString('X', width));
     }
 
     public Sprite[][] getArrayTypeBoard() {
         return arrayTypeBoard;
     }
+
 
     private List<Coordinates> createCoordList(int xFrom, int xTo, int yFrom, int yTo) {
         List<Coordinates> list = new ArrayList<>();
@@ -83,6 +115,21 @@ public class Board {
                 list.add(new Coordinates(i, j));
             }
         }
+
+    public Chest getChest() {
+        Chest chest = (Chest) chest1;
+        return chest;
+    }
+
+    public void removeChestFromBoardList() {
+        // TODO:
+        for (Sprite sprite: boardList) {
+            if (sprite instanceof Chest) {
+                boardList.remove(sprite);  // should be sprite.getID
+            }
+        }
+    }
+
 
         return list;
     }

@@ -7,7 +7,10 @@ import java.util.List;
 public class Bridge extends Sprite {
 
     public Bridge(List<Coordinates> coordinatesList) {
-        super("&", coordinatesList);
+        // super("\uD83D\uDF59", coordinatesList); // squares
+        // super("\uDBB8\uDC19", coordinatesList); // arrows
+        // super("#", coordinatesList); // just HASH
+        super("\u2328\uFE0F", coordinatesList); // keyboard
     }
 
 }

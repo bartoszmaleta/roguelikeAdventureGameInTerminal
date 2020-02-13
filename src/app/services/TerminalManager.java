@@ -1,11 +1,11 @@
-package app.helpers;
+package app.services;
 
 import java.util.Scanner;
 
-public class Helpers {
-    Scanner scanner = new Scanner(System.in);
+public class TerminalManager {
+    private static Scanner scanner = new Scanner(System.in);
 
-    public String repeatString(char c, int times){
+    public static String repeatString(char c, int times){
         StringBuffer b = new StringBuffer();
     
         for(int i = 0; i <= times + 1; i++){
@@ -15,32 +15,29 @@ public class Helpers {
         return b.toString();
     }
 
-    public void pressAnyKeyToContinue() {
+    public static void pressAnyKeyToContinue() {
         System.out.println("Press any key to continue");
         scanner.nextLine();
     }
 
-    public void displayWelcomeScreen() {
+    public static void displayWelcomeScreen() {
         emptyLinesThree();
-        System.out.println("Welcome to BATTLESHIP" +
-         "GAME");
+        System.out.println("Welcome to ROGUELIKE ADVENTURE GAME");
         System.out.println("Produced by: ");
         System.out.println("Bartosz Maleta");
         System.out.println("Szymon Niemiec");
-        System.out.println("Przemysław Buszek");
+        System.out.println("Przemysław Buszek\n\n\n");
         emptyLinesThree();
         pressAnyKeyToContinue();
         clearScreen();
     }
 
-    public void clearScreen() {
+    public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
-    public void emptyLinesThree() {
-        System.out.println();
-        System.out.println();
-        System.out.println();
+    public static void emptyLinesThree() {
+        System.out.println("\n\n");
     }
 }
