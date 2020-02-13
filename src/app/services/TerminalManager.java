@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class TerminalManager {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static String repeatString(char c, int times){
+    public static String repeatString(String c, int times){
         StringBuffer b = new StringBuffer();
     
         for(int i = 0; i <= times + 1; i++){

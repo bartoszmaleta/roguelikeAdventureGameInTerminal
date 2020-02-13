@@ -2,7 +2,10 @@ package app.creatures;
 
 import app.Coordinates;
 import app.inventory.Inventory;
+import app.services.TerminalManager;
 
+import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 
 public class Player extends Creature {
@@ -39,41 +42,75 @@ public class Player extends Creature {
         }
     }
 
-
     public Inventory getInv() {
         return inv;
     }
 
     public String infoToString() {
+
+
         String tableInfo = "";
-        int tableLen = 49;
-        tableInfo += "\n" ;
+        tableInfo += "\n";
         
-        tableInfo += "\nHEALTH = " + this.getHealth();
-        tableInfo += "\nEXPERIENCE = " + this.experience;
-        tableInfo += "\nLEVEL = " + this.level;
+        // ------------------------------------- FIRST OPTION
+        int tableLen = 40;
+        String boarderOfTable = "-";
 
-        tableInfo += "\n\n";
+        int playerHealth = this.getHealth();
+        int playerExperience = this.experience;
+        int playerLevel = this.level;
 
-        tableInfo += "\n-------------------------------\n";
-        tableInfo += "| Press (i) to show INVENTORY |";
-        tableInfo += "\n-------------------------------\n";
+        String playerHealthTitle = "Health";
+        String playerLevelTitle = "Level";
+        String playerExperienceTitle = "Experience";
 
-        tableInfo += "\n--------------------------\n";
-        tableInfo += "| Press (m) to show MENU |";
-        tableInfo += "\n--------------------------\n";
-        
+        for (int j = 0; j < tableLen; j++) {
+            tableInfo += boarderOfTable;
+        }
+        tableInfo += "\n";
+
+        Formatter formatterHeadline = new Formatter();
+        tableInfo += formatterHeadline.format("| %10s | %10s | %10s |", playerHealthTitle, playerLevelTitle,
+                playerExperienceTitle);
+
+        tableInfo += "\n";
+        for (int j = 0; j < tableLen; j++) {
+            tableInfo += boarderOfTable;
+        }
+        tableInfo += "\n";
+
+        Formatter formatterStats = new Formatter();
+        tableInfo += formatterStats.format("| %10d | %10d | %10d |", playerHealth, playerLevel, playerExperience);
+
+        tableInfo += "\n";
+        for (int j = 0; j < tableLen; j++) {
+            tableInfo += boarderOfTable;
+        }
+
+        // ------------------------------------- SECOND OPTION 
+
+        // tableInfo += "\n\n\n";
+        // String boarderLegend = "=";
+
+        // tableInfo += TerminalManager.repeatString(boarderLegend, 20);
+        // tableInfo += "\n" + boarderLegend + " HEALTH = " + this.getHealth() + "       " + boarderLegend;
+        // tableInfo += "\n" + boarderLegend + " EXPERIENCE = " + this.experience + "     " + boarderLegend;
+        // tableInfo += "\n" + boarderLegend + " LEVEL = " + this.level + "          " + boarderLegend;
+        // tableInfo += "\n" + TerminalManager.repeatString(boarderLegend, 20);
+
+
+        // -------------------------------------  
+        // tableInfo += "\n\n";
+
+        // tableInfo += "\n-------------------------------\n";
+        // tableInfo += "| Press (i) to show INVENTORY |";
+        // tableInfo += "\n-------------------------------\n";
+
+        // tableInfo += "\n--------------------------\n";
+        // tableInfo += "| Press (m) to show MENU |";
+        // tableInfo += "\n--------------------------\n";
+
         return tableInfo;
     }
 
-
-//    public List<Coordinates> setPlayeCoordinates(int x, int y) {
-//        coordinatesPlayer = new ArrayList<>();
-//        coordinatesPlayer.add(new Coordinates(x, y));
-//        return coordinatesPlayer;
-//    }
-
-
-
-  
 }

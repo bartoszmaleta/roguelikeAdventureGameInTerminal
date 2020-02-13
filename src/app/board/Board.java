@@ -299,7 +299,20 @@ public class Board {
     public void displayLegend(Player player) {
         // TODO: 
         String infoAboutPlayer = player.infoToString();
-        System.out.println(infoAboutPlayer);
+
+        StringBuilder legend = new StringBuilder();
+
+        legend.append(infoAboutPlayer);
+        legend.append("\n\n");
+        legend.append("\n-------------------------------\n");
+        legend.append("| Press (i) to show INVENTORY |");
+        legend.append("\n-------------------------------\n");
+
+        legend.append("\n--------------------------\n");
+        legend.append("| Press (m) to show MENU |");
+        legend.append("\n--------------------------\n");
+        
+        System.out.println(legend);
     }
 
     public void printBoard2(Player player) {
