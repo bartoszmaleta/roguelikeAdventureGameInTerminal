@@ -128,11 +128,24 @@ public class Board {
         return chest;
     }
 
-    public void removeChestFromBoardList() {
+    public void removeAllChestsFromBoardList() {
         // TODO:
         for (Sprite sprite: boardList) {
             if (sprite instanceof Chest) {
                 boardList.remove(sprite);  // should be sprite.getID
+            }
+        }
+    }
+
+    public void removeChestFromBoardListByCoords(int x, int y) {
+        // TODO:
+        for (Sprite sprite: boardList) {
+            if (sprite instanceof Chest) {
+                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
+                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
+                if (spriteFromCordsX == x && spriteFromCordsY == y) {
+                    boardList.remove(sprite);  // should be sprite.getID
+                }
             }
         }
     }

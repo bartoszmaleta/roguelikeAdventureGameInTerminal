@@ -204,44 +204,15 @@ public class Game extends KeyAdapter {
         Inventory inventoryOfChest = board.getChest().getChestInventory();
         inventoryOfChest.printContent();
 
-
-
-
-        // TODO:
         // REMOVING CHEST FROM BOARD
         int x = player.getCoordinatesList().get(0).getX();
         int y = player.getCoordinatesList().get(0).getY();
 
+        // board.removeChestFromBoardList();
+        board.removeChestFromBoardListByCoords(x, y);
+
         TerminalManager.pressAnyKeyToContinue();
-
-        List<Coordinates> tempChestCoords = new ArrayList<>();
-        tempChestCoords.add(new Coordinates(x, y));
-        Sprite tempChest = new Chest(tempChestCoords);
-
-        List<Sprite> boardSpriteList = board.getBoardList();
-
-        // for (Sprite sprite : boardSpriteList) {
-        // if (sprite.getCoordinatesList().get(0).getX() ==
-        // tempChest.getCoordinatesList().get(0).getX()) {
-        // boardSpriteList.remove(sprite);
-        // // TerminalManager.pressAnyKeyToContinue();
-        // }
-        // }
-
-        // player.getCoordinatesList().get(0).setX(x + 1);
-        // player.getCoordinatesList().get(0).setY(y + 1);
-
-        // for (Iterator<Sprite> it = boardSpriteList.iterator(); it.hasNext();) {
-        // Sprite next = it.next();
-        // if (next.getCoordinatesList().get(0).getX() ==
-        // tempChest.getCoordinatesList().get(0).getX()) {
-        // it.remove();
-        // }
-        // }
-
         TerminalManager.clearScreen();
-        board.removeChestFromBoardList();
-
 
     }
 
