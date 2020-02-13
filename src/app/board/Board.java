@@ -56,6 +56,13 @@ public class Board {
         addElementToBoard(new Grass(createShape(52, 25, 3)));
         addElementToBoard(new Grass(createShape(81, 30, 5)));
         addElementToBoard(new Grass(createShape(68, 27, 8)));
+        addElementToBoard(new Grass(createShape(54, 28, 5)));
+        addElementToBoard(new Grass(createShape(88, 23, 6)));
+        addElementToBoard(new Grass(createShape(115, 16, 8)));
+        addElementToBoard(new Grass(createShape(91, 5, 5)));
+        addElementToBoard(new Grass(createShape(100, 2, 5)));
+        addElementToBoard(new Grass(createShape(110, 5, 6)));
+
 
       
         addElementToBoard(new Bridge(createCoordList(13, 20, 24, 24)));
@@ -65,8 +72,13 @@ public class Board {
         addElementToBoard(new Bridge(createCoordList(44, 45, 15, 15)));
         addElementToBoard(new Bridge(createCoordList(45, 47, 16, 16)));
         addElementToBoard(new Bridge(createCoordList(73, 75, 30, 30)));
-        addElementToBoard(new Bridge(createCoordList(103, 107, 13, 13)));
         addElementToBoard(new Bridge(createCoordList(66, 75, 12, 14)));
+        addElementToBoard(new Bridge(createCoordList(84, 85, 27, 27)));
+        addElementToBoard(new Bridge(createCoordList(86, 87, 17, 17)));
+        addElementToBoard(new Bridge(createCoordList(85, 88, 7, 8)));
+        addElementToBoard(new Bridge(createCoordList(93, 95, 1, 1)));
+        addElementToBoard(new Bridge(createCoordList(102, 103, 5, 5)));
+        addElementToBoard(new Bridge(createCoordList(113, 114, 8, 8)));
       
         addElementToBoard(new Border(new ArrayList<>(), height, width));
       
@@ -75,7 +87,7 @@ public class Board {
 
     private void putChestOnBoard() {
         List<Coordinates> chestCoords = new ArrayList<>();
-        chestCoords.add(new Coordinates(20, 10));
+        chestCoords.add(new Coordinates(50, 25));
         chest1 = new Chest(chestCoords);
         boardList.add(chest1);
     }
