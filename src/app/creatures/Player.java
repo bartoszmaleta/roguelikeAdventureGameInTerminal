@@ -22,14 +22,5 @@ public class Player extends Creature {
         coordinates.get(0).setX(x);
         coordinates.get(0).setY(y);
     }
-
-
-//    public List<Coordinates> setPlayeCoordinates(int x, int y) {
-//        coordinatesPlayer = new ArrayList<>();
-//        coordinatesPlayer.add(new Coordinates(x, y));
-//        return coordinatesPlayer;
-//    }
-
-
-
+  
 }
