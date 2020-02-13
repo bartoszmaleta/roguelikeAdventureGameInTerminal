@@ -2,8 +2,10 @@ package app.creatures;
 
 import app.Coordinates;
 import app.inventory.Inventory;
+import app.items.Item;
 import app.structures.Sprite;
 
+import java.security.Key;
 import java.util.List;
 
 public class Creature extends Sprite {
@@ -41,6 +43,10 @@ public class Creature extends Sprite {
         this.experience += experience;
     }
 
+    public void addExperience(int experienceToAdd) {
+        this.experience += experienceToAdd;
+    }
+
     public int getExperience() {
         return experience;
     }
@@ -55,6 +61,18 @@ public class Creature extends Sprite {
         opponent.setHealth(hp-dmg);
         return opponent.getHealth() <= 0;
     }
+
+    public boolean hasKeyToDoor() {
+        Inventory creatureInventory = this.inventory;
+
+        for (Item item : creatureInventory.getInventoryList()) {
+            if (item instanceof Key) {
+                return true;
+            }
+        }
+        return false;
+
+	}
 
 //    public boolean fight(Creature attacker, Creature opponent) {
 //        if (turn(opponent) <= 0) {
