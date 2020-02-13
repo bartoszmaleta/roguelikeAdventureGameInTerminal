@@ -5,22 +5,27 @@ import app.Coordinates;
 import app.Inventory;
 import app.creatures.Player;
 import app.services.TerminalManager;
-import app.structures.Bridge;
-import app.structures.Grass;
-import app.structures.Sprite;
 import app.structures.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board {
+// TODO: 
+//      - id for all sprites
+//      - adding chest inv to playerINV
+//      - displayInv for player "i"
+//      - removeSprite()
+//      - prettyTable for Inv
 
+public class Board {
 
     private List<Sprite> boardList;
     private String level;
     private int height;
     private int width;
     private Sprite[][] arrayTypeBoard;
+    private Sprite chest1;
+
 
     public Board(String level, int height, int width) {
         boardList = new ArrayList<>();
@@ -33,6 +38,18 @@ public class Board {
         putGrassOnBoard();
         putBigBridgeOnBoard();
         putLakeOnBoard();
+        putChestOnBoard();
+    }
+
+    private void putChestOnBoard() {
+        List<Coordinates> chestCoords = new ArrayList<>();
+        chestCoords.add(new Coordinates(20, 10));
+        chest1 = new Chest(chestCoords);
+        boardList.add(chest1);
+    }
+
+    public List<Sprite> getBoardList() {
+        return boardList;
     }
 
     public void addElementToBoard(Sprite sprite) {
@@ -106,17 +123,18 @@ public class Board {
         return arrayTypeBoard;
     }
 
-//    public Sprite[][] makePrintableBoard() {
-//        Sprite[][] arrayTypeBoard = new Sprite[height][width];
-//        int line = 1;
-//        for (int y = 0; y < height; y++) {
-//            for (int x = 0; x < width; x++) {
-//                arrayTypeBoard[y][x] = board.get(x * line);
-//            }
-//            line++;
-//        }
-//        return arrayTypeBoard;
+    public Chest getChest() {
+        Chest chest = (Chest) chest1;
+        return chest;
+    }
 
-//    }
+    public void removeChestFromBoardList() {
+        // TODO:
+        for (Sprite sprite: boardList) {
+            if (sprite instanceof Chest) {
+                boardList.remove(sprite);  // should be sprite.getID
+            }
+        }
+    }
 
 }

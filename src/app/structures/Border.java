@@ -8,7 +8,7 @@ import java.util.List;
 public class Border extends Sprite implements Collision {
 
     public Border(List<Coordinates> coordinatesList) {
-        super("X", coordinatesList);
+        super("\u26D4\uFE0F", coordinatesList);
         for (int y = 0; y < 33; y++) {
             for (int x = 0; x < 117; x++) {
                 if (y == 0) {

@@ -1,6 +1,7 @@
 package app;
 
 import app.engine.Game;
+import app.menuStart.MenuStart;
 import app.services.TerminalManager;
 
 import javax.swing.*;
@@ -15,9 +16,10 @@ public class Main {
     }
 
     public static void runGame() {
-        TerminalManager.displayWelcomeScreen();
+        MenuStart.startGame();
 
         JTextField textField = new JTextField();
+
         Game game = new Game();
         game.init();
         game.firstTimeBoard();
