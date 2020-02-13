@@ -67,18 +67,18 @@ public class Board {
       
         addElementToBoard(new Bridge(createCoordList(13, 20, 24, 24)));
         addElementToBoard(new Bridge(createCoordList(7, 8, 8, 8)));
-        addElementToBoard(new Bridge(createCoordList(33, 34, 10, 10)));
+        addElementToBoard(new Bridge(createCoordList(33, 33, 10, 10)));
         addElementToBoard(new Bridge(createCoordList(43, 44, 14, 14)));
         addElementToBoard(new Bridge(createCoordList(44, 45, 15, 15)));
         addElementToBoard(new Bridge(createCoordList(45, 47, 16, 16)));
-        addElementToBoard(new Bridge(createCoordList(73, 75, 30, 30)));
-        addElementToBoard(new Bridge(createCoordList(66, 75, 12, 14)));
+        addElementToBoard(new Bridge(createCoordList(74, 75, 30, 30)));
+        addElementToBoard(new Bridge(createCoordList(65, 75, 12, 14)));
         addElementToBoard(new Bridge(createCoordList(84, 85, 27, 27)));
-        addElementToBoard(new Bridge(createCoordList(86, 87, 17, 17)));
-        addElementToBoard(new Bridge(createCoordList(85, 88, 7, 8)));
+        addElementToBoard(new Bridge(createCoordList(87, 87, 17, 17)));
+        addElementToBoard(new Bridge(createCoordList(85, 87, 7, 7)));
         addElementToBoard(new Bridge(createCoordList(93, 95, 1, 1)));
-        addElementToBoard(new Bridge(createCoordList(102, 103, 5, 5)));
-        addElementToBoard(new Bridge(createCoordList(113, 114, 8, 8)));
+        addElementToBoard(new Bridge(createCoordList(103, 103, 5, 5)));
+        addElementToBoard(new Bridge(createCoordList(114, 114, 8, 8)));
       
         addElementToBoard(new Border(new ArrayList<>(), height, width));
       
