@@ -129,6 +129,7 @@ public class Game extends KeyAdapter {
             }
         } else if (checkIfDoor()) {
             System.out.println("I am in door!");
+            doorAction();
         }
 
         // board.printBoard();
@@ -239,6 +240,37 @@ public class Game extends KeyAdapter {
             return true;
         }
         return false;
+    }
+
+    private void doorAction() {
+        // DISPLAY IMAGE OF DOOR CLOSED
+        try {
+            DataHandler.printDoorClosed();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
+
+        if (player.hasKeyToDoor()) {
+            player.addExperience(5000);
+
+
+
+
+            // DISPLAY IMAGE OF DOOR OPENED
+            try {
+                DataHandler.printDoorOpened();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
+
+
     }
 
     public void chestAction() {
