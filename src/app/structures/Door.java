@@ -6,8 +6,20 @@ import app.Coordinates;
 
 public class Door extends Sprite {
 
-    public Door(List<Coordinates> coordinatesList) {
-        super("#", coordinatesList);
-    }
+        private String keyIdNeeded;
+    
+        public Door(String apparel, List<Coordinates> coordinatesList, String keyIdNeeded) {
+            super("#", coordinatesList);
+            this.keyIdNeeded = keyIdNeeded;
+            // keyIdNeeded = "asd123"
+        }
+    
+        public String getKeyIdNeeded() {
+            return keyIdNeeded;
+        }
+    
+        public void setKeyIdNeeded(String keyIdNeeded) {
+            this.keyIdNeeded = keyIdNeeded;
+        }
 
 }
