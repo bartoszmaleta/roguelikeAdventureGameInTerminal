@@ -8,6 +8,7 @@ import app.items.Armor;
 import app.inventory.Inventory;
 import app.items.Helmet;
 import app.items.Item;
+import app.items.KeyToDoor;
 import app.items.Sword;
 
 public class Chest extends Sprite {
@@ -24,9 +25,26 @@ public class Chest extends Sprite {
         Sword sword = new Sword("One-handed sword", 10, 5);
         Sword sword2 = new Sword("Two-handed sword", 12, 7);
         Armor helmet = new Helmet("Hat", 50, 70);
+        Item key = new KeyToDoor("Door key", 27, "asd123");
 
         chestInventory.addToInventory(sword);
         chestInventory.addToInventory(sword2);
+        chestInventory.addToInventory(helmet);
+        chestInventory.addToInventory(key);
+    }
+
+    public Chest(List<Coordinates> coordinatesList, String differentConstructor) {
+        // super("\uD83C\uDF81", coordinatesList);
+        super("+", coordinatesList);
+        chestInventory = new Inventory();
+        fillChest2();
+    }
+
+    private void fillChest2() {
+        Sword sword = new Sword("Magical Sword", 800, 4);
+        Armor helmet = new Helmet("Magical Hat", 400, 800);
+
+        chestInventory.addToInventory(sword);
         chestInventory.addToInventory(helmet);
     }
 

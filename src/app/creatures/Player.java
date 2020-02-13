@@ -46,6 +46,7 @@ public class Player extends Creature {
         return inv;
     }
 
+
     public String infoToString() {
 
 

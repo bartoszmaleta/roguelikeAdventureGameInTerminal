@@ -30,4 +30,45 @@ public class DataHandler {
         String filepath = "src/app/chestClosed.txt";
         DataHandler.printFromFile(filepath);
     }
+
+    public static void printDoorClosed() throws FileNotFoundException {
+        String filepath = "src/app/graphics/doorClosed.txt";
+        DataHandler.printFromFile(filepath);
+    }
+
+    public static void printDoorOpened() throws FileNotFoundException {
+        String filepath = "src/app/graphics/doorOpened.txt";
+        DataHandler.printFromFile(filepath);
+    }
+    
+    public static void displayImageOfChestClosed() {
+        try {
+            DataHandler.printChestClosed();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void displayImageOfChestOpened() {
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
+
+        try {
+            DataHandler.printChestOpened();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void displayImageOfDoorClosed() {
+        try {
+            DataHandler.printDoorClosed();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
+
+    }
 }

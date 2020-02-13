@@ -10,11 +10,13 @@ import app.items.Armor;
 import app.creatures.Monster;
 import app.creatures.Player;
 import app.items.Item;
+import app.items.KeyToDoor;
 import app.items.Sword;
 import app.services.DataHandler;
 import app.services.TerminalManager;
 import app.menu.Menu;
 import app.structures.Chest;
+import app.structures.Door;
 import app.structures.Sprite;
 
 import java.awt.event.KeyAdapter;
@@ -126,6 +128,9 @@ public class Game extends KeyAdapter {
                     monster.turn(player);
                 }
             }
+        } else if (checkIfDoor()) {
+            System.out.println("I am in door!");
+            doorAction();
         }
 
         // board.printBoard();
@@ -133,14 +138,13 @@ public class Game extends KeyAdapter {
 
     }
 
-
     public void init() {
         // CREATE BOARD:
         board = new Board("Level 1", 33, 117);
 
         // CREATE PLAYER COORDINATES
         playerCoordinates = new ArrayList<>();
-        playerCoordinates.add(new Coordinates(10, 6));
+        playerCoordinates.add(new Coordinates(2, 1));
 
         // CREATE INV FOR PLAYER:
         playerInv = new Inventory();
@@ -228,41 +232,67 @@ public class Game extends KeyAdapter {
         return false;
     }
 
-    public void chestAction() {
+    private boolean checkIfDoor() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y][x] instanceof Door) {
+            return true;
+        }
+        return false;
+    }
 
-        // DISPLAY IMAGE OF CHEST CLOSED
-        try {
-            DataHandler.printChestClosed();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    private void doorAction() {
+        // DISPLAY IMAGE OF DOOR CLOSED
+        DataHandler.displayImageOfDoorClosed();
+
+        // CHECK IF PLAYER HAS KEY
+        if (player.hasKeyToDoor()) {
+            player.addExperience(5000);
+
+            System.out.println("Player has key!");
+
+            // DISPLAY IMAGE OF DOOR OPENED
+            try {
+                DataHandler.printDoorOpened();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            // REMOVING DOOR FROM BOARD
+            int x = player.getCoordinatesList().get(0).getX();
+            int y = player.getCoordinatesList().get(0).getY();
+            board.removeSprite(x, y);
+
+        } else {
+            System.out.println("\n\n\n\n\nYou do not have key to this door!! Find key first!\n\n\n");
         }
 
         TerminalManager.pressAnyKeyToContinue();
         TerminalManager.clearScreen();
 
+    }
+
+    public void chestAction() {
+
+        // DISPLAY IMAGE OF CHEST CLOSED
+        DataHandler.displayImageOfChestClosed();
         // DISPLAY IMAGE OF CHEST OPENED
-        try {
-            DataHandler.printChestOpened();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        DataHandler.displayImageOfChestOpened();
 
-        // PRINTS CONTENT OF THE CHEST
-        Inventory inventoryOfChest = board.getChest().getChestInventory();
-        inventoryOfChest.printContent();
-        // inventoryOfChest.printTable();       // TODO: prettyTable print!!!
-
-        // REMOVING CHEST FROM BOARD
+        // GET PLAYER COORDS AND FIND CHEST AND ITS INV BY COORDS
         int x = player.getCoordinatesList().get(0).getX();
         int y = player.getCoordinatesList().get(0).getY();
+        Inventory inventoryOfFoundChest = board.findChest(x, y).getChestInventory();
 
-        System.out.println("------------");
-        System.out.println("player inv");
-        addChestInvToPlayerInv(x, y);       // add and print
+        // PRINTS CONTENT OF THE CHEST
+        inventoryOfFoundChest.printContent(); // TODO: prettyTable print!!!
 
-        
-        // board.removeChestFromBoardList();
-        board.removeChestFromBoardListByCoords(x, y);
+        // ADD CHEST ITEMS TO PLAYER INVENTORY
+        addChestInvToPlayerInv(x, y); // add and print
+
+        // REMOVING CHEST FROM BOARD
+        board.removeSprite(x, y);
 
         TerminalManager.pressAnyKeyToContinue();
         TerminalManager.clearScreen();
@@ -270,14 +300,11 @@ public class Game extends KeyAdapter {
     }
 
     public void addChestInvToPlayerInv(int x, int y) {
-        List<Item> inventoryOfChest = board.getChest().getChestInventory().getInventoryList();
+        List<Item> inventoryOfChest = board.findChest(x, y).getChestInventory().getInventoryList();
         Inventory inv = player.getInventory();
         for (Item item : inventoryOfChest) {
             inv.addToInventory(item);
         }
-
-        // inv.printContent();
-        
     }
 
     public void displayCreatureInv(Creature creature) throws FileNotFoundException {
@@ -286,10 +313,8 @@ public class Game extends KeyAdapter {
         Inventory creatureInventory = creature.getInventory();
         creatureInventory.printTable();
 
-        // playerInventory.printContent();      // Old print without table
-        // creatureInventory.printTableOld();        // Old print witht table 2
+        // playerInventory.printContent(); // Old print without table
+        // creatureInventory.printTableOld(); // Old print witht table 2
     }
-
-
 
 }

@@ -148,19 +148,18 @@ public class Inventory {
 
     }
 
-    // NOT USED
     public void printContent() {
         for (Item item : inventoryList) {
             if (item instanceof Weapon) {
                 Weapon weapon = (Weapon) item;
                 int itemDamage = weapon.getDamage();
                 System.out.println("Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
-                        + "Value = " + item.getValue() + "\n" + "Damage = " + itemDamage);
+                        + "Value = " + item.getValue() + "\n" + "Damage = " + itemDamage + "\n");
             } else if (item instanceof Armor) {
                 Armor armor = (Armor) item;
                 int itemDefense = armor.getDefense();
                 System.out.println("Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
-                        + "Value = " + item.getValue() + "\n" + "Defense = " + itemDefense);
+                        + "Value = " + item.getValue() + "\n" + "Defense = " + itemDefense + "\n");
             } else {
                 System.out.println("Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
                         + "Value = " + item.getValue() + "\n");
