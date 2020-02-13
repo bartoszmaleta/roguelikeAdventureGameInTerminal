@@ -93,10 +93,9 @@ public class Board {
         addElementToBoard(new Border(new ArrayList<>(), height, width));
 
 
-        addElementToBoard(new Door(createCoordList(2, 2, 7, 7), "asd123"));
+        // addElementToBoard(new Door(createCoordList(2, 2, 7, 7), "asd123"));
         addElementToBoard(new Chest(createCoordList(2, 2, 5, 5), "differentChest"));
 
-        // addElementToBoard(new Chest(createCoordList(3, 3, 2, 2)));
         putChestOnBoard();
         putMagicalDoorOnBoard();
     }
