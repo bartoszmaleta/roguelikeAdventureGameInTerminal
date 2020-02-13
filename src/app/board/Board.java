@@ -2,7 +2,7 @@ package app.board;
 
 import app.Coordinates;
 
-import app.Inventory;
+import app.inventory.Inventory;
 import app.creatures.Creature;
 import app.creatures.Monster;
 import app.structures.*;

@@ -1,7 +1,7 @@
 package app.creatures;
 
 import app.Coordinates;
-import app.Inventory;
+import app.inventory.Inventory;
 import app.structures.Sprite;
 
 import java.util.List;

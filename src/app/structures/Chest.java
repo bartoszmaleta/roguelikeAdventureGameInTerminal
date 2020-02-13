@@ -1,15 +1,12 @@
 package app.structures;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 
 import app.Coordinates;
-import app.Inventory;
+import app.inventory.Inventory;
 import app.items.Helmet;
 import app.items.Item;
 import app.items.Sword;
-import app.services.DataHandler;
 
 public class Chest extends Sprite {
     private Inventory chestInventory;

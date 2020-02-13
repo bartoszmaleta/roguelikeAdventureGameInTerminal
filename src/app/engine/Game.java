@@ -1,27 +1,23 @@
 package app.engine;
 
 import app.Coordinates;
-import app.Inventory;
+import app.inventory.Inventory;
 import app.board.Board;
 import app.creatures.Creature;
 import app.creatures.Monster;
 import app.creatures.Player;
-import app.items.Armor;
 import app.items.Item;
 import app.items.Sword;
-import app.items.Weapon;
 import app.services.DataHandler;
 import app.services.TerminalManager;
 import app.menu.Menu;
 import app.structures.Chest;
-import app.structures.Grass;
 import app.structures.Sprite;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Game extends KeyAdapter {
