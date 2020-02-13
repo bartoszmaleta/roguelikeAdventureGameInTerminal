@@ -24,6 +24,7 @@ public class Chest extends Sprite {
         Sword sword = new Sword("One-handed sword", 10, 5);
         Sword sword2 = new Sword("Two-handed sword", 12, 7);
         Armor helmet = new Helmet("Hat", 50, 70);
+        // Item key = new Key("Door key", 27, "asd123");
 
         chestInventory.addToInventory(sword);
         chestInventory.addToInventory(sword2);
