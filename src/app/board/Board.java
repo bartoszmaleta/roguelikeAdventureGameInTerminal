@@ -116,6 +116,9 @@ public class Board {
             }
         }
 
+        return list;
+    }
+
     public Chest getChest() {
         Chest chest = (Chest) chest1;
         return chest;
@@ -130,9 +133,6 @@ public class Board {
         }
     }
 
-
-        return list;
-    }
 
     private List<Coordinates> createShape(int xCenter, int yCenter, int r) {
         List<Coordinates> list = new ArrayList<>();
