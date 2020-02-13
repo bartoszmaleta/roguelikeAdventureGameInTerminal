@@ -101,7 +101,8 @@ public class Game extends KeyAdapter {
             chestAction();
         }
 
-        board.printBoard();
+        // board.printBoard();
+        board.printBoard2(player);
 
     }
 
@@ -134,7 +135,9 @@ public class Game extends KeyAdapter {
     }
 
     public void firstTimeBoard() {
-        board.printBoard();
+        // TODO: !!!!!!! OLD
+        // board.printBoard();
+        board.printBoard2(player);
     }
 
     public boolean checkUpperCollision() {

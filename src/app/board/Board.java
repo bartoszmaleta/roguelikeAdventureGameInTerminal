@@ -3,6 +3,8 @@ package app.board;
 import app.Coordinates;
 
 import app.Inventory;
+import app.creatures.Creature;
+import app.creatures.Monster;
 import app.creatures.Player;
 import app.services.TerminalManager;
 import app.structures.*;
@@ -116,6 +118,8 @@ public class Board {
             }
             System.out.println();
         }
+        
+        
 
         // System.out.println(TerminalManager.repeatString('X', width));
     }
@@ -139,7 +143,6 @@ public class Board {
     }
 
     public void removeChestFromBoardListByCoords(int x, int y) {
-        // TODO:
         for (Sprite sprite: boardList) {
             if (sprite instanceof Chest) {
                 int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
@@ -147,8 +150,33 @@ public class Board {
                 if (spriteFromCordsX == x && spriteFromCordsY == y) {
                     boardList.remove(sprite);  // should be sprite.getID
                 }
+            } else if (sprite instanceof Monster) {
+                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
+                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
+                if (spriteFromCordsX == x && spriteFromCordsY == y) {
+                    boardList.remove(sprite);  // should be sprite.getID
+                }
             }
         }
+    }
+
+    public void displayLegend(Player player) {
+        // TODO: 
+    }
+
+    public void printBoard2(Player player) {
+        makePrintableBoard(); // update board
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                System.out.print(arrayTypeBoard[y][x].getApparel());
+            }
+            System.out.println();
+        }
+
+        // LEGENDS
+        String infoAboutPlayer = player.infoToString();
+        System.out.println(infoAboutPlayer);
     }
 
 }
