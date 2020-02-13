@@ -33,6 +33,21 @@ public class Chest extends Sprite {
         chestInventory.addToInventory(key);
     }
 
+    public Chest(List<Coordinates> coordinatesList, String differentConstructor) {
+        // super("\uD83C\uDF81", coordinatesList);
+        super("+", coordinatesList);
+        chestInventory = new Inventory();
+        fillChest2();
+    }
+
+    private void fillChest2() {
+        Sword sword = new Sword("Magical Sword", 800, 4);
+        Armor helmet = new Helmet("Magical Hat", 400, 800);
+
+        chestInventory.addToInventory(sword);
+        chestInventory.addToInventory(helmet);
+    }
+
     public Inventory getChestInventory() {
         return chestInventory;
     }

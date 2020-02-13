@@ -3,6 +3,7 @@ package app.creatures;
 import app.Coordinates;
 import app.inventory.Inventory;
 import app.items.Item;
+import app.items.KeyToDoor;
 import app.structures.Sprite;
 
 import java.security.Key;
@@ -66,7 +67,7 @@ public class Creature extends Sprite {
         Inventory creatureInventory = this.inventory;
 
         for (Item item : creatureInventory.getInventoryList()) {
-            if (item instanceof Key) {
+            if (item instanceof KeyToDoor) {
                 return true;
             }
         }
