@@ -3,6 +3,7 @@ package app.board;
 import app.Coordinates;
 
 import app.Inventory;
+import app.creatures.Creature;
 import app.creatures.Monster;
 import app.structures.*;
 
@@ -211,33 +212,43 @@ public class Board {
         return chest;
     }
 
-    public Sprite getSprite(int x, int y) {
-        Sprite foundSprite = new Sprite("", createCoordList(0, 0, 0, 0));
-        for (Sprite sprite : boardList) {
-            if (sprite instanceof Monster) {
-                int spriteFromCoordsX = sprite.getCoordinatesList().get(0).getX();
-                int spriteFromCoordsY = sprite.getCoordinatesList().get(0).getY();
-                if (spriteFromCoordsX == x && spriteFromCoordsY == y) {
-                    foundSprite = sprite;
-                }
-            }
-        }
-        return foundSprite;
-    }
-
-//
-//    public void removeChestFromBoardListByCoords(int x, int y) {
-//        // TODO:
-//        for (Sprite sprite: boardList) {
-//            if (sprite instanceof Chest) {
-//                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
-//                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
-//                if (spriteFromCordsX == x && spriteFromCordsY == y) {
-//                    boardList.remove(sprite);  // should be sprite.getID
+//    public Sprite getSprite(int x, int y) {
+//        Sprite foundSprite = new Sprite("", createCoordList(0, 0, 0, 0));
+//        for (Sprite sprite : boardList) {
+//            if (sprite instanceof Monster) {
+//                int spriteFromCoordsX = sprite.getCoordinatesList().get(0).getX();
+//                int spriteFromCoordsY = sprite.getCoordinatesList().get(0).getY();
+//                if (spriteFromCoordsX == x && spriteFromCoordsY == y) {
+//                    foundSprite = sprite;
 //                }
 //            }
 //        }
+//        return foundSprite;
 //    }
+
+    public Creature getGoblin() {
+        return goblin;
+    }
+
+//
+    public void removeSprite(int x, int y) {
+        // TODO:
+        for (Sprite sprite: boardList) {
+            if (sprite instanceof Chest) {
+                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
+                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
+                if (spriteFromCordsX == x && spriteFromCordsY == y) {
+                    boardList.remove(sprite);  // should be sprite.getID
+                }
+            } else if (sprite instanceof Monster) {
+                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
+                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
+                if (spriteFromCordsX == x && spriteFromCordsY == y) {
+                    boardList.remove(sprite);  // should be sprite.getID
+                }
+            }
+        }
+    }
 
 }
 

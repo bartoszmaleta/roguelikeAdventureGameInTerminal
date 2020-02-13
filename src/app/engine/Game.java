@@ -98,7 +98,7 @@ public class Game extends KeyAdapter {
         } else if (checkIfMonster()) {
             int x = player.getCoordinatesList().get(0).getX();
             int y = player.getCoordinatesList().get(0).getY();
-            Creature monster = (Monster) board.getSprite(x, y);
+            Creature monster = board.getGoblin();
             boolean playerWon = false;
             boolean opponentWon = false;
             while (!playerWon || !opponentWon) {
@@ -115,8 +115,9 @@ public class Game extends KeyAdapter {
                     player.turn(monster);
                 }
                 if (monster.turn(player)) {
-                    x = monster.getCoordinatesList().get(0).getX();
-                    y = monster.getCoordinatesList().get(0).getY();
+                    int monsterX = monster.getCoordinatesList().get(0).getX();
+                    int monsterY = monster.getCoordinatesList().get(0).getY();
+                    board.removeSprite(monsterX, monsterY);
                     opponentWon = monster.turn(player);
                 } else {
                     monster.turn(player);
