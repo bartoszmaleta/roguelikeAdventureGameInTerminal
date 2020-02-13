@@ -148,7 +148,6 @@ public class Inventory {
 
     }
 
-    // NOT USED
     public void printContent() {
         for (Item item : inventoryList) {
             if (item instanceof Weapon) {

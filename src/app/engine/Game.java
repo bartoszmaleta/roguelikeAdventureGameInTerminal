@@ -254,9 +254,6 @@ public class Game extends KeyAdapter {
         if (player.hasKeyToDoor()) {
             player.addExperience(5000);
 
-
-
-
             // DISPLAY IMAGE OF DOOR OPENED
             try {
                 DataHandler.printDoorOpened();
@@ -267,7 +264,6 @@ public class Game extends KeyAdapter {
 
         TerminalManager.pressAnyKeyToContinue();
         TerminalManager.clearScreen();
-
 
     }
 

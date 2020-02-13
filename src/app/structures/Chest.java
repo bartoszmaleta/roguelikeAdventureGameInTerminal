@@ -15,22 +15,22 @@ public class Chest extends Sprite {
     private Inventory chestInventory;
 
     public Chest(List<Coordinates> coordinatesList) {
-        // super("\uD83C\uDF81", coordinatesList);
-        super("+", coordinatesList);
+        super("\uD83C\uDF81", coordinatesList);
+        // super("+", coordinatesList);
         chestInventory = new Inventory();
         fillChest();
     }
 
     private void fillChest() {
-        Item sword = new Sword("One-handed sword", 10, 5);
-        Item sword2 = new Sword("Two-handed sword", 12, 7);
-        Item helmet = new Helmet("Hat", 50, 70);
-        Item key = new Key("Door key", 27, "asd123");
+        Sword sword = new Sword("One-handed sword", 10, 5);
+        Sword sword2 = new Sword("Two-handed sword", 12, 7);
+        Armor helmet = new Helmet("Hat", 50, 70);
+        // Key key = new Key("Door key", 27, "asd123");
 
         chestInventory.addToInventory(sword);
         chestInventory.addToInventory(sword2);
         chestInventory.addToInventory(helmet);
-        chestInventory.addToInventory(key);
+        // chestInventory.addToInventory(key);
     }
 
     public Inventory getChestInventory() {
