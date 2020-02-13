@@ -48,20 +48,23 @@ public class Board {
         addElementToBoard(new Grass(createShape(82, 13, 8)));
         addElementToBoard(new Grass(createShape(61, 13, 5)));
         addElementToBoard(new Grass(createShape(50, 13, 5)));
-        addElementToBoard(new Grass(createShape(40, 8, 8))); // 
+        addElementToBoard(new Grass(createShape(40, 8, 8))); 
         addElementToBoard(new Grass(createShape(30, 13, 5)));
         addElementToBoard(new Grass(createShape(16, 5, 10)));
-        addElementToBoard(new Grass(createShape(87, 7, 8)));
-        addElementToBoard(new Grass(createShape(90, 19, 8)));
-        addElementToBoard(new Grass(createShape(90, 13, 5)));
-        addElementToBoard(new Grass(createShape(82, 20, 10)));
-        addElementToBoard(new Grass(createShape(94, 19, 8)));
-        addElementToBoard(new Grass(createShape(96, 19, 12)));
+        addElementToBoard(new Grass(createShape(61, 25, 5)));
+        addElementToBoard(new Grass(createShape(48, 23, 5)));
+        addElementToBoard(new Grass(createShape(52, 25, 3)));
+        addElementToBoard(new Grass(createShape(81, 30, 5)));
+        addElementToBoard(new Grass(createShape(68, 27, 8)));
 
       
         addElementToBoard(new Bridge(createCoordList(13, 20, 24, 24)));
         addElementToBoard(new Bridge(createCoordList(7, 8, 8, 8)));
         addElementToBoard(new Bridge(createCoordList(33, 34, 10, 10)));
+        addElementToBoard(new Bridge(createCoordList(43, 44, 14, 14)));
+        addElementToBoard(new Bridge(createCoordList(44, 45, 15, 15)));
+        addElementToBoard(new Bridge(createCoordList(45, 47, 16, 16)));
+        addElementToBoard(new Bridge(createCoordList(73, 75, 30, 30)));
         addElementToBoard(new Bridge(createCoordList(103, 107, 13, 13)));
         addElementToBoard(new Bridge(createCoordList(66, 75, 12, 14)));
       
@@ -108,7 +111,7 @@ public class Board {
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                System.out.print(arrayTypeBoard[y][x].getApparel());
+                System.out.print(arrayTypeBoard[y][x].getApparel() + " ");
             }
             System.out.println();
         }
