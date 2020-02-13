@@ -100,34 +100,42 @@ public class Game extends KeyAdapter {
 
         if (checkIfChest()) {
             chestAction();
-        } else if (checkIfMonster()) {
-            int x = player.getCoordinatesList().get(0).getX();
-            int y = player.getCoordinatesList().get(0).getY();
-            Creature monster = board.getGoblin();
-            boolean playerWon = false;
-            boolean opponentWon = false;
-            while (!playerWon || !opponentWon) {
-                if (player.turn(monster)) {
-                    player.setExperience(player.getExperience() + monster.getExperience());
-                    player.setLevel();
-                    List<Item> monsterInventory = monster.getInventory().getInventoryList();
-                    for (Item item : monsterInventory) {
-                        player.getInventory().addToInventory(item);
-                    }
 
-                    playerWon = player.turn(monster);
-                } else {
-                    player.turn(monster);
-                }
-                if (monster.turn(player)) {
-                    int monsterX = monster.getCoordinatesList().get(0).getX();
-                    int monsterY = monster.getCoordinatesList().get(0).getY();
-                    board.removeSprite(monsterX, monsterY);
-                    opponentWon = monster.turn(player);
-                } else {
-                    monster.turn(player);
-                }
-            }
+        // ---------------------------------------------------
+        // SZYMON VERSION
+        // } else if (checkIfMonster()) {
+        //     int x = player.getCoordinatesList().get(0).getX();
+        //     int y = player.getCoordinatesList().get(0).getY();
+        //     Creature monster = board.getGoblin();
+        //     boolean playerWon = false;
+        //     boolean opponentWon = false;
+        //     while (!playerWon || !opponentWon) {
+        //         if (player.turn(monster)) {
+        //             player.setExperience(player.getExperience() + monster.getExperience());
+        //             player.setLevel();
+        //             List<Item> monsterInventory = monster.getInventory().getInventoryList();
+        //             for (Item item : monsterInventory) {
+        //                 player.getInventory().addToInventory(item);
+        //             }
+
+        //             playerWon = player.turn(monster);
+        //         } else {
+        //             player.turn(monster);
+        //         }
+        //         if (monster.turn(player)) {
+        //             int monsterX = monster.getCoordinatesList().get(0).getX();
+        //             int monsterY = monster.getCoordinatesList().get(0).getY();
+        //             board.removeSprite(monsterX, monsterY);
+        //             opponentWon = monster.turn(player);
+        //         } else {
+        //             monster.turn(player);
+        //         }
+        //     }
+        // ---------------------------------------------------
+
+        } else if (checkIfMonster()) {
+            
+        
         } else if (checkIfDoor()) {
             System.out.println("I am in door!");
             doorAction();

@@ -4,6 +4,7 @@ import app.Coordinates;
 
 import app.inventory.*;
 import app.creatures.Creature;
+import app.creatures.Dragon;
 import app.creatures.Monster;
 import app.creatures.Player;
 import app.services.TerminalManager;
@@ -98,6 +99,9 @@ public class Board {
 
         putChestOnBoard();
         putMagicalDoorOnBoard();
+        Creature dragon = new Dragon(createCoordList(2, 2, 13, 13), new Inventory());
+        addElementToBoard(dragon);
+        
     }
 
     public void putMagicalDoorOnBoard() {
