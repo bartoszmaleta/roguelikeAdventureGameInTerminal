@@ -105,7 +105,7 @@ public class Game extends KeyAdapter {
 
         // CREATE PLAYER COORDINATES
         playerCoordinates = new ArrayList<>();
-        playerCoordinates.add(new Coordinates(31, 20));
+        playerCoordinates.add(new Coordinates(10, 6));
 
         // CREATE INV FOR PLAYER:
         playerInv = new Inventory();
