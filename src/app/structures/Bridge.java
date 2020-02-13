@@ -10,7 +10,11 @@ public class Bridge extends Sprite {
         // super("\uD83D\uDF59", coordinatesList); // squares
         // super("\uDBB8\uDC19", coordinatesList); // arrows
         // super("#", coordinatesList); // just HASH
-        super("\u2328\uFE0F", coordinatesList); // keyboard
+
+        super("&", coordinatesList); // keyboard
+
+//         super("\uD83E\uDDF3", coordinatesList); // keyboard
+
     }
 
 }

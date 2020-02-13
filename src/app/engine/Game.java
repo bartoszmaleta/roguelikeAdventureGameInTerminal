@@ -1,27 +1,26 @@
 package app.engine;
 
 import app.Coordinates;
-import app.Inventory;
+import app.inventory.Inventory;
 import app.board.Board;
 import app.creatures.Creature;
 import app.creatures.Player;
 import app.inventory.MenuInventory;
 import app.items.Armor;
+import app.creatures.Monster;
+import app.creatures.Player;
 import app.items.Item;
 import app.items.Sword;
-import app.items.Weapon;
 import app.services.DataHandler;
 import app.services.TerminalManager;
 import app.menu.Menu;
 import app.structures.Chest;
-import app.structures.Grass;
 import app.structures.Sprite;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Game extends KeyAdapter {
@@ -99,6 +98,34 @@ public class Game extends KeyAdapter {
 
         if (checkIfChest()) {
             chestAction();
+        } else if (checkIfMonster()) {
+            int x = player.getCoordinatesList().get(0).getX();
+            int y = player.getCoordinatesList().get(0).getY();
+            Creature monster = board.getGoblin();
+            boolean playerWon = false;
+            boolean opponentWon = false;
+            while (!playerWon || !opponentWon) {
+                if (player.turn(monster)) {
+                    player.setExperience(player.getExperience() + monster.getExperience());
+                    player.setLevel();
+                    List<Item> monsterInventory = monster.getInventory().getInventoryList();
+                    for (Item item : monsterInventory) {
+                        player.getInventory().addToInventory(item);
+                    }
+
+                    playerWon = player.turn(monster);
+                } else {
+                    player.turn(monster);
+                }
+                if (monster.turn(player)) {
+                    int monsterX = monster.getCoordinatesList().get(0).getX();
+                    int monsterY = monster.getCoordinatesList().get(0).getY();
+                    board.removeSprite(monsterX, monsterY);
+                    opponentWon = monster.turn(player);
+                } else {
+                    monster.turn(player);
+                }
+            }
         }
 
         // board.printBoard();
@@ -106,13 +133,14 @@ public class Game extends KeyAdapter {
 
     }
 
+
     public void init() {
         // CREATE BOARD:
         board = new Board("Level 1", 33, 117);
 
         // CREATE PLAYER COORDINATES
         playerCoordinates = new ArrayList<>();
-        playerCoordinates.add(new Coordinates(31, 20));
+        playerCoordinates.add(new Coordinates(10, 6));
 
         // CREATE INV FOR PLAYER:
         playerInv = new Inventory();
@@ -122,7 +150,7 @@ public class Game extends KeyAdapter {
         playerInv.addToInventory(sword);
 
         // CREATE PLAYER
-        player = new Player(playerCoordinates, "Bartosz", playerInv);
+        player = new Player(playerCoordinates, "Stefan", playerInv);
 
         // PUT PLAYER ON BOARD
         board.addElementToBoard(player);
@@ -185,6 +213,16 @@ public class Game extends KeyAdapter {
         int x = player.getCoordinatesList().get(0).getX();
         int y = player.getCoordinatesList().get(0).getY();
         if (arrayTypeBoard[y][x] instanceof Chest) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkIfMonster() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y][x] instanceof Monster) {
             return true;
         }
         return false;
