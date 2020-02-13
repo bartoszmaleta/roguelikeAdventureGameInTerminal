@@ -19,5 +19,11 @@ public class Creature extends Sprite {
         this.health = health;
         this.inventory = inventory;
     }
+    
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    
 
 }

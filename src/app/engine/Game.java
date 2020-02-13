@@ -3,7 +3,9 @@ package app.engine;
 import app.Coordinates;
 import app.Inventory;
 import app.board.Board;
+import app.creatures.Creature;
 import app.creatures.Player;
+import app.inventory.MenuInventory;
 import app.items.Armor;
 import app.items.Item;
 import app.items.Sword;
@@ -24,7 +26,7 @@ import java.util.List;
 
 public class Game extends KeyAdapter {
 
-    private Sprite player;
+    private Player player;
     private Inventory playerInv;
     private Board board;
     private List<Coordinates> playerCoordinates;
@@ -76,9 +78,13 @@ public class Game extends KeyAdapter {
             }
             return;
         case "i":
-            // TODO: inventory display
             System.out.println("I am in inventory");
-            break;
+            try {
+                displayCreatureInv(player);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            return;
         case "p": // back to the game
             break;
         case "x":
@@ -111,7 +117,7 @@ public class Game extends KeyAdapter {
         playerInv = new Inventory();
 
         // FILL INV WITH ITEMS
-        Item sword = new Sword("sword one-handed", 15, 50);
+        Item sword = new Sword("Sword one-handed", 15, 50);
         playerInv.addToInventory(sword);
 
         // CREATE PLAYER
@@ -203,11 +209,17 @@ public class Game extends KeyAdapter {
         // PRINTS CONTENT OF THE CHEST
         Inventory inventoryOfChest = board.getChest().getChestInventory();
         inventoryOfChest.printContent();
+        // inventoryOfChest.printTable();       // TODO: prettyTable print!!!
 
         // REMOVING CHEST FROM BOARD
         int x = player.getCoordinatesList().get(0).getX();
         int y = player.getCoordinatesList().get(0).getY();
 
+        System.out.println("------------");
+        System.out.println("player inv");
+        addChestInvToPlayerInv(x, y);       // add and print
+
+        
         // board.removeChestFromBoardList();
         board.removeChestFromBoardListByCoords(x, y);
 
@@ -215,5 +227,28 @@ public class Game extends KeyAdapter {
         TerminalManager.clearScreen();
 
     }
+
+    public void addChestInvToPlayerInv(int x, int y) {
+        List<Item> inventoryOfChest = board.getChest().getChestInventory().getInventoryList();
+        Inventory inv = player.getInventory();
+        for (Item item : inventoryOfChest) {
+            inv.addToInventory(item);
+        }
+
+        // inv.printContent();
+        
+    }
+
+    public void displayCreatureInv(Creature creature) throws FileNotFoundException {
+        // Inventory playerInventory = ((Creature) player).getInventory();
+        MenuInventory.displayInventoryMenuLogo();
+        Inventory creatureInventory = creature.getInventory();
+        creatureInventory.printTable();
+
+        // playerInventory.printContent();      // Old print without table
+        // creatureInventory.printTableOld();        // Old print witht table 2
+    }
+
+
 
 }

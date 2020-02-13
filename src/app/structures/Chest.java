@@ -6,6 +6,7 @@ import java.util.List;
 
 import app.Coordinates;
 import app.Inventory;
+import app.items.Armor;
 import app.items.Helmet;
 import app.items.Item;
 import app.items.Sword;
@@ -21,9 +22,9 @@ public class Chest extends Sprite {
     }
 
     private void fillChest() {
-        Item sword = new Sword("One-handed sword", 10, 5);
-        Item sword2 = new Sword("Two-handed sword", 12, 7);
-        Item helmet = new Helmet("Hat", 50, 70);
+        Sword sword = new Sword("One-handed sword", 10, 5);
+        Sword sword2 = new Sword("Two-handed sword", 12, 7);
+        Armor helmet = new Helmet("Hat", 50, 70);
 
         chestInventory.addToInventory(sword);
         chestInventory.addToInventory(sword2);

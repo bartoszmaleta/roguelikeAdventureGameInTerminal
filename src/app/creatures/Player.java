@@ -24,6 +24,11 @@ public class Player extends Creature {
     }
 
 
+    public Inventory getInv() {
+        return inv;
+    }
+
+
 //    public List<Coordinates> setPlayeCoordinates(int x, int y) {
 //        coordinatesPlayer = new ArrayList<>();
 //        coordinatesPlayer.add(new Coordinates(x, y));

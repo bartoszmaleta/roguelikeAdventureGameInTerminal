@@ -16,6 +16,7 @@ import java.util.List;
 //      - displayInv for player "i"
 //      - removeSprite()
 //      - prettyTable for Inv
+//      - legenda
 
 public class Board {
 
