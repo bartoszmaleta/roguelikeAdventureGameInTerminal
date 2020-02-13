@@ -15,6 +15,7 @@ import app.services.DataHandler;
 import app.services.TerminalManager;
 import app.menu.Menu;
 import app.structures.Chest;
+import app.structures.Door;
 import app.structures.Sprite;
 
 import java.awt.event.KeyAdapter;
@@ -126,12 +127,16 @@ public class Game extends KeyAdapter {
                     monster.turn(player);
                 }
             }
+        } else if (checkIfDoor()) {
+
         }
 
         // board.printBoard();
         board.printBoard2(player);
 
     }
+
+
 
 
     public void init() {
@@ -213,6 +218,16 @@ public class Game extends KeyAdapter {
         int x = player.getCoordinatesList().get(0).getX();
         int y = player.getCoordinatesList().get(0).getY();
         if (arrayTypeBoard[y][x] instanceof Chest) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkIfDoor() {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        int x = player.getCoordinatesList().get(0).getX();
+        int y = player.getCoordinatesList().get(0).getY();
+        if (arrayTypeBoard[y][x] instanceof Door) {
             return true;
         }
         return false;

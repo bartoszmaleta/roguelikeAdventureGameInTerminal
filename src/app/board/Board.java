@@ -98,7 +98,7 @@ public class Board {
 
     private void putChestOnBoard() {
         List<Coordinates> chestCoords = new ArrayList<>();
-        chestCoords.add(new Coordinates(50, 25));
+        chestCoords.add(new Coordinates(3, 2));
         chest1 = new Chest(chestCoords);
         boardList.add(chest1);
     }
