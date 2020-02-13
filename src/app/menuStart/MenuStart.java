@@ -18,8 +18,9 @@ public class MenuStart {
         System.out.println("5. ");
         System.out.println("6. ");
         System.out.println("7. Exit program");
-        
+
         TerminalManager.emptyLinesThree();
+        // TerminalManager.clearScreen();
     }
 
     public static void startGame() {
@@ -31,19 +32,24 @@ public class MenuStart {
 
             showMenu();
 
-            int choosedOption = scanner.nextInt();
+            String choosedOption = scanner.nextLine();
 
             switch (choosedOption) {
-            case 1:
+            case "1":
                 isRunning = false;
                 break;
-            case 2:
+            case "2":
                 isRunning = false;
                 break;
-            case 7:
+            case "7":
                 System.exit(0);
                 break;
+            default:
+                TerminalManager.clearScreen();
+                System.out.println("\nWrong input\n");
             }
         }
+        TerminalManager.clearScreen();
+
     }
 }

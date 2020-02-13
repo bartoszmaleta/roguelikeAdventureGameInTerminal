@@ -47,13 +47,21 @@ public class Player extends Creature {
     public String infoToString() {
         String tableInfo = "";
         int tableLen = 49;
-
-        tableInfo += "\n\nPress i to show inventory";
         tableInfo += "\n" ;
         
-        tableInfo += "\nHEALTH = " + this.level;
+        tableInfo += "\nHEALTH = " + this.getHealth();
         tableInfo += "\nEXPERIENCE = " + this.experience;
         tableInfo += "\nLEVEL = " + this.level;
+
+        tableInfo += "\n\n";
+
+        tableInfo += "\n-------------------------------\n";
+        tableInfo += "| Press (i) to show INVENTORY |";
+        tableInfo += "\n-------------------------------\n";
+
+        tableInfo += "\n--------------------------\n";
+        tableInfo += "| Press (m) to show MENU |";
+        tableInfo += "\n--------------------------\n";
         
         return tableInfo;
     }

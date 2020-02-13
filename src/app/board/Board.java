@@ -298,6 +298,8 @@ public class Board {
 
     public void displayLegend(Player player) {
         // TODO: 
+        String infoAboutPlayer = player.infoToString();
+        System.out.println(infoAboutPlayer);
     }
 
     public void printBoard2(Player player) {
@@ -310,9 +312,7 @@ public class Board {
             System.out.println();
         }
 
-        // LEGENDS
-        String infoAboutPlayer = player.infoToString();
-        System.out.println(infoAboutPlayer);
+        displayLegend(player);
     }
 
 
