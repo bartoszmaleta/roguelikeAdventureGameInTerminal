@@ -5,8 +5,6 @@ import app.inventory.Inventory;
 import app.items.Item;
 import app.items.KeyToDoor;
 import app.structures.Sprite;
-
-import java.security.Key;
 import java.util.List;
 
 public class Creature extends Sprite {
@@ -99,16 +97,5 @@ public class Creature extends Sprite {
             opponent.setHealth(0);
         }
     }
-
-//    public boolean fight(Creature attacker, Creature opponent) {
-//        if (turn(opponent) <= 0) {
-//            return true;
-//        } else if (turn(attacker) <= 0){
-//            return true;
-//        } else {
-//            turn(attacker);
-//        }
-//        return false;
-//    }
 
 }

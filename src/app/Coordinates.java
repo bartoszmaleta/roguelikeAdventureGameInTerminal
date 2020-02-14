@@ -18,7 +18,6 @@ public class Coordinates {
         return y;
     }
 
-    // to change
     public void goDown() {
         this.y += 1;
     }

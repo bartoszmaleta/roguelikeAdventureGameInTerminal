@@ -75,7 +75,6 @@ public class Game extends KeyAdapter {
         case "m":
             try {
                 Menu.displayMenu();
-                // Menu.menuInGameAsk();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -103,45 +102,12 @@ public class Game extends KeyAdapter {
         if (checkIfChest()) {
             chestAction();
 
-            // ---------------------------------------------------
-            // SZYMON VERSION
-            // } else if (checkIfMonster()) {
-            // int x = player.getCoordinatesList().get(0).getX();
-            // int y = player.getCoordinatesList().get(0).getY();
-            // Creature monster = board.getGoblin();
-            // boolean playerWon = false;
-            // boolean opponentWon = false;
-            // while (!playerWon || !opponentWon) {
-            // if (player.turn(monster)) {
-            // player.setExperience(player.getExperience() + monster.getExperience());
-            // player.setLevel();
-            // List<Item> monsterInventory = monster.getInventory().getInventoryList();
-            // for (Item item : monsterInventory) {
-            // player.getInventory().addToInventory(item);
-            // }
-
-            // playerWon = player.turn(monster);
-            // } else {
-            // player.turn(monster);
-            // }
-            // if (monster.turn(player)) {
-            // int monsterX = monster.getCoordinatesList().get(0).getX();
-            // int monsterY = monster.getCoordinatesList().get(0).getY();
-            // board.removeSprite(monsterX, monsterY);
-            // opponentWon = monster.turn(player);
-            // } else {
-            // monster.turn(player);
-            // }
-            // }
-            // ---------------------------------------------------
-
         } else if (checkIfMonster()) {
             try {
                 fightMonster(player);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
@@ -150,9 +116,9 @@ public class Game extends KeyAdapter {
             doorAction();
         }
 
-        // board.printBoard();
         if (player.getExperience() < 400) {
-            board.printBoard2(player);
+        // board.printBoard();
+            board.printBoard2(player);  // REFACTOR THIS METHOD TO "printBoard()"
         } else if (player.getExperience() >= 400) {
             createLevelTwoBoard(player);
             boardLevelTwo.printBoard2(player);
@@ -186,11 +152,6 @@ public class Game extends KeyAdapter {
 
         // PUT PLAYER ON BOARD
         board.addElementToBoard(player);
-
-        // List<Coordinates> chestCoords = new ArrayList<>();
-        // chestCoords.add(new Coordinates(20, 10));
-        // Sprite chest1 = new Chest(chestCoords);
-        // board.getBoardList().add(chest1);
 
     }
 

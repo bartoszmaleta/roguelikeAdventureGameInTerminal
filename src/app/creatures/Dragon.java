@@ -14,35 +14,17 @@ public class Dragon extends Monster {
     public Dragon(List<Coordinates> coordinatesList, Inventory inventory) {
         super("\uD83D\uDC09", coordinatesList, "Dragon", 30, inventory, 10, 150);
         
-        // super.getInventory().addToInventory(new Helmet("Helm", 13, 65));;
-        // this.dragonInventory = new Inventory();
-        // fillDragonInventory();
-
         Item helmet = new Helmet("Helm", 13, 65);
         super.getInventory().addToInventory(helmet);
     }
 
-
-    private void fillDragonInventory() {
-        Item helmet = new Helmet("Helm", 13, 65);
-
-    }
-
+    // TODO
     // private void setDragonInventory() {
         // this.dragonInventory.addToInventory(helmet);
+        // this.dragonInventory = dragonInventory;
     // }
 
-    public Inventory getDragonInventory() {
-        Inventory dragInventory2 = new Inventory();
-        Item helmet = new Helmet("Helm", 13, 65);
-        dragInventory2.addToInventory(helmet);
-        
-        return dragInventory2;
-    }
 
-    public void setDragonInventory(Inventory dragonInventory) {
-        this.dragonInventory = dragonInventory;
-    }
 
     
 

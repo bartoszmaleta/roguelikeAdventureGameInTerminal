@@ -45,7 +45,6 @@ public class Inventory {
         String value = "Value";
         String damage = "Damage";
         String defense = "Defense";
-        // tableInfo += headline;
 
         Formatter formatterHeadline = new Formatter();
         tableInfo += formatterHeadline.format("| %5s | %20s | %6s | %5s | %8s | %8s |\n", index, title, appeal, value,
@@ -118,7 +117,6 @@ public class Inventory {
         String title = "Title";
         String appeal = "Icon";
         String value = "Value";
-        // tableInfo += headline;
 
         Formatter formatterHeadline = new Formatter();
         tableInfo += formatterHeadline.format("| %5s | %20s | %6s | %5s |\n", index, title, appeal, value);

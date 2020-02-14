@@ -2,16 +2,12 @@ package app.board;
 
 import app.Coordinates;
 
-import app.inventory.*;
 import app.creatures.Creature;
 import app.creatures.Dragon;
 import app.creatures.Monster;
 import app.creatures.Player;
-import app.services.TerminalManager;
 import app.inventory.Inventory;
 import app.menu.Color;
-import app.creatures.Creature;
-import app.creatures.Monster;
 import app.structures.*;
 
 import java.util.ArrayList;
@@ -22,7 +18,7 @@ import java.util.List;
 public class Board {
 
     private List<Sprite> boardList;
-    private String level;
+    private String level; // TODO
     private int height;
     private int width;
     private Sprite[][] arrayTypeBoard;
@@ -114,7 +110,6 @@ public class Board {
     }
 
     public Chest findChest(int x, int y) {
-        // Chest chestTemp = new Chest(null);
         for (Sprite sprite: boardList) {
             if (sprite instanceof Chest) {
                 int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
@@ -125,13 +120,11 @@ public class Board {
                 }
             } 
         }
-        // return chestTemp;
         return null;
     }
 
 
 	public Creature findMonster(int x, int y) {
-        // Creature creatureTemp = new Creature("%", null, "name", 40, new Inventory(), 10, 10);
         for (Sprite sprite : boardList) {
             if (sprite instanceof Monster) {
                 int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
@@ -142,16 +135,8 @@ public class Board {
                 }
             }
         }
-        
 		return null;
 	}
-
-    // private void putChestOnBoard() {
-        // List<Coordinates> chestCoords = new ArrayList<>();
-        // chestCoords.add(new Coordinates(3, 2));
-        // chest1 = new Chest(chestCoords);
-        // boardList.add(chest1);
-    // }
 
     public List<Sprite> getBoardList() {
         return boardList;
@@ -165,28 +150,6 @@ public class Board {
     public void putPlayerOnBoard(Sprite player) {
         addElementToBoard(player);
     }
-
-    // public void putBigBridgeOnBoard() {
-    //     List<Coordinates> bigBridgeCoordinates = new ArrayList<>();
-    //     for (int y = 12; y <= 14; y++) {
-    //         for (int x = 67; x <= 76; x++) {
-    //             bigBridgeCoordinates.add(new Coordinates(x, y));
-    //         }
-    //     }
-    //     Bridge bigBridge = new Bridge(bigBridgeCoordinates);
-    //     addElementToBoard(bigBridge);
-    // }
-
-    // public void putLakeOnBoard() {
-    //     List<Coordinates> lakeCoordinates = new ArrayList<>();
-    //     for (int y = 5; y <= 7; y++) {
-    //         for (int x = 5; x <= 10; x++) {
-    //             lakeCoordinates.add(new Coordinates(x, y));
-    //         }
-    //     }
-    //     Water lake = new Water(lakeCoordinates);
-    //     addElementToBoard(lake);
-    // }
 
     public void updateBoard() {
         for (Sprite sprite : boardList) {
@@ -210,8 +173,6 @@ public class Board {
             }
             System.out.println();
         }
-        
-        
 
         // System.out.println(TerminalManager.repeatString('X', width));
     }
@@ -261,48 +222,10 @@ public class Board {
         return list;
     }
 
-
-//        Map<Sprite, List<Coordinates>> sorter = new HashMap<>();
-//        List<Sprite> thinnedBoardList = new ArrayList<>();
-//        for (int i = boardList.size() - 1; i >= 0; i--) {
-//            Sprite sprite = boardList.get(i);
-//            List<Coordinates> coordList = sprite.getCoordinatesList();
-//            int sizeOfCoordList = sprite.getCoordinatesList().size();
-//            for (int coordIndex = 0; coordIndex < sizeOfCoordList; coordIndex++) {
-//                Coordinates coords = coordList.get(coordIndex);
-//                int x = coords.getX();
-//                int y = coords.getY();
-//                if (!sorter.containsKey(sprite)) {
-//                    sorter.put(sprite, coordList);
-//                } else {
-//                    sorter.get(sprite)
-//                }
-//            }
-//        }
-//        List<Sprite> thinnedBoardList = new ArrayList<>();
-//        for (Sprite sprite : sorter.keySet()) {
-//            thinnedBoardList.add(sprite);
-//        }
-//        return thinnedBoardList;
-
     public Chest getChest() {
         Chest chest = (Chest) chest1;
         return chest;
     }
-
-//    public Sprite getSprite(int x, int y) {
-//        Sprite foundSprite = new Sprite("", createCoordList(0, 0, 0, 0));
-//        for (Sprite sprite : boardList) {
-//            if (sprite instanceof Monster) {
-//                int spriteFromCoordsX = sprite.getCoordinatesList().get(0).getX();
-//                int spriteFromCoordsY = sprite.getCoordinatesList().get(0).getY();
-//                if (spriteFromCoordsX == x && spriteFromCoordsY == y) {
-//                    foundSprite = sprite;
-//                }
-//            }
-//        }
-//        return foundSprite;
-//    }
 
     public Creature getGoblin() {
         return goblin;
@@ -310,6 +233,8 @@ public class Board {
 
 //
     // old = removeSprite(int x, int y)     <=== with iterator!!
+    // DONT USE IT, BECAUSE OF:
+    // https://javastart.pl/baza-wiedzy/wyjatki/concurrentmodificationexception
     public void removeSprite2(int x, int y) {
         for (Sprite sprite: boardList) {
             if (sprite instanceof Chest) {
@@ -358,41 +283,18 @@ public class Board {
         }
     }
 
-    public void removeChestFromBoardListByCoords(int x, int y) {
-        for (Sprite sprite: boardList) {
-            if (sprite instanceof Chest) {
-                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
-                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
-                if (spriteFromCordsX == x && spriteFromCordsY == y) {
-                    boardList.remove(sprite);  // should be sprite.getID
-                }
-            } else if (sprite instanceof Monster) {
-                int spriteFromCordsX = sprite.getCoordinatesList().get(0).getX();
-                int spriteFromCordsY = sprite.getCoordinatesList().get(0).getY();
-                if (spriteFromCordsX == x && spriteFromCordsY == y) {
-                    boardList.remove(sprite);  // should be sprite.getID
-                }
-            }
-        }
-    }
-
     public void displayLegend(Creature player) {
-        // TODO: 
         Player player2 = (Player) player;
         String infoAboutPlayer = player2.infoToString();
 
         StringBuilder legend = new StringBuilder();
 
         legend.append(infoAboutPlayer);
-        // legend.append("\n\n");
         legend.append("\n" + Color.GREEN_BOLD + "-------------------------------" + Color.RESET+ "\n");
         legend.append("| Press (i) to show INVENTORY |");
-        // legend.append("\n-------------------------------");
         legend.append("\n" + Color.GREEN_BOLD + "-------------------------------" + Color.RESET+ "\n");
 
-
         legend.append("\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\n");
-        // legend.append("\n--------------------------\n");
         legend.append("| Press (m) to show MENU |");
         legend.append("\n\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F");
         
@@ -400,7 +302,7 @@ public class Board {
     }
 
     public void printBoard2(Creature player) {
-        updateBoard(); // update board
+        updateBoard();
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {

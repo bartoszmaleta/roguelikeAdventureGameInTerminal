@@ -3,9 +3,6 @@ package app.creatures;
 import app.Coordinates;
 import app.inventory.Inventory;
 import app.menu.Color;
-import app.services.TerminalManager;
-
-import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
 
