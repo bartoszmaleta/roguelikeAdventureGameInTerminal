@@ -288,14 +288,51 @@ public class Game extends KeyAdapter {
 
         Creature monsterFound = board.findMonster(x, y);
         System.out.println(monsterFound.getDamage());
-        playerFighter.setDamage(15);        // dont know where set!!
+        playerFighter.setDamage(1);        // dont know where set!!
 
+        System.out.println("monster health = " + monsterFound.getHealth());
+        System.out.println("monster damage = " + monsterFound.getDamage());
+
+        System.out.println("player health = " + playerFighter.getHealth());
+        System.out.println("player damage = " + playerFighter.getDamage());
+
+
+        int counter = 1;
         while ((playerFighter.getHealth() > 0) && (monsterFound.getHealth() > 0)) {
+            System.out.println("round" + counter);
             playerFighter.attack(monsterFound);
             monsterFound.attack(playerFighter);
-            break;
+
+            System.out.println("\n\n\n\n");
+
+            counter ++;
+
+            System.out.println("Monster health = " + monsterFound.getHealth());
+            System.out.println("Monster damage = " + monsterFound.getDamage());
+    
+            System.out.println("Player health = " + playerFighter.getHealth());
+            System.out.println("Player damage = " + playerFighter.getDamage());
+            TerminalManager.pressAnyKeyToContinue();
+            // TerminalManager.clearScreen();
         }
-        
+        if (playerFighter.getHealth() > 0) {
+            System.out.println("Player won! Good job! ");
+
+            
+            board.removeSprite(x, y);
+        } else {
+            System.out.println("Monster Won! Do better next time!");
+        }
+
+        // System.out.println("after");
+        // System.out.println("monster health = " + monsterFound.getHealth());
+        // System.out.println("monster damage = " + monsterFound.getDamage());
+// 
+        // System.out.println("player health = " + playerFighter.getHealth());
+        // System.out.println("player damage = " + playerFighter.getDamage());
+
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
 
     }
 
