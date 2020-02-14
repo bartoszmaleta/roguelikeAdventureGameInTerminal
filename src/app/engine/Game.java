@@ -28,6 +28,7 @@ import java.util.List;
 
 // TODO: 
 //      - experience and level for creature
+//      - animation !!!!!!!!!!!!!!!
 //      - level2 more universal
 //      - classes of players
 //      - legenda
