@@ -287,41 +287,47 @@ public class Game extends KeyAdapter {
         int y = playerFighter.getCoordinatesList().get(0).getY();
 
         Creature monsterFound = board.findMonster(x, y);
-        System.out.println(monsterFound.getDamage());
-        playerFighter.setDamage(1);        // dont know where set!!
 
-        System.out.println("monster health = " + monsterFound.getHealth());
-        System.out.println("monster damage = " + monsterFound.getDamage());
+        playerFighter.setDamage(8);        // dont know where set!!
 
-        System.out.println("player health = " + playerFighter.getHealth());
-        System.out.println("player damage = " + playerFighter.getDamage());
+        System.out.println("Stats at the beginning");
+        System.out.println("Monster health = " + monsterFound.getHealth());
+        System.out.println("Monster damage = " + monsterFound.getDamage());
 
+        System.out.println("\nPlayer health = " + playerFighter.getHealth());
+        System.out.println("Player damage = " + playerFighter.getDamage());
+
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
 
         int counter = 1;
         while ((playerFighter.getHealth() > 0) && (monsterFound.getHealth() > 0)) {
-            System.out.println("round" + counter);
+            System.out.println("\n\n             Round " + counter);
             playerFighter.attack(monsterFound);
             monsterFound.attack(playerFighter);
 
-            System.out.println("\n\n\n\n");
+            System.out.println("\n\n");
 
-            counter ++;
 
             System.out.println("Monster health = " + monsterFound.getHealth());
             System.out.println("Monster damage = " + monsterFound.getDamage());
     
-            System.out.println("Player health = " + playerFighter.getHealth());
+            System.out.println("\nPlayer health = " + playerFighter.getHealth());
             System.out.println("Player damage = " + playerFighter.getDamage());
+
             TerminalManager.pressAnyKeyToContinue();
-            // TerminalManager.clearScreen();
+            TerminalManager.clearScreen();
+
+            counter ++;
         }
         if (playerFighter.getHealth() > 0) {
-            System.out.println("Player won! Good job! ");
+            System.out.println("\n\n\n\n\nPlayer won! Good job! ");
 
             
             board.removeSprite(x, y);
         } else {
-            System.out.println("Monster Won! Do better next time!");
+            System.out.println("Monster Won! Do better next time!\n\n");
+            // TODO: WHAT IF PLAYER LOSES????
         }
 
         // System.out.println("after");
