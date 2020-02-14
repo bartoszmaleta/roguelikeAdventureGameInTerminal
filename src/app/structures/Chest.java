@@ -6,7 +6,6 @@ import app.Coordinates;
 import app.inventory.Inventory;
 import app.items.Armor;
 import app.items.Elixir;
-import app.inventory.Inventory;
 import app.items.Helmet;
 import app.items.Item;
 import app.items.KeyToDoor;

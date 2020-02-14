@@ -172,11 +172,9 @@ public class Inventory {
     public Elixir findElixir() {
         for (Item item : getInventoryList()) {
             if (item instanceof Elixir) {
-                Elixir elixir = (Elixir) item;
-                return elixir;
+                return (Elixir) item;
             }
         }
         return null;
     }
-
 }

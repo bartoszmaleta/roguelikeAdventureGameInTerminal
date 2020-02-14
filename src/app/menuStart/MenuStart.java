@@ -20,7 +20,6 @@ public class MenuStart {
         System.out.println("7. Exit program");
 
         TerminalManager.emptyLinesThree();
-        // TerminalManager.clearScreen();
     }
 
     public static void startGame() {
@@ -50,6 +49,5 @@ public class MenuStart {
             }
         }
         TerminalManager.clearScreen();
-
     }
 }

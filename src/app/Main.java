@@ -3,7 +3,6 @@ package app;
 import app.engine.Game;
 import app.menuStart.MenuStart;
 import app.services.DataHandler;
-import app.services.TerminalManager;
 
 import java.io.FileNotFoundException;
 
@@ -11,12 +10,14 @@ import javax.swing.*;
 
 // TODO:
 //      - check if board (level 2) will work
+//      - specifications and README
 //      - experience and level for creature
 //      - animation !!!!!!!!!!!!!!!
 //      - level2 more universal
 //      - classes of players
 //      - legenda
 //      - id for all sprites
+//      - handling exceptions!
 
 public class Main {
 

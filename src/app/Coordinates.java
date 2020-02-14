@@ -42,4 +42,10 @@ public class Coordinates {
         this.y = y;
     }
 
+    public void go(Coordinates coord) {
+        this.y += coord.getY();
+        this.x += coord.getX();
+
+    }
+
 }

@@ -7,11 +7,8 @@ import app.board.BoardLevelTwo;
 import app.creatures.Creature;
 import app.creatures.Player;
 import app.inventory.MenuInventory;
-import app.items.Armor;
 import app.creatures.Monster;
-import app.creatures.Player;
 import app.items.Item;
-import app.items.KeyToDoor;
 import app.items.Sword;
 import app.services.DataHandler;
 import app.services.TerminalManager;
@@ -40,14 +37,22 @@ public class Game extends KeyAdapter {
         char ch = event.getKeyChar();
         String charString = String.valueOf(ch).toLowerCase();
 
+        // TODO: find how convert char to Character!!!!
         // Character charObj = new Character(ch);
         // System.out.println((int) ch);
         // Character ch = ch.toLowerCase(ch);
 
+        // FOR UNIVERSAL MOVE METHODS!
+        Coordinates coord = new Coordinates(0,0);
+
         switch (charString) {
         case "w":
+            coord.setY(-1); // FOR UNIVERSAL MOVE METHODS!
             if (!checkUpperCollision()) {
                 player.getCoordinatesList().get(0).goUp();
+                // TODO: change to be more universal!!!
+                // player.getCoordinatesList().get(0).go(new Coordinates(0,0));
+
             }
 
             break;
@@ -77,6 +82,7 @@ public class Game extends KeyAdapter {
                 Menu.displayMenu();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                // e.getMessage();      // HANDLING EXCEPETIONS
             }
             return;
         case "i":
@@ -99,6 +105,10 @@ public class Game extends KeyAdapter {
         }
         TerminalManager.clearScreen();
 
+        // // FOR UNIVERSAL MOVE METHODS!
+        // int x = player.getCoordinatesList().get(0).getX();
+        // int y = player.getCoordinatesList().get(0).getY();
+        // checkCollision(new Coordinates(0, -1), x, y);
         if (checkIfChest()) {
             chestAction();
 
@@ -161,6 +171,17 @@ public class Game extends KeyAdapter {
         board.printBoard2(player);
     }
 
+    // TODO: universal checkCollision
+    // FOR UNIVERSAL MOVE METHODS!
+    public boolean checkCollision(Coordinates coord, int x, int y) {
+        Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
+        if (arrayTypeBoard[y + coord.getY()][x+coord.getX()] instanceof Collision) {
+            return true;
+        }
+        return false;
+    }
+
+
     public boolean checkUpperCollision() {
         Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
         int x = player.getCoordinatesList().get(0).getX();
@@ -181,6 +202,7 @@ public class Game extends KeyAdapter {
         return false;
     }
 
+    // todo isCollision, hasCollision
     public boolean checkRightCollision() {
         Sprite[][] arrayTypeBoard = board.getArrayTypeBoard();
         int x = player.getCoordinatesList().get(0).getX();
@@ -232,10 +254,8 @@ public class Game extends KeyAdapter {
     }
 
     private void doorAction() {
-        // DISPLAY IMAGE OF DOOR CLOSED
         DataHandler.displayImageOfDoorClosed();
 
-        // CHECK IF PLAYER HAS KEY
         if (player.hasKeyToDoor()) {
             player.addExperience(5000);
 

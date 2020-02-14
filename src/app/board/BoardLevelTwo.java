@@ -2,16 +2,11 @@ package app.board;
 
 import app.Coordinates;
 
-import app.inventory.*;
 import app.creatures.Creature;
-import app.creatures.Dragon;
 import app.creatures.Monster;
 import app.creatures.Player;
 import app.creatures.Trex;
-import app.services.TerminalManager;
 import app.inventory.Inventory;
-import app.creatures.Creature;
-import app.creatures.Monster;
 import app.structures.*;
 
 import java.util.ArrayList;
