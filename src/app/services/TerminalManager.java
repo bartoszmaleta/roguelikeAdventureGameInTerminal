@@ -16,7 +16,7 @@ public class TerminalManager {
     }
 
     public static void pressAnyKeyToContinue() {
-        System.out.println("\n\n\n\n-----------------------------");
+        System.out.println("\n\n-----------------------------");
         System.out.println("| Press any key to continue |");
         System.out.println("-----------------------------");
         scanner.nextLine();

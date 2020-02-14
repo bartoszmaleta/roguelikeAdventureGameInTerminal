@@ -144,7 +144,11 @@ public class Game extends KeyAdapter {
             // ---------------------------------------------------
 
         } else if (checkIfMonster()) {
-            fightMonster(player);
+            try {
+                fightMonster(player);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
         } else if (checkIfDoor()) {
             System.out.println("I am in door!");
@@ -303,7 +307,7 @@ public class Game extends KeyAdapter {
 
     }
 
-    private void fightMonster(Creature playerFighter) {
+    private void fightMonster(Creature playerFighter) throws FileNotFoundException {
         int x = playerFighter.getCoordinatesList().get(0).getX();
         int y = playerFighter.getCoordinatesList().get(0).getY();
 
@@ -326,8 +330,14 @@ public class Game extends KeyAdapter {
         while ((playerFighter.getHealth() > 0) && (monsterFound.getHealth() > 0)) {
             System.out.println("\n\n             Round " + counter);
             playerFighter.attack(monsterFound);
-            monsterFound.attack(playerFighter);
+            TestGif.displayPlayerAttack();
 
+            TerminalManager.pressAnyKeyToContinue();
+
+            monsterFound.attack(playerFighter);
+            TestGif.displayMonsterAttack();
+
+            System.out.println("\n\n             Round " + counter);
             displayBattleStats(playerFighter, monsterFound);
 
             TerminalManager.pressAnyKeyToContinue();

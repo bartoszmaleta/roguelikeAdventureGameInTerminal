@@ -1,22 +1,18 @@
 
-    ./ossyds+++ooosooosssssyyyyyyyhhhhhhhhhhhms   
-  /hh:`: om+sssssyyyssyyssssssssssssssyhddshs/y   
- yd.`- :-N/m-........................:dNo/.M/d.   
-+N-  -`:dsh+```                     -Nm/`:sN:h    
-ms .../hmod.......................`.hM/.:+Msh-    
-M+`..-yN/N-                         NM-.:yM/h     
-dh``--mshy``````````................mM:-.mds:     
-:N+. sdoN.``````````..........```...sMm:+Mod      
- +mo/N/Nd++oooosooossyyyyyyysssssssssyyssss+      
-  :dMmsyhhyhyyyssssssoooooooossoosssysssshys/`    
-   -Mydodhsssooo++++++////::::-----...../Mosys:   
-   :N /dsh-    ```  ``  ``  ``  ``      hN` :yso- 
-   od-`-hoy:----::--:::::////++++++oooosmdoosydsss
-   ys -.`hsssssoooooooo+++oy:so:o///::::::::----/m
-   d+  `-y/       ````````:+ hh +     ``````````/h
-   M--`  d/...............-o/++::...````````` ``os
-  .M. .-`m.                 ````                s+
-   /d:  .N...`....``....`.......................d:
-    .ho `N                                      m.
-      +h/d                                `     N 
-       -dmyyyyyyyyyyyssssyysssssooooooooo+oo++oo+ 
+   :+ooodsoosssooossssssssssssssyyyyh:  
+ /h+``.sss///////++++++++++++osNNyhyy.  
+/m` --:ms/...```...``...``.../Ny`-m/y   
+m/...+mod...`..`..`..`..`..`.Nh.:sNo:   
+M-..:dsm.                   .Ms.:msh    
+h+..:dyy`..`.`...........`...Mh-:Mo/    
+.N/`moN-.-----::///++++++++++hmsyyy     
+ .dmdyhhhyyysoooooooo+oooossssyyyys:    
+   Nyshhssooo+oo++///://:::-...`+N+yo-  
+  `N +yy:   ``  `` `` `` ``    `ms`-yyo`
+  :h..-yysoosoosysssyysoosyyyyyyysssss+m
+  +o `-o/````````````o`ss`-           `d
+  s+.  y:.`..`.......:+oo:...`..``..`.:y
+  y/ ..h`                             :o
+   ss  d`.``..``..``..``..``..``..``..o/
+    :h.d                              s-
+     `ymooooooooooooooooo++///+++/+//+s`
