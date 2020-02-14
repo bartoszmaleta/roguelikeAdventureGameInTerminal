@@ -2,6 +2,7 @@ package app.creatures;
 
 import app.Coordinates;
 import app.inventory.Inventory;
+import app.menu.Color;
 import app.services.TerminalManager;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class Player extends Creature {
 
 
         String tableInfo = "";
-        tableInfo += "\n";
+        tableInfo += "";
         
         // ------------------------------------- FIRST OPTION
         int tableLen = 40;
@@ -69,28 +70,34 @@ public class Player extends Creature {
         String playerLevelTitle = "Level";
         String playerExperienceTitle = "Experience";
 
+        tableInfo += Color.RED_BOLD;
         for (int j = 0; j < tableLen; j++) {
             tableInfo += boarderOfTable;
         }
+        tableInfo += Color.RESET;
         tableInfo += "\n";
 
         Formatter formatterHeadline = new Formatter();
         tableInfo += formatterHeadline.format("| %10s | %10s | %10s |", playerHealthTitle, playerLevelTitle,
                 playerExperienceTitle);
 
+        tableInfo += Color.RED_BOLD;
         tableInfo += "\n";
         for (int j = 0; j < tableLen; j++) {
             tableInfo += boarderOfTable;
         }
+        tableInfo += Color.RESET;
         tableInfo += "\n";
 
         Formatter formatterStats = new Formatter();
         tableInfo += formatterStats.format("| %10d | %10d | %10d |", playerHealth, playerLevel, playerExperience);
 
+        tableInfo += Color.RED_BOLD;
         tableInfo += "\n";
         for (int j = 0; j < tableLen; j++) {
             tableInfo += boarderOfTable;
         }
+        tableInfo += Color.RESET;
 
         // ------------------------------------- SECOND OPTION 
 

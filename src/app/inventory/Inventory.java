@@ -150,6 +150,8 @@ public class Inventory {
     }
 
     public void printContent() {
+        System.out.println("\n----------------------------");
+
         for (Item item : inventoryList) {
             if (item instanceof Weapon) {
                 Weapon weapon = (Weapon) item;
@@ -165,8 +167,7 @@ public class Inventory {
                 System.out.println("Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
                         + "Value = " + item.getValue() + "\n");
             }
-            System.out.println("-------------");
-
+            System.out.println("----------------------------");
         }
     }
 

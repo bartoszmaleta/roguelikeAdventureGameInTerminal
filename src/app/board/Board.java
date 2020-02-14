@@ -9,6 +9,7 @@ import app.creatures.Monster;
 import app.creatures.Player;
 import app.services.TerminalManager;
 import app.inventory.Inventory;
+import app.menu.Color;
 import app.creatures.Creature;
 import app.creatures.Monster;
 import app.structures.*;
@@ -383,14 +384,17 @@ public class Board {
         StringBuilder legend = new StringBuilder();
 
         legend.append(infoAboutPlayer);
-        legend.append("\n\n");
-        legend.append("\n-------------------------------\n");
+        // legend.append("\n\n");
+        legend.append("\n" + Color.GREEN_BOLD + "-------------------------------" + Color.RESET+ "\n");
         legend.append("| Press (i) to show INVENTORY |");
-        legend.append("\n-------------------------------\n");
+        // legend.append("\n-------------------------------");
+        legend.append("\n" + Color.GREEN_BOLD + "-------------------------------" + Color.RESET+ "\n");
 
-        legend.append("\n--------------------------\n");
+
+        legend.append("\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\n");
+        // legend.append("\n--------------------------\n");
         legend.append("| Press (m) to show MENU |");
-        legend.append("\n--------------------------\n");
+        legend.append("\n\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F\u2328\uFE0F");
         
         System.out.println(legend);
     }

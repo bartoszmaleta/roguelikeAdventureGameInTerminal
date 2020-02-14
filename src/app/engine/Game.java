@@ -28,6 +28,7 @@ import java.util.List;
 
 // TODO: 
 //      - experience and level for creature
+//      - level2 more universal
 //      - classes of players
 //      - legenda
 //      - id for all sprites
@@ -87,7 +88,6 @@ public class Game extends KeyAdapter {
             }
             return;
         case "i":
-            System.out.println("I am in inventory");
             try {
                 displayCreatureInv(player);
             } catch (FileNotFoundException e) {
@@ -195,7 +195,7 @@ public class Game extends KeyAdapter {
     }
 
     public void firstTimeBoard() {
-        // TODO: !!!!!!! OLD
+        // OLD
         // board.printBoard();
         board.printBoard2(player);
     }
