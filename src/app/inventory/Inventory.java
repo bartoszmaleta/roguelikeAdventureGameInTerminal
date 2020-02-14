@@ -5,6 +5,7 @@ import java.util.Formatter;
 import java.util.List;
 
 import app.items.Armor;
+import app.items.Elixir;
 import app.items.Item;
 import app.items.Weapon;
 
@@ -167,6 +168,16 @@ public class Inventory {
             System.out.println("-------------");
 
         }
+    }
+
+    public Elixir findElixir() {
+        for (Item item : getInventoryList()) {
+            if (item instanceof Elixir) {
+                Elixir elixir = (Elixir) item;
+                return elixir;
+            }
+        }
+        return null;
     }
 
 }

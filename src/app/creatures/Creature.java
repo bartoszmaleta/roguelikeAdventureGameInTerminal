@@ -44,6 +44,10 @@ public class Creature extends Sprite {
         this.health -= healthToSubtract;
     }
 
+    public void addHealth(int healthToSubtract) {
+        this.health += healthToSubtract;
+    }
+
     public int getDamage() {
         return damage;
     }

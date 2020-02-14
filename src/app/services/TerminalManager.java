@@ -16,15 +16,15 @@ public class TerminalManager {
     }
 
     public static void pressAnyKeyToContinue() {
-        System.out.println("\n\n\n\n---------------------------");
+        System.out.println("\n\n\n\n-----------------------------");
         System.out.println("| Press any key to continue |");
-        System.out.println("---------------------------");
+        System.out.println("-----------------------------");
         scanner.nextLine();
     }
 
     public static void displayWelcomeScreen() {
         emptyLinesThree();
-        System.out.println("Welcome to ROGUELIKE ADVENTURE GAME");
+        System.out.println("\n\n\nWelcome to ROGUELIKE ADVENTURE GAME\n\n\n\n");
         System.out.println("Produced by: ");
         System.out.println("Bartosz Maleta");
         System.out.println("Szymon Niemiec");
