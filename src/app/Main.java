@@ -2,7 +2,10 @@ package app;
 
 import app.engine.Game;
 import app.menuStart.MenuStart;
+import app.services.DataHandler;
 import app.services.TerminalManager;
+
+import java.io.FileNotFoundException;
 
 import javax.swing.*;
 
@@ -11,11 +14,17 @@ import javax.swing.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        welcomeScreen();
         runGame();
     }
 
-    public static void runGame() {  
+    private static void welcomeScreen() throws FileNotFoundException {
+        String filepath = "src/app/graphics/welcome.txt";
+        DataHandler.printFromFile(filepath);
+    }
+
+    public static void runGame() {
         MenuStart.startGame();
 
         JTextField textField = new JTextField();

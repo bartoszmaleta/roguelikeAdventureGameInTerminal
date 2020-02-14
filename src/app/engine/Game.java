@@ -148,6 +148,9 @@ public class Game extends KeyAdapter {
                 fightMonster(player);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
 
         } else if (checkIfDoor()) {
@@ -307,7 +310,7 @@ public class Game extends KeyAdapter {
 
     }
 
-    private void fightMonster(Creature playerFighter) throws FileNotFoundException {
+    private void fightMonster(Creature playerFighter) throws FileNotFoundException, InterruptedException {
         int x = playerFighter.getCoordinatesList().get(0).getX();
         int y = playerFighter.getCoordinatesList().get(0).getY();
 
