@@ -26,14 +26,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: 
-//      - experience and level for creature
-//      - animation !!!!!!!!!!!!!!!
-//      - level2 more universal
-//      - classes of players
-//      - legenda
-//      - id for all sprites
-
 public class Game extends KeyAdapter {
 
     private Creature player;

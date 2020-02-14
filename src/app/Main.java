@@ -11,6 +11,12 @@ import javax.swing.*;
 
 // TODO:
 //      - check if board (level 2) will work
+//      - experience and level for creature
+//      - animation !!!!!!!!!!!!!!!
+//      - level2 more universal
+//      - classes of players
+//      - legenda
+//      - id for all sprites
 
 public class Main {
 
