@@ -7,6 +7,7 @@ import app.creatures.Creature;
 import app.creatures.Dragon;
 import app.creatures.Monster;
 import app.creatures.Player;
+import app.creatures.Trex;
 import app.services.TerminalManager;
 import app.inventory.Inventory;
 import app.creatures.Creature;
@@ -16,9 +17,15 @@ import app.structures.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: 
+//      - id for all sprites
+//      - adding chest inv to playerINV
+//      - displayInv for player "i"
+//      - removeSprite()
+//      - prettyTable for Inv
+//      - legenda
 
-
-public class Board {
+public class BoardLevelTwo {
 
     private List<Sprite> boardList;
     private String level;
@@ -30,7 +37,7 @@ public class Board {
     private Door door;
 
 
-    public Board(String level, int height, int width) {
+    public BoardLevelTwo(String level, int height, int width) {
         boardList = new ArrayList<>();
         this.level = level;
         this.height = height;
@@ -84,30 +91,23 @@ public class Board {
         addElementToBoard(new Bridge(createCoordList(103, 103, 5, 5)));
         addElementToBoard(new Bridge(createCoordList(114, 114, 8, 8)));
         
-        addElementToBoard(new Monster("\uD83D\uDC7A", createCoordList(84, 84, 7, 7), "Goblin", 30, new Inventory(), 5, 15));
         addElementToBoard(new Border(new ArrayList<>(), height, width));
 
-
-        // addElementToBoard(new Door(createCoordList(2, 2, 7, 7), "asd123"));
-        addElementToBoard(new Chest(createCoordList(30, 30, 13, 13), "differentChest"));
-
-        putChestOnBoard();
-        putMagicalDoorOnBoard();
-        Creature dragon = new Dragon(createCoordList(30, 30, 17, 17), new Inventory());
-        addElementToBoard(dragon);
+        Creature trex = new Trex(createCoordList(2, 2, 12, 12), new Inventory());
+        addElementToBoard(trex);
         
     }
 
     public void putMagicalDoorOnBoard() {
         List<Coordinates> magicalDoorCoords = new ArrayList<>();
-        magicalDoorCoords.add(new Coordinates(112, 16));
+        magicalDoorCoords.add(new Coordinates(2, 10));
         door = new Door(magicalDoorCoords, "asd123");
         boardList.add(door);
     }
 
     private void putChestOnBoard() {
         List<Coordinates> chestCoords = new ArrayList<>();
-        chestCoords.add(new Coordinates(16, 2));
+        chestCoords.add(new Coordinates(3, 2));
         chest1 = new Chest(chestCoords);
         boardList.add(chest1);
     }
@@ -383,12 +383,12 @@ public class Board {
         StringBuilder legend = new StringBuilder();
 
         legend.append(infoAboutPlayer);
-        legend.append("\n\n");
-        legend.append("\n-------------------------------\n");
+        // legend.append("\n\n");
+        legend.append("-------------------------------\n");
         legend.append("| Press (i) to show INVENTORY |");
         legend.append("\n-------------------------------\n");
 
-        legend.append("\n--------------------------\n");
+        legend.append("--------------------------\n");
         legend.append("| Press (m) to show MENU |");
         legend.append("\n--------------------------\n");
         

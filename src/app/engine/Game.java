@@ -3,6 +3,7 @@ package app.engine;
 import app.Coordinates;
 import app.inventory.Inventory;
 import app.board.Board;
+import app.board.BoardLevelTwo;
 import app.creatures.Creature;
 import app.creatures.Player;
 import app.inventory.MenuInventory;
@@ -25,12 +26,19 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: 
+//      - experience and level for creature
+//      - classes of players
+//      - legenda
+//      - id for all sprites
+
 public class Game extends KeyAdapter {
 
     private Creature player;
     private Inventory playerInv;
     private Board board;
     private List<Coordinates> playerCoordinates;
+    private BoardLevelTwo boardLevelTwo;
 
     @Override
     public void keyPressed(KeyEvent event) {
@@ -143,8 +151,19 @@ public class Game extends KeyAdapter {
         }
 
         // board.printBoard();
-        board.printBoard2(player);
+        if (player.getExperience() < 400) {
+            board.printBoard2(player);
+        } else if (player.getExperience() >= 400) {
+            createLevelTwoBoard(player);
+            boardLevelTwo.printBoard2(player);
+        }
 
+    }
+
+    public void createLevelTwoBoard(Creature player) {
+        boardLevelTwo = new BoardLevelTwo("Level 2", 33, 117);
+
+        boardLevelTwo.addElementToBoard(player);
     }
 
     public void init() {
@@ -272,6 +291,7 @@ public class Game extends KeyAdapter {
             int x = player.getCoordinatesList().get(0).getX();
             int y = player.getCoordinatesList().get(0).getY();
             board.removeSprite(x, y);
+            player.addExperience(500);
 
         } else {
             System.out.println("\n\n\n\n\nYou do not have key to this door!! Find key first!\n\n\n");
@@ -349,6 +369,7 @@ public class Game extends KeyAdapter {
 
         // REMOVING CHEST FROM BOARD
         board.removeSprite(x, y);
+        player.addExperience(50);
 
         TerminalManager.pressAnyKeyToContinue();
         TerminalManager.clearScreen();

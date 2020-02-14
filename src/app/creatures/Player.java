@@ -15,7 +15,7 @@ public class Player extends Creature {
     private Inventory inv;
 
     public Player(List<Coordinates> coordinatesPlayer, String name, Inventory inventory) {
-        super("@", coordinatesPlayer, name, 100, inventory, 0, 0);
+        super("\uD83E\uDD34", coordinatesPlayer, name, 100, inventory, 0, 0);
         setLevel();
         this.experience = 0;
     }
@@ -26,7 +26,9 @@ public class Player extends Creature {
         coordinates.get(0).setY(y);
     }
 
-    
+    public int getLevel() {
+        return level;
+    }
 
     public void setLevel() {
         int exp = getExperience();

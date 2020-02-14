@@ -11,7 +11,7 @@ public class Bridge extends Sprite {
         // super("\uDBB8\uDC19", coordinatesList); // arrows
         // super("#", coordinatesList); // just HASH
 
-        super("&", coordinatesList); // keyboard
+        super("\uD83C\uDFC1", coordinatesList); // flag start
 
 //         super("\uD83E\uDDF3", coordinatesList); // keyboard
 

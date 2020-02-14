@@ -17,7 +17,7 @@ public class Chest extends Sprite {
 
     public Chest(List<Coordinates> coordinatesList) {
         // super("\uD83C\uDF81", coordinatesList);
-        super("+", coordinatesList);
+        super("\uD83C\uDF81", coordinatesList);
         chestInventory = new Inventory();
         fillChest();
     }
@@ -36,7 +36,7 @@ public class Chest extends Sprite {
 
     public Chest(List<Coordinates> coordinatesList, String differentConstructor) {
         // super("\uD83C\uDF81", coordinatesList);
-        super("+", coordinatesList);
+        super("\uD83C\uDF81", coordinatesList);
         chestInventory = new Inventory();
         fillChest2();
     }
