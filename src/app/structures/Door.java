@@ -9,7 +9,7 @@ public class Door extends Sprite {
         private String keyIdNeeded;
     
         public Door( List<Coordinates> coordinatesList, String keyIdNeeded) {
-            super("#", coordinatesList);
+            super("\u26E9", coordinatesList);
             this.keyIdNeeded = keyIdNeeded;
             // keyIdNeeded = "asd123"
         }

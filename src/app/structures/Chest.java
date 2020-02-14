@@ -5,6 +5,7 @@ import java.util.List;
 import app.Coordinates;
 import app.inventory.Inventory;
 import app.items.Armor;
+import app.items.Elixir;
 import app.inventory.Inventory;
 import app.items.Helmet;
 import app.items.Item;
@@ -16,7 +17,7 @@ public class Chest extends Sprite {
 
     public Chest(List<Coordinates> coordinatesList) {
         // super("\uD83C\uDF81", coordinatesList);
-        super("+", coordinatesList);
+        super("\uD83C\uDF81", coordinatesList);
         chestInventory = new Inventory();
         fillChest();
     }
@@ -35,7 +36,7 @@ public class Chest extends Sprite {
 
     public Chest(List<Coordinates> coordinatesList, String differentConstructor) {
         // super("\uD83C\uDF81", coordinatesList);
-        super("+", coordinatesList);
+        super("\uD83C\uDF81", coordinatesList);
         chestInventory = new Inventory();
         fillChest2();
     }
@@ -43,9 +44,11 @@ public class Chest extends Sprite {
     private void fillChest2() {
         Sword sword = new Sword("Magical Sword", 800, 4);
         Armor helmet = new Helmet("Magical Hat", 400, 800);
+        Item elixir = new Elixir("Small potion", 20, 20);
 
         chestInventory.addToInventory(sword);
         chestInventory.addToInventory(helmet);
+        chestInventory.addToInventory(elixir);
     }
 
     public Inventory getChestInventory() {

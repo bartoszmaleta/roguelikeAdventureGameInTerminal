@@ -3,6 +3,7 @@ package app.engine;
 import app.Coordinates;
 import app.inventory.Inventory;
 import app.board.Board;
+import app.board.BoardLevelTwo;
 import app.creatures.Creature;
 import app.creatures.Player;
 import app.inventory.MenuInventory;
@@ -25,12 +26,20 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: 
+//      - experience and level for creature
+//      - level2 more universal
+//      - classes of players
+//      - legenda
+//      - id for all sprites
+
 public class Game extends KeyAdapter {
 
     private Creature player;
     private Inventory playerInv;
     private Board board;
     private List<Coordinates> playerCoordinates;
+    private BoardLevelTwo boardLevelTwo;
 
     @Override
     public void keyPressed(KeyEvent event) {
@@ -79,19 +88,19 @@ public class Game extends KeyAdapter {
             }
             return;
         case "i":
-            System.out.println("I am in inventory");
             try {
                 displayCreatureInv(player);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             return;
+        case "e":
+            player.addHealth(player.getInventory().findElixir().getHealthToRestore());
         case "p": // back to the game
             break;
         case "x":
             System.exit(0);
             break;
-
         default:
             System.out.println("Wrong input");
             return;
@@ -101,51 +110,61 @@ public class Game extends KeyAdapter {
         if (checkIfChest()) {
             chestAction();
 
-        // ---------------------------------------------------
-        // SZYMON VERSION
-        // } else if (checkIfMonster()) {
-        //     int x = player.getCoordinatesList().get(0).getX();
-        //     int y = player.getCoordinatesList().get(0).getY();
-        //     Creature monster = board.getGoblin();
-        //     boolean playerWon = false;
-        //     boolean opponentWon = false;
-        //     while (!playerWon || !opponentWon) {
-        //         if (player.turn(monster)) {
-        //             player.setExperience(player.getExperience() + monster.getExperience());
-        //             player.setLevel();
-        //             List<Item> monsterInventory = monster.getInventory().getInventoryList();
-        //             for (Item item : monsterInventory) {
-        //                 player.getInventory().addToInventory(item);
-        //             }
+            // ---------------------------------------------------
+            // SZYMON VERSION
+            // } else if (checkIfMonster()) {
+            // int x = player.getCoordinatesList().get(0).getX();
+            // int y = player.getCoordinatesList().get(0).getY();
+            // Creature monster = board.getGoblin();
+            // boolean playerWon = false;
+            // boolean opponentWon = false;
+            // while (!playerWon || !opponentWon) {
+            // if (player.turn(monster)) {
+            // player.setExperience(player.getExperience() + monster.getExperience());
+            // player.setLevel();
+            // List<Item> monsterInventory = monster.getInventory().getInventoryList();
+            // for (Item item : monsterInventory) {
+            // player.getInventory().addToInventory(item);
+            // }
 
-        //             playerWon = player.turn(monster);
-        //         } else {
-        //             player.turn(monster);
-        //         }
-        //         if (monster.turn(player)) {
-        //             int monsterX = monster.getCoordinatesList().get(0).getX();
-        //             int monsterY = monster.getCoordinatesList().get(0).getY();
-        //             board.removeSprite(monsterX, monsterY);
-        //             opponentWon = monster.turn(player);
-        //         } else {
-        //             monster.turn(player);
-        //         }
-        //     }
-        // ---------------------------------------------------
+            // playerWon = player.turn(monster);
+            // } else {
+            // player.turn(monster);
+            // }
+            // if (monster.turn(player)) {
+            // int monsterX = monster.getCoordinatesList().get(0).getX();
+            // int monsterY = monster.getCoordinatesList().get(0).getY();
+            // board.removeSprite(monsterX, monsterY);
+            // opponentWon = monster.turn(player);
+            // } else {
+            // monster.turn(player);
+            // }
+            // }
+            // ---------------------------------------------------
 
         } else if (checkIfMonster()) {
             fightMonster(player);
-        
+
         } else if (checkIfDoor()) {
             System.out.println("I am in door!");
             doorAction();
         }
 
         // board.printBoard();
-        board.printBoard2(player);
+        if (player.getExperience() < 400) {
+            board.printBoard2(player);
+        } else if (player.getExperience() >= 400) {
+            createLevelTwoBoard(player);
+            boardLevelTwo.printBoard2(player);
+        }
 
     }
 
+    public void createLevelTwoBoard(Creature player) {
+        boardLevelTwo = new BoardLevelTwo("Level 2", 33, 117);
+
+        boardLevelTwo.addElementToBoard(player);
+    }
 
     public void init() {
         // CREATE BOARD:
@@ -176,7 +195,7 @@ public class Game extends KeyAdapter {
     }
 
     public void firstTimeBoard() {
-        // TODO: !!!!!!! OLD
+        // OLD
         // board.printBoard();
         board.printBoard2(player);
     }
@@ -272,6 +291,7 @@ public class Game extends KeyAdapter {
             int x = player.getCoordinatesList().get(0).getX();
             int y = player.getCoordinatesList().get(0).getY();
             board.removeSprite(x, y);
+            player.addExperience(500);
 
         } else {
             System.out.println("\n\n\n\n\nYou do not have key to this door!! Find key first!\n\n\n");
@@ -287,18 +307,47 @@ public class Game extends KeyAdapter {
         int y = playerFighter.getCoordinatesList().get(0).getY();
 
         Creature monsterFound = board.findMonster(x, y);
-        System.out.println(monsterFound.getDamage());
-        playerFighter.setDamage(15);        // dont know where set!!
+        
+        // DONT KNOW WHERE TO SET DAMAGE????
+        playerFighter.setDamage(8);
 
+        System.out.println("\n\nStats at the beginning");
+        System.out.println("Monster health = " + monsterFound.getHealth());
+        System.out.println("Monster damage = " + monsterFound.getDamage());
+
+        System.out.println("\nPlayer health = " + playerFighter.getHealth());
+        System.out.println("Player damage = " + playerFighter.getDamage());
+
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
+
+        int counter = 1;
         while ((playerFighter.getHealth() > 0) && (monsterFound.getHealth() > 0)) {
+            System.out.println("\n\n             Round " + counter);
             playerFighter.attack(monsterFound);
             monsterFound.attack(playerFighter);
-            break;
+
+            displayBattleStats(playerFighter, monsterFound);
+
+            TerminalManager.pressAnyKeyToContinue();
+            TerminalManager.clearScreen();
+
+            counter++;
         }
-        
+        if (playerFighter.getHealth() > 0) {
+            System.out.println("\n\n\n\n\nPlayer won! Good job! ");
+            addCreatureInvToPlayerInv(x, y);
+
+            board.removeSprite(x, y);
+        } else {
+            System.out.println("Monster Won! Do better next time!\n\n");
+            // TODO: WHAT IF PLAYER LOSES????
+        }
+
+        TerminalManager.pressAnyKeyToContinue();
+        TerminalManager.clearScreen();
 
     }
-
 
     public void chestAction() {
 
@@ -320,6 +369,7 @@ public class Game extends KeyAdapter {
 
         // REMOVING CHEST FROM BOARD
         board.removeSprite(x, y);
+        player.addExperience(50);
 
         TerminalManager.pressAnyKeyToContinue();
         TerminalManager.clearScreen();
@@ -334,6 +384,14 @@ public class Game extends KeyAdapter {
         }
     }
 
+    public void addCreatureInvToPlayerInv(int x, int y) {
+        List<Item> inventoryOfCreature = board.findMonster(x, y).getInventory().getInventoryList();
+        Inventory playerInvent = player.getInventory();
+        for (Item item : inventoryOfCreature) {
+            playerInvent.addToInventory(item);
+        }
+    }
+
     public void displayCreatureInv(Creature creature) throws FileNotFoundException {
         // Inventory playerInventory = ((Creature) player).getInventory();
         MenuInventory.displayInventoryMenuLogo();
@@ -342,6 +400,15 @@ public class Game extends KeyAdapter {
 
         // playerInventory.printContent(); // Old print without table
         // creatureInventory.printTableOld(); // Old print witht table 2
+    }
+
+    public void displayBattleStats(Creature player, Creature monster) {
+
+        System.out.println("\n\nMonster health = " + monster.getHealth());
+        System.out.println("Monster damage = " + monster.getDamage());
+
+        System.out.println("\nPlayer health = " + player.getHealth());
+        System.out.println("Player damage = " + player.getDamage());
     }
 
 }

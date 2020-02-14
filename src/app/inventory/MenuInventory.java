@@ -38,7 +38,7 @@ public class MenuInventory {
         System.out.println(Color.RESET);
 
         System.out.println("\n                                 GAME IS PAUSED");
-        System.out.println("\n\n\n(p) - Back to the game\n(x) - Exit the program\n\n\n");
+        System.out.println("\n\n\n(p) - Back to the game\n(x) - Exit the program\n(e) - To use potion\n\n\n");
     }
 
     public static void menuInGameAsk() {

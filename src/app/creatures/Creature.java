@@ -40,6 +40,14 @@ public class Creature extends Sprite {
         this.damage += damageToAdd;
     }
 
+    public void subtractHealth(int healthToSubtract) {
+        this.health -= healthToSubtract;
+    }
+
+    public void addHealth(int healthToSubtract) {
+        this.health += healthToSubtract;
+    }
+
     public int getDamage() {
         return damage;
     }
@@ -84,7 +92,12 @@ public class Creature extends Sprite {
     }
     
     public void attack(Creature opponent) {
+        int damageOfAttacker = this.damage;
+        opponent.subtractHealth(damageOfAttacker);
 
+        if (opponent.getHealth() <= 0) {
+            opponent.setHealth(0);
+        }
     }
 
 //    public boolean fight(Creature attacker, Creature opponent) {

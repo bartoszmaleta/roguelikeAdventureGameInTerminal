@@ -5,6 +5,7 @@ import java.util.Formatter;
 import java.util.List;
 
 import app.items.Armor;
+import app.items.Elixir;
 import app.items.Item;
 import app.items.Weapon;
 
@@ -149,6 +150,8 @@ public class Inventory {
     }
 
     public void printContent() {
+        System.out.println("\n----------------------------");
+
         for (Item item : inventoryList) {
             if (item instanceof Weapon) {
                 Weapon weapon = (Weapon) item;
@@ -164,9 +167,18 @@ public class Inventory {
                 System.out.println("Name = " + item.getName() + "\n" + "Appearance = " + item.getAppearance() + "\n"
                         + "Value = " + item.getValue() + "\n");
             }
-            System.out.println("-------------");
-
+            System.out.println("----------------------------");
         }
+    }
+
+    public Elixir findElixir() {
+        for (Item item : getInventoryList()) {
+            if (item instanceof Elixir) {
+                Elixir elixir = (Elixir) item;
+                return elixir;
+            }
+        }
+        return null;
     }
 
 }
